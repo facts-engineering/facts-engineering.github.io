@@ -4,14 +4,33 @@
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
   
-  <!--https://github.com/facts-engineering/ArduinoCore-samd/archive/1.8.4.tar.gz-->
-  <form action="http://downloads.arduino.cc/Hourly/samd/package_samd-hourly-build_index.json">
-     <button type="button">JSON</button>
-  </form>
+  <!-- The text field -->
+<input type="text" value="http://downloads.arduino.cc/Hourly/samd/package_samd-hourly-build_index.json" id="myInput">
+
+<!-- The button used to copy the text -->
+<button onclick="myFunction()">Copy text</button>
+
+  
 
   <!--http://downloads.arduino.cc/Hourly/samd/package_samd-hourly-build_index.json-->
   <button type="button" onclick="window.location.href = 'https://github.com/facts-engineering/ArduinoCore-samd/archive/1.8.4.tar.gz';"">Core</button>
  
+  function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
   
 </body>
 </html>
+
+                                                                                                                                       
