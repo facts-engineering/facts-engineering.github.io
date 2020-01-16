@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1-04NTC | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1-04NTC</h1>
+        <h2>Thermistor Input</h2>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p>This module can be used to get temperature readings from a number of different types of NTC probes. 
+			This function returns the temperature reported by the channel as a floating point value.</p>
+            <div class="code-block">
+                <pre><code class="cpp">float temperature = P1.readTemperature(1, 2); // Reads slot 1 channel 2 of the P1-04NTC</code></pre>
+            </div>
+        </div>
+        <div class="config">
+            <h3>Configuration Tool</h3>
+            <div class="line"></div>
+        </div>
+        <div class="compatible">
+            <h3>Compatible Functions</h3>
+            <div class="line"></div>
+            <ul>
+                <li>
+                    <p><b>P1.readTemperature()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.configureModule()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.readModuleConfig()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.checkUnderRange()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.checkOverRange()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.checkBurnout()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.readStatus()</b></p>
+                </li>
+            </ul>
+        </div>
+        <div class="status">
+            <h3>Module Configuration and Status Tables</h3>
+            <div class="line"></div>
+			<p>We recommend using the status functions and configuration tool. These tables are provided as additional reference.</p>
+            <p><b>Module Status Data</b></p>
+			<table>
+                <thead>
+                    <tr>
+                        <th align="center">Bytes</th>
+                        <th align="center">(MSB) 7</th>
+                        <th align="center">6</th>
+                        <th align="center">5</th>
+                        <th align="center">4</th>
+                        <th align="center">3</th>
+                        <th align="center">2</th>
+                        <th align="center">1</th>
+                        <th align="center">0 (LSB)</th>
+                        <th align="center">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">Byte 0</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 1</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 2</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 3</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">2</td>
+                        <td align="center">x</td>
+                        <td align="center">0</td>
+                        <td align="center">bit 2 - Module not ready</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 1 is undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 0 - Module diagnostics failure</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 4</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 5</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">3</td>
+                        <td align="center">2</td>
+                        <td align="center">1</td>
+                        <td align="center">0</td>
+                        <td align="center">bit 3 - Burnout error on channel 4</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 2 - Burnout error on channel 3</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 1 - Burnout error on channel 2</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 0 - Burnout error on channel 1</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 6</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 7</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">3</td>
+                        <td align="center">2</td>
+                        <td align="center">1</td>
+                        <td align="center">0</td>
+                        <td align="center">bit 3 - Under range error on channel 4</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 2 - Under range error on channel 3</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 1 - Under range error on channel 2</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 0 - Under range error on channel 1</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 8</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 9</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 10</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td align="center">Byte 11</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">x</td>
+                        <td align="center">3</td>
+                        <td align="center">2</td>
+                        <td align="center">1</td>
+                        <td align="center">0</td>
+                        <td align="center">bit 3 - Over range error on channel 4</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 2 - Over range error on channel 3</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 1 - Over range error on channel 2</td>
+                    </tr>
+                    <tr>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center"></td>
+                        <td align="center">bit 0 - Over range error on channel 1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Module Configuration Data</b></p>
+            <p>Default values are in bold.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Offset</th>
+                        <th style="text-align:center">Description</th>
+                        <th style="text-align:center">Allowable Values</th>
+                        <th style="text-align:center">Value Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bytes 00-01</td>
+                        <td style="text-align:center">Channel enable</td>
+                        <td style="text-align:center">0x4000</td>
+                        <td style="text-align:center">Enable channel 1</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x4001</td>
+                        <td style="text-align:center">Enable channels 1 and 2</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x4002</td>
+                        <td style="text-align:center">Enable channels 1-3</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"><strong>0x4003</strong></td>
+                        <td style="text-align:center"><strong>Enable channels 1-4</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Bytes 02-03</td>
+                        <td style="text-align:center">Burnout and Units</td>
+                        <td style="text-align:center">0x6001</td>
+                        <td style="text-align:center">Low side burnout (min scale)/Temp in degrees C</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x6003</td>
+                        <td style="text-align:center">High side burnout (max scale)/Temp in degrees C</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"><strong>0x6005</strong></td>
+                        <td style="text-align:center"><strong>Low side burnout (min scale)/Temp in degrees F</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x6007</td>
+                        <td style="text-align:center">High side burnout (max scale)/Temp in degrees F</td>
+                    </tr>
+                    <tr>
+                        <td>Bytes 04-05</td>
+                        <td style="text-align:center">Range</td>
+                        <td style="text-align:center"><Strong>0x2000</strong></td>
+                        <td style="text-align:center"><Strong>2252</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x2001</td>
+                        <td style="text-align:center">10K-AN</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x2002</td>
+                        <td style="text-align:center">10K-CP</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x2003</td>
+                        <td style="text-align:center">5K</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x2004</td>
+                        <td style="text-align:center">3K</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x2005</td>
+                        <td style="text-align:center">1.8K</td>
+                    </tr>
+                    <tr>
+                        <td>Bytes 06-07</td>
+                        <td style="text-align:center">Digital Filter</td>
+                        <td style="text-align:center"><strong>0x8002</strong></td>
+                        <td style="text-align:center"><strong>33Hz/16bit/61ms</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x8004</td>
+                        <td style="text-align:center">470Hz/14bit/4ms</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="image-box">
+            <img src="P1-04NTC_STRAIGHTON.png">
+            <div class="line"></div>
+            <p>
+			<p><b>Channels: </b>4<br>
+                <b>NTC Types: </b>2252, 10K-AN Type 3, 10K-CP Type 2, 3K and 1.8K<br>
+            <b>Resolution: </b>±0.1°C or °F<br>
+                <b>Example: </b><a
+                    href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/ReadTemperature/ReadTemperature.ino">ReadTemperature</a>
+            </p>
+			<p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-04NTC.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/analog_i-z-o/P1-04NTC">P1-04NTC
+                on Automation Direct</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

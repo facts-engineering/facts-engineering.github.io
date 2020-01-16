@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1AM-GPIO | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1AM-GPIO</h1>
+        <h2></h2>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p>The P1AM-GPIO is an industrial rated shield that provides a convienient connection from most of
+				the P1AM-100 GPIO pins to the front 18 position terminal block connector.  All GPIO pins (except for DAC0) 
+				include basic electrical protection including: ESD suppression, overvoltage, and overcurrent protection. 
+				The VCC pin includes a PTC resettable fuse(Trip - 420mA; Hold - 200mA) to protect against overloading the 3.3V supply.
+				See below on this page for an image of the GPIO pin protection circuit. <br><br>
+			</p>
+        </div>
+		
+		<div>
+		<table id="pinFunctions">
+		<caption><b>Terminal Block Pins</b></caption>
+					<tr>
+						<td style=min-width:50px>Pin</td>
+						<td style=min-width:50px>Function</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>VCC</td>
+						<td style=min-width:50px>3.3V supply output</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>DAC0*</td>
+						<td style=min-width:50px>GPIO, Analog input, Analog output</td>	
+					</tr>
+					<tr>
+						<td style=min-width:50px>A1</td>
+						<td style=min-width:50px>GPIO, Analog input, Interrupt</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>A2</td>
+						<td style=min-width:50px>GPIO, Analog input, Interrupt</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>A5</td>
+						<td style=min-width:50px>GPIO, Analog input</td>	
+					</tr>
+					<tr>
+						<td style=min-width:50px>A6</td>
+						<td style=min-width:50px>GPIO, Analog input</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>0</td>
+						<td style=min-width:50px>GPIO, PWM, Interrupt</td>					
+					</tr>
+					<tr>
+						<td style=min-width:50px>1</td>
+						<td style=min-width:50px>GPIO, PWM, Interrupt</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>2</td>
+						<td style=min-width:50px>GPIO, PWM</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>3</td>
+						<td style=min-width:50px>GPIO, PWM</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>4</td>
+						<td style=min-width:50px>GPIO, PWM, Interrupt</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>6</td>
+						<td style=min-width:50px>GPIO, PWM, Interrupt</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>7</td>
+						<td style=min-width:50px>GPIO, PWM, Interrupt</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>11</td>
+						<td style=min-width:50px>GPIO, SDA</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>12</td>
+						<td style=min-width:50px>GPIO, SCL</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>13</td>
+						<td style=min-width:50px>GPIO, RX</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>14</td>
+						<td style=min-width:50px>GPIO, TX</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>GND</td>
+						<td style=min-width:50px>Ground</td>
+					</tr>
+
+					<tr>
+		</table>
+		<i>* There is no ESD, overvoltage, or overcurrent protection on the DAC0 pin.<br> <br>
+		</i>
+<!--
+				<table id="pinFunctions">
+					<tr>
+						<td style=min-width:50p✔>Pin</td>
+						<td style=min-width:50p✔>Function</td>
+						<td style=min-width:50p✔>Analog Input</td>
+						<td style=min-width:50p✔>PWM</td>
+						<td style=min-width:50p✔>Interrupt</td>
+						<td style=min-width:50p✔>Communication</td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>VCC</td>
+						<td style=min-width:50p✔>3.3V supply output</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>DAC0*</td>
+						<td style=min-width:50p✔>Analog Output</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>A1</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>A2</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>A5</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>		
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>A6</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>0</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>							
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>1</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>2</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>3</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>4</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>6</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>7</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔>✔</td>
+						<td style=min-width:50p✔> </td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>11</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>SDA</td>	
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>12</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>SCL</td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>13</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>RX</td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>14</td>
+						<td style=min-width:50p✔>GPIO</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔>TX</td>
+					</tr>
+					<tr>
+						<td style=min-width:50p✔>GND</td>
+						<td style=min-width:50p✔>Ground</td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+						<td style=min-width:50p✔> </td>
+					</tr>
+
+					<tr>
+		</table>
+-->
+		
+		<h4>GPIO Pin Protection</h4>
+		<p>All GPIO pins except for DAC0 offer some basic electrical protection from temporary faults. These are not guaranteed
+		to protect your device from all failure conditions. An example of a pin	protection circuit is shown in the image below.</p>
+		<img src="gpioProtection.jpg">
+			
+          
+        <div class="image-box">
+            <img src="P1AM-GPIO_STRAIGHTON.png">
+            <div class="line"></div>
+			<p>
+            <b> Compatible Terminal Blocks:</b><br>
+			 <a href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity2000_(micro-modular_programmable_controller)/spare_parts_-a-_specialty_items/p2-rtb">
+			P2-RTB - Screw Type </a><br>
+
+			 <a href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity2000_(micro-modular_programmable_controller)/spare_parts_-a-_specialty_items/p2-rtb-1">
+			P2-RTB-1 - Spring Clamp </a><br>
+			</p>
+
+			<p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1AM-GPIO.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/specialty_modules/P1AM-GPIO">
+				P1AM-GPIO on Automation Direct</a><br>
+			<a href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/specialty_modules/P1AM-GPIO">
+			     Full P1AM-GPIO Schematic</a>
+        </div>
+    </div>
+</body>
+
+</html>

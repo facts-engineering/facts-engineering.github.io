@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1-02HSC | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1-02HSC</h1>
+        <h2>High Speed Counter</h2>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p>The P1-02HSC High-Speed Input Module provides
+				two independent single ended 5–24 VDC inputs
+				that accept up to 100kHz of pulse/direction and
+				quadrature signals.</p>
+            <div class="code-block">
+                <pre><code class="cpp">int channelOneCounts = HSC.CNT1.readPosition(); // Returns current position of channel 1
+				</code></pre>
+            </div>
+			<p>There are many P1-02HSC examples available. Please open them from the specialty module section of examples in the Arduino IDE
+			or view them online
+				<a href=https://github.com/facts-engineering/P1AM/tree/master/examples/SpecialtyModules/HSC>on GitHub.</a>
+            </p>
+        </div>
+
+		<div class="hscConfig">
+            <h3>Configuration</h3>
+            <div class="line"></div>
+			<p><i> The P1-02HSC is a highly configurable specialty module. Because of this it is configured through custom functions  
+			unlike other P1000 I/O modules. "HSC.configureChannels();" must be called to write any new configuration settings to the P1-02HSC. </i></p>
+			<div class="code-block">
+				<pre><code class="cpp"> HSC.CNT1.isRotary = false;
+				  HSC.CNT1.enableZReset = false;
+				  HSC.CNT1.inhibitOn = false; //oneZ, threeIn, twoZ, fourIn
+				  HSC.CNT1.mode = stepDirection;  //quad4x, quad1x
+				  HSC.CNT1.polarity = positiveDirection;  //negativeDirection
+				  
+				  HSC.CNT2.isRotary = false;
+				  HSC.CNT2.enableZReset = false;
+				  HSC.CNT2.inhibitOn = false; //oneZ, threeIn, twoZ, fourIn
+				  HSC.CNT2.mode = stepDirection;  //quad4x, quad1x
+				  HSC.CNT2.polarity = positiveDirection;  //negativeDirection
+				  
+				  HSC.configureChannels();  //Load settings into HSC module. Leave argument empty to use default CNT1 and CNT2 
+	  
+				</code></pre>
+			</div>
+        </div>
+     
+        <div class="compatible">
+            <h3>Compatible Functions</h3>
+            <div class="line"></div>
+            <p>Check out how to use the HSC functions through the examples included with the P1AM library. Find them in specialty module section of examples in the Arduino IDE
+			or view them online <a href=https://github.com/facts-engineering/P1AM/tree/master/examples/SpecialtyModules/HSC>on GitHub.</a>
+            </p>
+
+        </div>
+     
+        <div class="image-box">
+            <img src="P1-02HSC_STRAIGHTON.png">
+            <div class="line"></div>
+			<p><b>Counters: </b>2<br>
+			<b>General Purpose inputs: </b>2<br>
+			<b>Output Type: </b>Open Drain Sinking or Sourcing<br>
+            <b>Rated Voltage: </b>5-24V<br>
+                <b>Example: </b><a
+                    href=https://github.com/facts-engineering/P1AM/blob/master/examples/SpecialtyModules/HSC/ReadPosition/ReadPosition.ino>ReadPosition</a>
+            </p>
+
+			<p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-02HSC.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/specialty_modules/p1-02HSC">P1-02HSC
+                on Automation Direct</a>
+        </div>
+    </div>
+</body>
+
+</html>

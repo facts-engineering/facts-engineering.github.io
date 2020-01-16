@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1-15TD2 | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1-15TD2</h1>
+        <h2>Discrete DC Output</h2>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+			<i>
+				Note: While this module only has 15 output channels, you can still write to channel 16. However, it will have no
+				functional purpose.
+			</i>
+			<p class="start">This function writes the state of a single channel.</p>
+            <div class="code-block">
+                <pre><code class="cpp">P1.writeDiscrete(HIGH,1,2); // Turn on slot 1 channel 2</code></pre>
+            </div>
+            <p class="start">This function writes the state of all 15 channels. It turns channels 1-14 on and turns channel 15 off.</p>
+            <div class="code-block">
+                <pre><code class="cpp">P1.writeDiscrete(0x3FFF, 1); // Write state of all channels for slot 1</code></pre>
+            </div>
+        </div>
+        <div class="compatible">
+            <h3>Compatible Functions</h3>
+            <div class="line"></div>
+            <ul>
+                <li><p><b>P1.writeDiscrete()</b></p></li>
+            </ul>
+        </div>
+        <div class="status">
+            <h3>Module Configuration and Status Tables</h3>
+            <div class="line"></div>
+            <p>This module does not provide any status data and does not require configuration.</p>
+        </div>
+        <div class="image-box">
+            <img src="P1-15TD2_STRAIGHTON.png">
+            <div class="line"></div>
+			<p><b>Channels: </b>15<br>
+            <b>Discrete Output Type: </b>Sourcing<br>
+                <b>Rated Output Voltage: </b>12–24 VDC<br>
+                <b>Example: </b><a
+                    href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/DiscreteOutput/DiscreteOutput.ino">DiscreteOutput</a>
+            </p>
+			
+			<p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-15TD2.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/ac_i-z-o_(relay_outputs)/p1-15TD2">P1-15TD2 on Automation Direct</a>
+			</p>
+		</div>
+    </div>
+</body>
+
+</html>

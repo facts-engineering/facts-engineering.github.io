@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1-08DAL-2 | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1-08DAL-2</h1>
+        <h2>Voltage Output</h2>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p> This function sends the voltage to be output by the channel as an integer value in counts.</p>
+            <div class="code-block">
+                <pre><code class="cpp">int outputCounts = 0;    //variable outputCounts is the output value
+				P1.writeAnalog(outputCounts, 1, 2); // Writes to channel 2 of the P1-08DAL-2 in slot 1</code></pre>
+            </div>
+        </div>
+
+        <div class="compatible">
+            <h3>Compatible Functions</h3>
+            <div class="line"></div>
+            <ul>
+                <li>
+                    <p><b>P1.writeAnalog()</b></p>
+                </li>
+				<li>
+                    <p><b>P1.readStatus()</b></p>
+                </li>
+				<li>
+                    <p><b>P1.check24V()</b></p>
+                </li>
+            </ul>
+        </div>
+        <div class="status">
+            <h3>Module Configuration and Status Tables</h3>
+			<div class="line"></div>
+             <p>We recommend using the status functions. This table is provided as additional reference.</p>
+            <p><b>Module Status Data</b></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Bytes</th>
+                        <th style="text-align:center">(MSB) 7</th>
+                        <th style="text-align:center">6</th>
+                        <th style="text-align:center">5</th>
+                        <th style="text-align:center">4</th>
+                        <th style="text-align:center">3</th>
+                        <th style="text-align:center">2</th>
+                        <th style="text-align:center">1</th>
+                        <th style="text-align:center">0 (LSB)</th>
+                        <th style="text-align:center">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center">Byte 0</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 1</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 2</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 3</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">1</td>
+                        <td style="text-align:center">0</td>
+                        <td style="text-align:center">bit 1 - Lost 24V error <br> bit 0 - Module diagnostics failure</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <p><b>Module Configuration Data</b></p>
+            <p>This module does not require configuration.</p>
+
+
+        </div>
+        <div class="image-box">
+            <img src="P1-08DAL-2_STRAIGHTON.png">
+            <div class="line"></div>
+           <p> <b>Channels: </b> 8 <br>
+                <b>Voltage Range: </b>0-10 VDC<br>
+            <b>Resolution: </b>12 bit (0-4095)<br>
+                <b>Example: </b><a
+                    href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogOutput/AnalogOutput.ino">Analog Output</a></p>
+               <p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-08DAL-2.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/analog_i-z-o/P1-08DAL-2">P1-08DAL-2
+                on Automation Direct</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

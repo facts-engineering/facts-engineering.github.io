@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1AM-100 | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1AM-100</h1>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p>The ProductivityOpen P1AM-100 is an automation platform compatible with Productivity 1000 Series I/O modules, 
+			P1AM Series shields, and Arduino MKR format shields. It can be programmed using the Arduino IDE. The board uses 
+			the SAMD21G18 Microcontroller like the Arduino MKRZERO and other similar boards.
+			</p>
+			<p>
+				Productivity 1000 Series modules offer several types of industrial grade I/O:
+				</p>
+			<div class="compatible">
+				<ul>
+					<li><p><b>Analog and Temperature Inputs</b></p></li>
+					<li><p><b>Analog Outputs</b></p></li>
+					<li><p><b>Discrete Inputs</b></p></li>
+					<li><p><b>Discrete Outputs and Relays</b></p></li>
+					<li><p><b>Specialty Modules</b></p></li>
+				</ul>
+				Productivity 1000 Series modules can be purchased on the<a href=https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)>  Automation Direct Webstore.</a>
+			</div>
+        </div>
+	<div>
+		<h3>Compatible Functions</h3>
+		<div class="line"></div>
+		<p>
+			Below are several functions that are used to communicate with the Base Controller. Look through
+			the examples included in the P1AM library and the source code to get a better understanding of 
+			these functions. If you're looking for functions to interface with modules, please check out the 
+			page for your module in the sidebar.
+		</p>
+			<div class="compatible">
+				<ul>
+					<li><p><b>P1.init()</b></p></li>
+					<li><p><b>P1.rollCall()</b></p></li>
+					<li><p><b>P1.printModules() </b></p></li>
+					<li><p><b>P1.isBaseActive()</b></p></li>
+					<li><p><b>P1.checkConnection()</b></p></li>
+				</ul>
+			</div>
+	</div>
+		<div>
+            <h2>Base Controller</h2>
+            <div class="line"></div>
+			<p> The P1AM-100 and accompanying library provide a connection to the Base Controller circuitry. This allows for communication with
+			       Productivity 1000 Series I/O modules. You are required to provide external 24V or use a P1000 Series power supply 
+				   when using the Base Controller. 			   
+			</p>
+		</div>	
+	
+	
+	<div>
+	<h4>Base Controller Pins</h4>
+		<p> The P1AM-100 uses SPI to communicate with the Base Controller. Because of this, it is possible that 
+		pins 8, 9 and 10 can be shared with other SPI devices. However, A3 and A4 <u>cannot</u> be used for any other device while using Productivity modules. 
+		</p>
+		<table id="pinFunctions">
+		  <tr>
+			<th>Pin</th>
+			<th>Function</th>
+		  </tr>
+		  <tr>
+			<td>8</td>
+			<td>MOSI</td>
+		  </tr>
+		  <tr>
+			<td>9</td>
+			<td>CLK</td>
+		  </tr>
+		  <tr>
+			<td>10</td>
+			<td>MISO</td>
+		  </tr>
+		  <tr>
+			<td>A3</td>
+			<td>CS</td>
+		  </tr>
+		  <tr>
+			<td>A4</td>
+			<td>ACK</td>
+		  </tr>
+		</table>
+		
+		<i>
+			Note: calling analogRead(A3) or analogRead(A4) after P1.init() will redefine the CS and ACK pins and stop proper Base Controller functionality.
+		</i>
+		<br></br>
+		<h4>Base Controller Watchdog</h4>
+		 <p> The Base Controller has a configurable watchdog that can be used to reset the SAMD21 and/or the P1000 Modules in the base.
+			 If the Base Controller does not receive a message from the SAMD21 in the configured time period, the watchdog will trigger and take 
+			 action. This can be useful for if your program encounters an unexpected condition. Check out the <a href=https://github.com/facts-engineering/P1AM/tree/master/examples/Watchdog> watchdog examples</a>
+			 for more information on how to use this feature.
+			</p>
+	</div>
+	
+    <div class="description">
+		<h2>CPU Features and Indicators</h2>
+		<div class="line"></div>
+		
+		<h4>Toggle Switch</h4>
+		 <p> 
+			The toggle switch be can used like a normal digital input. It doesn't alter any behaviour on it's own so make sure to 
+			write code to include any desired functionality. It can be referenced using 31 or SWITCH_BUILTIN. 
+			Set it as an input using pinMode() and read it using digitalRead(). 
+			<div class="code-block">
+                <pre><code class="cpp">pinMode(SWITCH_BUILTIN,INPUT);	//Set Swtich to be a digital input
+				Serial.println(digitalRead(SWITCH_BUILTIN);	//Read and print out state of switch. 1 is up and 0 is down.
+				</code></pre>
+            </div>
+		</p>
+		
+		<h4>microSD Card</h4>
+		 <p> 
+			The microSD card slot can be used to read and write files. This can be useful for logging errors and storing any readings. 
+			The CS pin is 28. Use the examples in the Arduino IDE to learn how to use this feature.
+		</p>
+		
+		
+		<h4>PWR LED</h4>
+		 <p> 
+			When this LED is on it indicates the SAMD21G18 is powered on via USB, external 24V, VIN pin on the header, or a P1000 Series power supply.
+		</p>
+		<h4>Base LED</h4>
+		 <p> 
+			When this LED is on it indicates the Base Controller is powered and has been intialised by calling P1.init(). Note: External 24V 
+			or a P1000 Series power supply must be used for the Base Controller to be powered.
+		</p>
+		<h4>Yellow LED</h4>
+		 <p> 
+			This LED is a user controlled LED like those found on Arduino boards. It can be referenced by using LED_BUILTIN or 32.
+			It can be controlled with the digitalWrite() function.
+			<pre><code class="cpp">pinMode(LED_BUILTIN, OUTPUT);      //Set LED to be a digital output
+digitalWrite(LED_BUILTIN, HIGH);   // Turn the LED on
+delay(1000);                       // Wait 1 second
+digitalWrite(LED_BUILTIN, LOW);    // Turn the LED off 
+delay(1000);                       // Wait 1 second	</code></pre>
+		</p>
+		<h4>Reset Button</h4>
+		 <p> 
+			Tapping the reset button once can be used to manually reset code execution, the Base Controller, and all P1000 Series modules.<br><br>
+			Quickly double tapping the reset button will put the board into bootloader mode. This mode is indicated by a "breathing" 
+			pattern on the yellow LED. This mode can be used to recover a board that has reached a hard fault due to bad code. Once
+			in this state, the COM port will change so it is required that you select the new COM port from the tools menu and re-upload your code.
+		</p>
+	</div>
+		
+	<div>
+		<h4>MKR Expansion Header Pins</h4>
+		<table id="pinFunctions">
+					<tr>
+						<td style=min-width:50px>Function</td>
+						<td style=min-width:50px>Pins</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>GPIO</td>
+						<td style=min-width:50px>A0-A6, 0-14</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>Analog Input</td>
+						<td style=min-width:50px>A0-A6</td>	
+					</tr>
+					<tr>
+						<td style=min-width:50px>Analog Output</td>
+						<td style=min-width:50px>A0</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>PWM</td>
+						<td style=min-width:50px>0-8, 10, A3, A4</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>Interrupt</td>
+						<td style=min-width:50px>0, 1, 4-8, A1, A2</td>	
+					</tr>
+					<tr>
+						<td style=min-width:50px>5V</td>
+						<td style=min-width:50px>5V supply output</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>Vin</td>
+						<td style=min-width:50px>5V regulated supply input</td>					
+					</tr>
+					<tr>
+						<td style=min-width:50px>VCC</td>
+						<td style=min-width:50px>3.3 V supply output</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>GND</td>
+						<td style=min-width:50px>Ground</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>RST</td>
+						<td style=min-width:50px>Reset</td>
+					</tr>
+					<tr>
+						<td style=min-width:50px>Aref</td>
+						<td style=min-width:50px>Analog Input Reference</td>
+
+					</tr>
+					<tr>
+		</table>
+		<i>Note: Pins A3, A4, and 8-10 are used for the base controller.<br>
+		Do not exceed 46mA combined from pins 0, 1, and 4–10.<br>
+		Do not exceed 3.3 V on any I/O pin.<br>
+		Do not exceed 7mA on any I/O pin.<br>
+		Do not apply power to 5V or VCC<br></i>
+
+	</div>
+	
+	
+
+
+	<div>
+		<h2>Powering the P1AM-100</h2>
+		<div class="line"></div>
+		<a href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/power_supplies">
+		<img src="P102AC.png" style="float:left; margin="202px" width="230px" ></a>
+		<br>
+		<br>
+		<b>System Supplies</b>
+		<p> The P1AM-100 can be powered several different ways. When an external 24V or a P1000 Series supply is connected and turned on
+		the power from USB and VIN is disconnected, but the data lines are still available for programming and monitoring as normal. 
+		Additionally, if only VIN and USB are connected, the power from USB is disconnected. <b> WARNING: DO NOT CONNECT EXTERNAL
+		24V <u> AND</u> A P1000 SERIES POWER SUPPLY AT THE SAME TIME</b>
+		</p>
+				<p>
+		P1000 Series Power Supplies offer noise filtering, electrical isolation, and an easy connection for P1AM systems. There are both AC and DC 
+		input power models. 
+		<a href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/power_supplies">
+		Power Supplies can be purchased here.</a><br>
+		
+		</p>
+		<b>Power Budgets</b>
+		<p>
+		It is important to evaluate your system and determine the amount of power it will need. If you are using any
+		Productivity 1000 Series modules, you should budget 1.25W for each slot from your external 24V or P1000 Series supply.
+		If you are using any shields or devices connected to the MKR header, you should refer to the table below to make sure you are
+		within the proper specification. Depending on the power source used, the VCC(3.3V) pin and 5V pin will have
+		different current limits. Additionally, they have a combined total power limit. 
+		
+		</p>	
+		<br>
+		<table align="center">
+		  <caption><h2>System Supply Configurations </h2></caption>
+		  <tr>
+			<th>Source</th>
+			<th>P1000 Modules</th>
+			<th>P1AM Shields</th>
+			<th>MKR Shields</th>
+		  </tr>
+		  <tr>
+			<td>USB</td>
+			<td>X</td>
+			<td>✔</td>
+			<td>✔</td>
+		  </tr>
+		  <tr>
+			<td>VIN</td>
+			<td>X</td>
+			<td>✔</td>
+			<td>✔</td>
+		  </tr>
+		  <tr>
+			<td>P1000 Series Supply</td>
+			<td>✔</td>
+			<td>✔</td>
+			<td>X</td>
+		  </tr>
+		  <tr>
+			<td>External 24V</td>
+			<td>✔</td>
+			<td>✔</td>
+			<td>✔</td>
+		  </tr>
+		</table>
+				
+		<table align="center">
+		  <caption><h2>MKR Header Power Limitations</h2></caption>
+		  <tr>
+			<th>Power Source</th>
+			<th>5V</th>
+			<th>3.3V</th>
+			<th>Max Combined Power</th>
+		  </tr>
+		  <tr>
+			<td>USB</td>
+			<td>330mA</td>
+			<td>500mA</td>
+			<td>1.65W</td>
+		  </tr>
+		  <tr>
+			<td>VIN (Pin Header)</td>
+			<td>600mA</td>
+			<td>1A</td>
+			<td>3.3W</td>
+		  </tr>
+		  <tr>
+			<td>P1000 Series Supply<br>
+			OR external24V
+			</td>
+			<td>850mA</td>
+			<td>1.28A</td>
+			<td>4.25W</td>
+		  </tr>
+
+		</table>
+	</div>	
+    <br>
+	<br>
+        <div class="image-box">
+            <img src="P1AM-100_STRAIGHTON.png">
+            <div class="line"></div>
+			<p>
+				<b>Microcontroller: </b>SAMD21G18<br>
+				<b>Clock: </b>48MHz<br>
+				<b>Flash: </b>256KB<br>
+				<b>Ram: </b>32KB<br>
+				<b>Storage: </b>microSD<br>
+				<b>RTC: </b>32.768 kHz Crystal<br>
+				<b>P1000 I/O Modules: </b>Up to 15. Requires external 24V or P1000 power supply.<br>
+            </p>
+
+			<p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1AM-100.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/specialty_modules/P1AM-100">P1AM-100
+                on Automation Direct</a>
+        </div>
+		
+    </div>
+</body>
+
+</html>

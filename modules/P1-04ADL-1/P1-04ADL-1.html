@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>P1-04ADL-1 | P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../highlight/styles/github.css">
+
+    <script src="../../modules.js"></script>
+    <script src="../../main.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+        <h1>P1-04ADL-1</h1>
+        <h2>Current Input</h2>
+        <div class="line"></div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p>This module can read the current of four different input signals.</p>
+            <div class="code-block">
+                <pre><code class="cpp">int inputCounts = P1.readAnalog(1, 2); //assign the value of channel 1 slot 2 returned by the readAnalog function to the variable inputCounts
+				float inputAmps = 20 * ((float)inputCounts / 8191); //converts the value of inputCounts to float with the units mA</code></pre>
+            </div>
+
+        </div>
+        <div class="config">
+            <h3>Configuration Tool</h3>
+            <div class="line"></div>
+        </div>
+        <div class="compatible">
+            <h3>Compatible Functions</h3>
+            <div class="line"></div>
+            <ul>
+                <li>
+                    <p><b>P1.readAnalog()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.configureModule()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.readModuleConfig()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.check24V()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.checkUnderRange()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.checkOverRange()</b></p>
+                </li>
+                <li>
+                    <p><b>P1.readStatus()</b></p>
+                </li>
+            </ul>
+        </div>
+        <div class="status">
+            <h3>Module Configuration and Status Tables</h3>
+            <div class="line"></div>
+			<p>We recommend using the status functions and configuration tool. These tables are provided as additional reference.</p>
+            <p><b>Module Status Data</b></p>
+			<table>
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Bytes</th>
+                        <th style="text-align:center">(MSB) 7</th>
+                        <th style="text-align:center">6</th>
+                        <th style="text-align:center">5</th>
+                        <th style="text-align:center">4</th>
+                        <th style="text-align:center">3</th>
+                        <th style="text-align:center">2</th>
+                        <th style="text-align:center">1</th>
+                        <th style="text-align:center">0 (LSB)</th>
+                        <th style="text-align:center">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center">Byte 0</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 1</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 2</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 3</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">1</td>
+                        <td style="text-align:center">0</td>
+                        <td style="text-align:center">bit 1 - Lost 24V error</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 0 - Module diagnostics failure</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 4</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 5</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 6</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 7</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">3</td>
+                        <td style="text-align:center">2</td>
+                        <td style="text-align:center">1</td>
+                        <td style="text-align:center">0</td>
+                        <td style="text-align:center">bit 3 - Under range error on channel 4</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 2 - Under range error on channel 3</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 1 - Under range error on channel 2</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 0 - Under range error on channel 1</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 8</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 9</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 10</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">bits 0-7 are undefined</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">Byte 11</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">x</td>
+                        <td style="text-align:center">3</td>
+                        <td style="text-align:center">2</td>
+                        <td style="text-align:center">1</td>
+                        <td style="text-align:center">0</td>
+                        <td style="text-align:center">bit 3 - Over range error on channel 4</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 2 - Over range error on channel 3</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 1 - Over range error on channel 2</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">bit 0 - Over range error on channel 1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>Module Configuration Data</b></p>
+            <p>Default values are in bold.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Offset</th>
+                        <th style="text-align:center">Description</th>
+                        <th style="text-align:center">Allowable Values</th>
+                        <th style="text-align:center">Value Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bytes 00-01</td>
+                        <td style="text-align:center">Channel enable</td>
+                        <td style="text-align:center">0x4000</td>
+                        <td style="text-align:center">Enable channel 1</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x4001</td>
+                        <td style="text-align:center">Enable channels 1 and 2</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center">0x4002</td>
+                        <td style="text-align:center">Enable channels 1-3</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:center"></td>
+                        <td style="text-align:center"><strong>0x4003</strong></td>
+                        <td style="text-align:center"><strong>Enable channels 1-4</strong></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="image-box">
+            <img src="P1-04ADL-1_STRAIGHTON.png">
+            <div class="line"></div>
+            <p><b>Channels: </b>4<br>
+			<b>Range: </b>0-20mA<br>
+                <b>Resolution: </b>13 bit (0-8191)<br>
+                <b>Example: </b><a
+                    href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogInput/AnalogInput.ino">AnalogInput</a>
+            </p>
+			<p><b>Additional Resources: </b><br>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-04ADL-1.pdf">Data Sheet<br></a>
+            <a
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/productivity_series_controllers/productivity1000_(stackable_micro_plc)/analog_i-z-o/P1-04ADL-1">P1-04ADL-1
+                on Automation Direct</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

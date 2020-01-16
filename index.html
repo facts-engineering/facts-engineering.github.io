@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>P1AM Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="modules.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a href="index.html">Home</a> 
+			<!-- <a href="faqs.html">FAQs</a> -->
+            <a href="config.html">Configuration Tool</a>
+            <div class="line"></div>
+        </div>
+        <ul class="sidebar-content"></ul>
+    </div>
+    <div class="header">
+		<img src="Aqua-productivity-open_logo_large-CTP-01.png" height="175px">
+		<img src="adc_logo_rot.png" width="85x" style="float:right; margin-right:20px; margin-top:20px">
+    </div>
+
+    <div class="content">
+		<h2>
+			Overview and Installation
+		</h2> 
+		<p>The ProductivityOpen P1AM-100 is an automation platform compatible with Productivity 1000 
+			Series I/O modules, P1AM Series shields, and Arduino MKR format shields. It can be 
+			programmed using the Arduino IDE. The board uses the SAMD21G18 Microcontroller like the 
+			Arduino MKRZERO and other similar boards.
+		</p>
+
+		<p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the
+			<a href="https://www.arduino.cc/en/main/software">Arduino website</a>.
+			After you have installed the Arduino IDE you will need to follow one of the library install
+			methods and the boards manager install instructions to get started with the P1AM-100
+		</p>
+		<div class="line"></div>
+		<h3 id="p1am-100-library-install">P1AM-100 Library Install</h3>
+		<p><strong>Install From Library Manager</strong> </p>
+		<div class="installList">
+			<ul>
+			<li>In the Arduino IDE go to <div class="textBlock">Sketch &gt; Include Library &gt; Manage Libraries</div></li>
+			<li>Type <strong>P1AM</strong> into the search box</li>
+			<li>Click the install button in the P1AM library box
+			</li>
+			</ul>
+		</div>
+		<p><strong><em>***OR***</em></strong></p>
+
+		<p><strong>Install From Zip</strong></p>
+		<div class="installList">
+				<ul>
+				<li>Click the green button that says <strong>Clone or download</strong> 
+				<a href="https://github.com/facts-engineering/P1AM">on this repository page</a></li>
+				<li>Select <strong>Download ZIP</strong></li>
+				<li>In the Arduino IDE go to <div class="textBlock">Sketch &gt; Include Library &gt; Add .ZIP Library</div></li>
+				<li>Navigate to the ZIP file that you downloaded in the window that opens</li>
+				</ul>
+			
+			<h3 id="boards-manager-install">Boards Manager Install</h3>
+				<ul>
+				<li>Start the Arduino IDE and select <div class="textBlock">File &gt; Preferences</div></li>
+				<li>Enter <div id="boardLink" class="textBlock">https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json</div> 
+					 into the <strong>Additional Board Manager URLs</strong> field. You can add multiple URLs, separating them with commas.</li>
+				<li>Open the Boards Manager from <div class="textBlock">Tools &gt; Board &gt; Boards Manager</div></li>
+				<li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform</li>
+				<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100</div></li>
+				<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port your P1AM-100 is plugged into</li>
+				</ul>
+			Boards manager link:<br>
+			<div id="boardLink" class="textBlock">https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json</div>
+			<h3 id="driver-installation">Driver Installation</h3>
+			<p>For Windows 7 and 8 it is required that you install a device driver for the P1AM-100.
+			<a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download the driver installer here.</a>
+			</p>
+			<br>
+			<div class="line"></div>
+			<h3>Additional Resources</h3>
+			<p><a href="https://github.com/AutomationDirect/ProductivityBlocks">ProBlocks Graphical Programming from Automation Direct</a></p>
+			<p><a href="http://go2adc.com/p1am">Automation Direct P1AM Customer Forum</a></p>
+			<p><a href="https://www.automationdirect.com/adc/home/home">Automation Direct Webstore</a></p>
+			<p><a href="https://www.arduino.cc/en/Guide/HomePage">Arduino Getting Started</a></p>
+			<p><a href="https://forum.arduino.cc/index.php">Arduino Forum</a></p>
+
+
+		</div>
+		
+	
+    </div>
+	</div>
+	
+	
+</body>
+
+</html>
+
