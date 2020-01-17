@@ -64,84 +64,84 @@
 			<a href="https://www.automationdirect.com/adc/shopping/catalog/hmi_(human_machine_interface)/viewmarq_led_message_displays/viewmarq_led_message_displays">
 			<img src="viewMarq.jpg"></a>
 			
-			<br>
-			<p><b> Modbus TCP example </b></p>
-			<p>The code below will set up the P1AM-100 as a modbus TCP server. This example creates a single coil that determines the state of the built in LED based on the signal sent from a Modbus client. 
-			The <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>Arduino Modbus</a> and <a href=https://www.Arduino.cc/en/Reference/ArduinoRS485> ArduinoRS485 </a> libraries are required for this example. They can be downloaded from the library manager in the Arduino IDE. 
-			<br>This example can be used to communicate with various devices that can act as a Modbus Client such as a Productivity 2000 CPU or a C-More panel. The Modbus client will then be used to determine the state of the LED.</p>
-			This example is based off of the Arduino webserver example and the WiFiModbusServerLED from the ArduinoModbus library. 
-			<a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>More information on the Arduino Modbus library can be found here.</a>
-			<pre><code class="cpp">#include &lt;P1AM.h&gt;
-#include &lt;Ethernet.h&gt;
-#include &lt;ArduinoRS485.h&gt;
-#include &lt;ArduinoModbus.h&gt;
+			<!-- <br> -->
+			<!-- <p><b> Modbus TCP example </b></p> -->
+			<!-- <p>The code below will set up the P1AM-100 as a modbus TCP server. This example creates a single coil that determines the state of the built in LED based on the signal sent from a Modbus client.  -->
+			<!-- The <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>Arduino Modbus</a> and <a href=https://www.Arduino.cc/en/Reference/ArduinoRS485> ArduinoRS485 </a> libraries are required for this example. They can be downloaded from the library manager in the Arduino IDE.  -->
+			<!-- <br>This example can be used to communicate with various devices that can act as a Modbus Client such as a Productivity 2000 CPU or a C-More panel. The Modbus client will then be used to determine the state of the LED.</p> -->
+			<!-- This example is based off of the Arduino webserver example and the WiFiModbusServerLED from the ArduinoModbus library.  -->
+			<!-- <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>More information on the Arduino Modbus library can be found here.</a> -->
+			<!-- <pre><code class="cpp">#include &lt;P1AM.h&gt; -->
+<!-- #include &lt;Ethernet.h&gt; -->
+<!-- #include &lt;ArduinoRS485.h&gt; -->
+<!-- #include &lt;ArduinoModbus.h&gt; -->
 
-byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };    		//this sets the MAC address of the P1AM-100
-IPAddress ip(192, 168, 1, 177);           			//this sets the IP address of the P1AM-100
+<!-- byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };    		//this sets the MAC address of the P1AM-100 -->
+<!-- IPAddress ip(192, 168, 1, 177);           			//this sets the IP address of the P1AM-100 -->
 
-EthernetServer EthServer(502);        				//port 502
-ModbusTCPServer modbusTCPServer;
+<!-- EthernetServer EthServer(502);        				//port 502 -->
+<!-- ModbusTCPServer modbusTCPServer; -->
 
-const int modbusAddress = 1;       				//defines modbus address to be used by the coil
+<!-- const int modbusAddress = 1;       				//defines modbus address to be used by the coil -->
 
-void setup() {
-  Ethernet.init(5);           					//configures the chip select pin (5 is the chip select pin of the P1AM)
+<!-- void setup() { -->
+  <!-- Ethernet.init(5);           					//configures the chip select pin (5 is the chip select pin of the P1AM) -->
   
-  while (!P1.init()){ 
-    ;                						//wait for modules to sign on   
-  }
+  <!-- while (!P1.init()){  -->
+    <!-- ;                						//wait for modules to sign on    -->
+  <!-- } -->
   
-  Serial.begin(115200);          				//baud rate of 115200
-  while(!Serial){
-    ;               						//wait for serial port to connect
-  }
+  <!-- Serial.begin(115200);          				//baud rate of 115200 -->
+  <!-- while(!Serial){ -->
+    <!-- ;               						//wait for serial port to connect -->
+  <!-- } -->
 
-  Ethernet.begin(mac, ip);      				//initilizes the network settings of the ethernet shield
+  <!-- Ethernet.begin(mac, ip);      				//initilizes the network settings of the ethernet shield -->
 
-  if (Ethernet.hardwareStatus() == EthernetNoHardware) {  	//check that Ethernet hardware is present
-    Serial.println("Ethernet shield was not found.");
-    while (true) {
-      delay(1);             					//do nothing, cannot run without Ethernet hardware
-    }
-  }
-  if (Ethernet.linkStatus() == LinkOFF) {
-    Serial.println("Ethernet cable is not connected.");
-  }
+  <!-- if (Ethernet.hardwareStatus() == EthernetNoHardware) {  	//check that Ethernet hardware is present -->
+    <!-- Serial.println("Ethernet shield was not found."); -->
+    <!-- while (true) { -->
+      <!-- delay(1);             					//do nothing, cannot run without Ethernet hardware -->
+    <!-- } -->
+  <!-- } -->
+  <!-- if (Ethernet.linkStatus() == LinkOFF) { -->
+    <!-- Serial.println("Ethernet cable is not connected."); -->
+  <!-- } -->
   
-  EthServer.begin();            				//start the ethernet server
-  modbusTCPServer.begin();         				//start the Modbus TCP server
+  <!-- EthServer.begin();            				//start the ethernet server -->
+  <!-- modbusTCPServer.begin();         				//start the Modbus TCP server -->
 
-  pinMode(LED_BUILTIN,OUTPUT);          			//sets the LED_BUILTIN pin as an output
+  <!-- pinMode(LED_BUILTIN,OUTPUT);          			//sets the LED_BUILTIN pin as an output -->
 
-  modbusTCPServer.configureCoils(modbusAddress, 1);     	//configure a single coil at address 0x15
-}
+  <!-- modbusTCPServer.configureCoils(modbusAddress, 1);     	//configure a single coil at address 0x15 -->
+<!-- } -->
 
-void loop() {
-  EthernetClient client = EthServer.available();      		//listen for incoming clients
+<!-- void loop() { -->
+  <!-- EthernetClient client = EthServer.available();      		//listen for incoming clients -->
   
-  if (client) {             					//a new client connected
-    Serial.println("new client");
-    modbusTCPServer.accept(client);         			//let the Modbus TCP accept the connection 
+  <!-- if (client) {             					//a new client connected -->
+    <!-- Serial.println("new client"); -->
+    <!-- modbusTCPServer.accept(client);         			//let the Modbus TCP accept the connection  -->
 
-    while (client.connected()) {
-      modbusTCPServer.poll();           			//poll for Modbus TCP requests, while client connected
-      updateLED();            					//calls the function to update the LED
-    }
-  }
-}
+    <!-- while (client.connected()) { -->
+      <!-- modbusTCPServer.poll();           			//poll for Modbus TCP requests, while client connected -->
+      <!-- updateLED();            					//calls the function to update the LED -->
+    <!-- } -->
+  <!-- } -->
+<!-- } -->
 
-void updateLED() {
-  int coilValue = modbusTCPServer.coilRead(modbusAddress);    	//read the current value of the coil
+<!-- void updateLED() { -->
+  <!-- int coilValue = modbusTCPServer.coilRead(modbusAddress);    	//read the current value of the coil -->
 
-  if (coilValue) {              				//coil value set
-    digitalWrite(LED_BUILTIN, HIGH);        			//turn LED on
-  } else {                					//coil value cleared
-    digitalWrite(LED_BUILTIN, LOW);       			//turn LED off
-  }
+  <!-- if (coilValue) {              				//coil value set -->
+    <!-- digitalWrite(LED_BUILTIN, HIGH);        			//turn LED on -->
+  <!-- } else {                					//coil value cleared -->
+    <!-- digitalWrite(LED_BUILTIN, LOW);       			//turn LED off -->
+  <!-- } -->
 
-  Serial.println(coilValue);        				//print the value of the coil to the serial monitor
-}
-			</code></pre>
+  <!-- Serial.println(coilValue);        				//print the value of the coil to the serial monitor -->
+<!-- } -->
+			<!-- </code></pre> -->
 
      
      
