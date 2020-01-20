@@ -15,7 +15,7 @@
         <div class="sidebar-header">
             <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
             <a href="index.html">Home</a> 
-			<a href="faq.html">FAQs</a>
+			<a href="faqs.html">FAQs</a>
             <a href="config.html">Configuration Tool</a>
             <div class="line"></div>
         </div>
@@ -30,88 +30,121 @@
 		<h1>
 			Frequently Asked Questions
 		</h1> 
+		 <div class="line"></div>
 		<br>
-		<a name="offline">
-			<h2 id="offline-instructions-complete-all-3-sections">Offline Instructions - Complete all 3 sections</h2>
+		
+		<a name="mkrzero">
+			<h2>What libraries work with the P1AM-100?</h2>
 		</a>
 		<p>
-			If the computer you would like to install support for the P1AM-100 is not connected to the internet, follow 
-			these instructions below. Some portions of the install process will require an internet connected PC as noted
-			in the instructions. The online steps can all be completed before the offline steps. Once those are complete 
-			the PC can be disconnected from the internet or the files can be transferred to a USB drive for storage. 
+			The P1AM-100 uses the SAMD21 just like the Arduino MKRZERO or the Arduino Zero. Most libaries made for Arduino
+			boards will work with the P1AM-100, however some may mention they only work with specfic boards. When looking at libaries
+			that mention specific boards, check to make sure that they include the MKRZERO, Zero, or SAMD21. If a library says it is 
+			only for  "AVR" or "UNO" then it is possible it may not be compatible.  
 		</p>
-		<h4 id="p1am-library">P1AM Library</h4>
-		<ul>
-		   <li>
-			  <p><em>Online steps</em></p>
-			  <ul>
-				 <li>Click the green button that says <strong>Clone or download</strong> <a href="https://github.com/facts-engineering/P1AM">here on the P1AM repository page</a></li>
-				 <li>Select <strong>Download ZIP</strong></li>
-				 <li>If you are using a USB drive copy the ZIP file to it now</li>
-			  </ul>
-		   </li>
-		   <li>
-			  <p><em>Offline steps - Internet connection is not needed</em>   </p>
-			  <ul>
-				 <li>In the Arduino IDE go to <div class="textBlock">Sketch > Include > Library > Add .ZIP Library</div></li>
-				 <li>Navigate to the ZIP file that you downloaded in the window that opens</li>
-			  </ul>
-		   </li>
-		</ul>
-		<h3 id="board-manager-install">Board Manager Install</h3>
-		<ul>
-		   <li>
-			  <p><em>Online steps</em></p>
-			  <ul>
-				 <li><a href="https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json">Right click this link and select <strong>Save link as..</strong></a></li>
-				 <li><a href="https://github.com/facts-engineering/P1AMCore/releases">Go to the following link and download the latest release in .tar.gz format</a></li>
-				 <li>If you are using a USB drive copy both of these files to it now</li>
-			 </ul>
-		   </li>
-		   <li>
-			  <p><em>Offline steps - Internet connection is not needed</em></p>
-			  <ul>
-				 <li>Move the JSON and .tar.gz files to a permanent location. </li>
-				 <li>Open the JSON in a text editor such as Notepad</li>
-				 <li>In the <strong>platforms</strong> section, find the entry that has the same version number as the release you downloaded</li>
-				 <li>Edit the following line with the complete path of the .tar.gz file <br>
-					<div class="textBlock"> file://C:/Users/USERNAME/Documents/P1AMCore-1.6.20.tar.gz</div>  
-				 </li>
-				 <li>Save and close the file</li>
-				 <li>Start Arduino and select <div class="textBlock">File > Preferences</div></li>
-				 <li>Enter <b>file://</b> and the link to your saved file. e.g. <div class="textBlock">file://C:/Users/USERNAME/Documents/package_productivity-P1AM-boardmanagermodule_index.json</div></li>
-				 <li>Open the Boards Manager from <div class="textBlock">Tools > Board > Boards Manager</div></li>
-				 <li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform</li>
-				 <li>Select <div class="textBlock">Tools > Board > P1AM-100</div></li>
-				 <li>Go to <div class="textBlock">Tools > Port</div> and select the COM Port your P1AM-100 is plugged into</li>
-			  </ul>
-		   </li>
-		</ul>
-		<h3 id="driver-installation">Driver Installation</h3>
-	    <p>For Windows 7 and 8 it is required that you install a device driver for the P1AM-100. For Windows 10 it is optional but recommended.</p>
-		<ul>
-		   <li>
-			  <p><em>Online steps</em></p>
-			  <ul>
-				 <li><a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download driver installer here.</a></li>
-				 <li>If you are using a USB drive copy the ZIP file to it now</li>
-			  </ul>
-		   </li>
-		   <li>
-			  <p><em>Offline steps - Internet connection is not needed</em></p>
-			  <ul>
-				 <li>Unplug any P1AM-100 systems from your PC</li>
-				 <li>Unzip the folder and run <strong>P1AM-100_install.bat</strong></li>
-				 <li>Navigate through the prompts and install will be complete</li>
-			  </ul>
-		   </li>
-		</ul>
 
-		<p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the
-			<a href="https://www.arduino.cc/en/main/software">Arduino website</a>.
-			After you have installed the Arduino IDE you will need to follow one of the library install
-			methods and the boards manager install instructions to get started with the P1AM-100
+		
+		<br>
+		 <div class="line"></div>
+		<a name="offline">
+			<h2>Offline or Portable Installation</h2>
+		</a>
+		<p>
+			If the PC you would like to use the P1AM-100 with cannot be connected to the internet or has other restrictions
+			that conflict with the standard install, you can run the Arduino IDE offline or on a USB Drive. This will only work
+			with Windows PCs. 
 		</p>
+		<p>
+			It is important to note that this method will not prompt you for updates. IDE Performance on USB drives will be slower
+			than when installed on PC. 
+		</p>
+		
+		<ul>
+			<li><a href="https://github.com/facts-engineering/facts-engineering.github.io/releases">Go to the release page here and download the most recent .zip release</a></li>
+			<li> Move the .zip file to the target PC or to a USB drive</li>
+			<li> Extract the .zip file to your desired location</li>
+			<li> in the extracted folder navigate to <b>drivers\P1AM-drivers</b></li>
+			<li> Run <b>P1AM-100_install.bat</b> and follow the prompts to install the driver</li>
+			<li> Run <b>arduino.exe</b> to open the Arduino IDE </li>
+			<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100</div></li>
+			<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port for your P1AM-100</li>
+			
+		 </ul>
+		
+		
+		
+		<!-- <h4 id="p1am-library">P1AM Library</h4> -->
+		<!-- <ul> -->
+		   <!-- <li> -->
+			  <!-- <p><em>Online steps</em></p> -->
+			  <!-- <ul> -->
+				 <!-- <li>Click the green button that says <strong>Clone or download</strong> <a href="https://github.com/facts-engineering/P1AM">here on the P1AM repository page</a></li> -->
+				 <!-- <li>Select <strong>Download ZIP</strong></li> -->
+				 <!-- <li>If you are using a USB drive copy the ZIP file to it now</li> -->
+			  <!-- </ul> -->
+		   <!-- </li> -->
+		   <!-- <li> -->
+			  <!-- <p><em>Offline steps - Internet connection is not needed</em>   </p> -->
+			  <!-- <ul> -->
+				 <!-- <li>In the Arduino IDE go to <div class="textBlock">Sketch > Include > Library > Add .ZIP Library</div></li> -->
+				 <!-- <li>Navigate to the ZIP file that you downloaded in the window that opens</li> -->
+			  <!-- </ul> -->
+		   <!-- </li> -->
+		<!-- </ul> -->
+		<!-- <h3 id="board-manager-install">Board Manager Install</h3> -->
+		<!-- <ul> -->
+		   <!-- <li> -->
+			  <!-- <p><em>Online steps</em></p> -->
+			  <!-- <ul> -->
+				 <!-- <li><a href="https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json">Right click this link and select <strong>Save link as..</strong></a></li> -->
+				 <!-- <li><a href="https://github.com/facts-engineering/P1AMCore/releases">Go to the following link and download the latest release in .tar.gz format</a></li> -->
+				 <!-- <li>If you are using a USB drive copy both of these files to it now</li> -->
+			 <!-- </ul> -->
+		   <!-- </li> -->
+		   <!-- <li> -->
+			  <!-- <p><em>Offline steps - Internet connection is not needed</em></p> -->
+			  <!-- <ul> -->
+				 <!-- <li>Move the JSON and .tar.gz files to a permanent location. </li> -->
+				 <!-- <li>Open the JSON in a text editor such as Notepad</li> -->
+				 <!-- <li>In the <strong>platforms</strong> section, find the entry that has the same version number as the release you downloaded</li> -->
+				 <!-- <li>Edit the following line with the complete path of the .tar.gz file <br> -->
+					<!-- <div class="textBlock"> file://C:/Users/USERNAME/Documents/P1AMCore-1.6.20.tar.gz</div>   -->
+				 <!-- </li> -->
+				 <!-- <li>Save and close the file</li> -->
+				 <!-- <li>Start Arduino and select <div class="textBlock">File > Preferences</div></li> -->
+				 <!-- <li>Enter <b>file://</b> and the link to your saved file. e.g. <div class="textBlock">file://C:/Users/USERNAME/Documents/package_productivity-P1AM-boardmanagermodule_index.json</div></li> -->
+				 <!-- <li>Open the Boards Manager from <div class="textBlock">Tools > Board > Boards Manager</div></li> -->
+				 <!-- <li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform</li> -->
+				 <!-- <li>Select <div class="textBlock">Tools > Board > P1AM-100</div></li> -->
+				 <!-- <li>Go to <div class="textBlock">Tools > Port</div> and select the COM Port your P1AM-100 is plugged into</li> -->
+			  <!-- </ul> -->
+		   <!-- </li> -->
+		<!-- </ul> -->
+		<!-- <h3 id="driver-installation">Driver Installation</h3> -->
+	    <!-- <p>For Windows 7 and 8 it is required that you install a device driver for the P1AM-100. For Windows 10 it is optional but recommended.</p> -->
+		<!-- <ul> -->
+		   <!-- <li> -->
+			  <!-- <p><em>Online steps</em></p> -->
+			  <!-- <ul> -->
+				 <!-- <li><a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download driver installer here.</a></li> -->
+				 <!-- <li>If you are using a USB drive copy the ZIP file to it now</li> -->
+			  <!-- </ul> -->
+		   <!-- </li> -->
+		   <!-- <li> -->
+			  <!-- <p><em>Offline steps - Internet connection is not needed</em></p> -->
+			  <!-- <ul> -->
+				 <!-- <li>Unplug any P1AM-100 systems from your PC</li> -->
+				 <!-- <li>Unzip the folder and run <strong>P1AM-100_install.bat</strong></li> -->
+				 <!-- <li>Navigate through the prompts and install will be complete</li> -->
+			  <!-- </ul> -->
+		   <!-- </li> -->
+		<!-- </ul> -->
+
+		<!-- <p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the -->
+			<!-- <a href="https://www.arduino.cc/en/main/software">Arduino website</a>. -->
+			<!-- After you have installed the Arduino IDE you will need to follow one of the library install -->
+			<!-- methods and the boards manager install instructions to get started with the P1AM-100 -->
+		<!-- </p> -->
 		
 		</div>
     </div>
