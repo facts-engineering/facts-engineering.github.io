@@ -204,6 +204,11 @@ div.content > div:first-child {
     padding-left: 8px;
 }
 
+.compatible a b:hover {
+	color: #888;
+	
+}
+
 .installList li:before {
     float: left;
     padding-right: 8px;

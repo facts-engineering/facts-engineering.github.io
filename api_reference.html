@@ -5,7 +5,7 @@
     <title>P1AM Documentation</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" type="text/css" href="highlight/styles/github.css">
+	<link rel="stylesheet" type="text/css" href="highlight/styles/arduino-light.css">
 
     <script src="modules.js"></script>
     <script src="main.js"></script>
@@ -17,16 +17,14 @@
     <div class="sidebar">
         <div class="sidebar-header">
             <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
-            <a href="index.html">Home</a> 
-			<a href="faq.html">FAQs</a>
-            <a href="config.html">Configuration Tool</a>
-            <div class="line"></div> 
+
 
         </div>
         <ul class="sidebar-content"></ul>
     </div>
     <div class="header">
 			<img src="Aqua-productivity-open_logo_large-CTP-01.png" height="175px">
+			<img src="adc_logo_rot.png" width="85x" style="float:right; margin-right:20px; margin-top:20px">
 		<h1>
 		P1AM API Reference
 		</h1>
@@ -34,6 +32,9 @@
 
     <div class="content">
 		<div class="installList">
+		
+		
+		<a name="init"></a>
 			<p><strong><u>Function:</u></strong><br> 
 				<pre><div class="code-block"><code class="cpp">  uint8_t P1.init();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
@@ -45,8 +46,9 @@
 			0 - 15 - Number of P1 modules found connected to P1AM.</p>
 			<div class="line"></div> 
 			
+			<a name="readDiscrete"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint32_t P1.readDiscrete(uint8_t slot, uint8_t channel = 0);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint32_t P1.readDiscrete(uint8_t slot, uint8_t channel = 0);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Reads back the value(s) for a Discrete Input module. To read back the value for a specific Discrete Input, specify the channel number in the &ldquo;channel&rdquo; variable. To read back the integer value for all Discrete Inputs on that module, specify a value of 0 in the &ldquo;channel&rdquo; variable.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -59,9 +61,9 @@
 				 A 32-bit value indicating either a 1 or 0 for the specific point requested or the integer value of all points of the module (when &ldquo;channel&rdquo; = 0).</p>
 			<div class="line"></div> 
 
+			<a name="writeDiscrete"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				 <div class="code-block"><code class="cpp">void P1.writeDiscrete(uint32_t data, uint8_t slot, uint8_t channel = 0);</code></div></p>
-			
+				 <pre><div class="code-block"><code class="cpp">void P1.writeDiscrete(uint32_t data, uint8_t slot, uint8_t channel = 0);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Writes the value(s) to the Discrete Output modules. To write to a specific point, set the &ldquo;data&rdquo; variable to a 0 or 1 and specify a discrete output point value in the &ldquo;channel&rdquo; variable. To write to all discrete output points at the same time, specify an integer value in the &ldquo;data&rdquo; variable and set the &ldquo;channel&rdquo; variable to 0.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -75,8 +77,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="readAnalog"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> int P1.readAnalog(uint8_t slot, uint8_t channel);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> int P1.readAnalog(uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Reads back the raw, un-scaled, integer value from an Analog Input Module.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -89,8 +93,10 @@
 				 A 32-bit value for the specified channel. For 12-bit analog modules, this will be a value between 0 - 4095. For 16-bit analog modules, this will be a value between 0 and 65535 or -32768 and 32767.</p>
 			<div class="line"></div> 
 
+
+			<a name="readTemperature"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				 <div class="code-block"><code class="cpp">float P1.readTemperature(uint8_t slot, uint8_t channel);</code></div></p>
+				 <pre><div class="code-block"><code class="cpp">float P1.readTemperature(uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Reads back the raw, un-scaled, floating point value from a Temperature Input Module.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -103,8 +109,10 @@
 				 A 32-bit floating point value for the specified channel. The value will be in degrees for temperature configurations and millivolts for voltage configurations.</p>
 			<div class="line"></div> 
 
+
+			<a name="writeAnalog"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.writeAnalog(uint32_t data, uint8_t slot, uint8_t channel);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.writeAnalog(uint32_t data, uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Writes to a single Analog Output channel.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -118,8 +126,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="readBlockData"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.readBlockData(char *buf, uint16_t len, uint16_t offset, uint8_t type);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.readBlockData(char *buf, uint16_t len, uint16_t offset, uint8_t type);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function gives the ability to read from many modules at one time. This is an advanced function that requires calculations of the module data sizes to specify offsets and lengths into the data image of the base controller. This function does not return the values requested but, instead, places them into the &ldquo;buf&rdquo; array. The maximum amount of data that can be requested in one read is 1200 bytes. If there is more than 1200 bytes of data in the Base Controller, you will have to offset in to the next block of data in the Base Controller.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -134,8 +144,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="writeBlockData"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.writeBlockData(char *buf, uint16_t len, uint16_t offset, uint8_t type);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.writeBlockData(char *buf, uint16_t len, uint16_t offset, uint8_t type);</code></div></pre></p>
 			
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function gives the ability to write to many modules at one time. This is an advanced function that requires calculations of the module data sizes to specify offsets and lengths into the data image of the base controller. The maximum amount of data that can be requested in one write is 1200 bytes. If there is more than 1200 bytes of data in the Base Controller, you will have to offset in to the next block of data in the Base Controller.</p>
@@ -151,8 +163,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="writePWM"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.writePWM(float duty, uint32_t freq, uint8_t slot, uint8_t channel);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.writePWM(float duty, uint32_t freq, uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function controls the P1-04PWM Pulse Width Modulation module. The duty and frequency can be set for each channel.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -167,8 +181,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="writePWMDuty"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.writePWMDuty(float duty, uint8_t slot, uint8_t channel);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.writePWMDuty(float duty, uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function allows the duty cycle to be changed on the P1-04PWM module while running at the current frequency. To change both the duty and the frequency, use the P1.writePWM function instead.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -183,8 +199,9 @@
 			<div class="line"></div> 
 
 			
+			<a name="writePWMFreq"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.writePWMFreq(uint32_t freq, uint8_t slot, uint8_t channel);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.writePWMFreq(uint32_t freq, uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function allows the frequency to be changed on the P1-04PWM module while running with the current duty cycle. To change both the duty and the frequency, use the P1.writePWM function instead.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -198,8 +215,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="writePWMDir"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.writePWMDir(bool data, uint8_t slot, uint8_t channel);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.writePWMDir(bool data, uint8_t slot, uint8_t channel);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function sets a channel configured on a P1-04PWM for DIR to be enabled high or low. This is typically used in conjunction with another channel set for PWM wired to a Stepper Motor controller for direction change.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -213,9 +232,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
-			
+					
+			<a name="printModules"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint8_t P1.printModules();</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint8_t P1.printModules();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function prints out in the serial monitor, the P1 modules discovered by the P1AM.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -224,8 +244,10 @@
 				 An integer value displaying the number of modules found is returned by the function.</p>
 			<div class="line"></div> 
 
+
+			<a name="checkUnderRange"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				 <div class="code-block"><code class="cpp">uint8_t P1.checkUnderRange(uint8_t slot, uint8_t channel = 0);</code></div></p>
+				 <pre><div class="code-block"><code class="cpp">uint8_t P1.checkUnderRange(uint8_t slot, uint8_t channel = 0);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function returns the Under-Range status from an Analog Input module. The status for a specific channel can be request or the status byte for the entire module can be requested (channel = 0). Consult the individual module documentation to see if it supports this status item.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -238,8 +260,10 @@
 				 An 8-bit integer value is returned. The value will be 0 or 1 for specific channel requests. If the entire module status is requested (channel = 0), each bit of the byte will correspond to the under-range status for that channel (LSB - Channel 1).</p>
 			<div class="line"></div> 
 
+
+			<a name="checkOverRange"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint8_t P1.checkOverRange(uint8_t slot, uint8_t channel = 0);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint8_t P1.checkOverRange(uint8_t slot, uint8_t channel = 0);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function returns the Over-Range status from an Analog Input module. The status for a specific channel can be request or the status byte for the entire module can be requested (channel = 0). Consult the individual module documentation to see if it supports this status item.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -252,8 +276,10 @@
 				 An 8-bit integer value is returned. The value will be 0 or 1 for specific channel requests. If the entire module status is requested (channel = 0), each bit of the byte will correspond to the over-range status for that channel (LSB - Channel 1).</p>
 			<div class="line"></div> 
 
+
+			<a name="checkBurnout"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint8_t P1.checkBurnout(uint8_t slot, uint8_t channel = 0);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint8_t P1.checkBurnout(uint8_t slot, uint8_t channel = 0);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function returns the Burnout status from an Analog Input module. The status for a specific channel can be request or the status byte for the entire module can be requested (channel = 0). Consult the individual module documentation to see if it supports this status item.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -266,8 +292,10 @@
 				 An 8-bit integer value is returned. The value will be 0 or 1 for specific channel requests. If the entire module status is requested (channel = 0), each bit of the byte will correspond to the Burnout status for that channel (LSB - Channel 1).</p>
 			<div class="line"></div> 
 
+
+			<a name="check24V"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint8_t P1.check24V(uint8_t slot);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint8_t P1.check24V(uint8_t slot);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function returns the 24 VDC status from a module. Consult the individual module documentation to see if it supports this status item.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -279,8 +307,10 @@
 				 An 8-bit integer value is returned. The value will be 0 if 24 VDC is present or 1 if 24 VDC is missing.</p>
 			<div class="line"></div> 
 
+
+			<a name="readStatus"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				 <div class="code-block"><code class="cpp">char P1.readStatus(int byteNum, int slot);</code></div></p>
+				 <pre><div class="code-block"><code class="cpp">char P1.readStatus(int byteNum, int slot);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function returns a single status byte from a specific module.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -293,8 +323,10 @@
 				 The status byte value is returned as a char.</p>
 			<div class="line"></div> 
 
+
+			<!-- <a name="readStatus"></a> -->
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.readStatus(char buf[], uint8_t slot);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.readStatus(char buf[], uint8_t slot);</code></div></pre></p>
 			
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function returns all status byte values from a specific module. The data is not returned from the function but stored in the &ldquo;buf&rdquo; array.</p>
@@ -308,8 +340,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="configureModule"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> bool P1.configureModule(char cfgData[], uint8_t slot);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> bool P1.configureModule(char cfgData[], uint8_t slot);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function allows you to configure the settings of the P1 modules. Each module may have a different configuration so consult the individual module documentation for detailed breakdown of this data. This function would be more typically used for applications that have dynamic configuration data. For more static configuration setups, use the next function (overload function) that has a constant char array defined.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -322,8 +356,10 @@
 				 A Boolean value of 1 is returned for a successful configuration change.</p>
 			<div class="line"></div> 
 
+
+			<!-- <a name="configureModule"></a> -->
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> bool P1.configureModule(const char cfgData[], uint8_t slot);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> bool P1.configureModule(const char cfgData[], uint8_t slot);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function allows you to configure the settings of the P1 modules. Each module may have a different configuration so consult the individual module documentation for detailed breakdown of this data.&nbsp;</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -336,8 +372,10 @@
 				 A Boolean value of 1 is returned for a successful configuration change.</p>
 			<div class="line"></div> 
 
+
+			<a name="readModuleConfig"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				 <div class="code-block"><code class="cpp">void P1.readModuleConfig(char cfgData[], uint8_t slot);</code></div></p>
+				 <pre><div class="code-block"><code class="cpp">void P1.readModuleConfig(char cfgData[], uint8_t slot);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function allows you to read the current configuration of the specified module. Each module may have a different configuration so consult the individual module documentation for detailed breakdown of this data.&nbsp;</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -350,8 +388,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="configWD"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.configWD(uint16_t milliseconds, uint8_t toggle);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.configWD(uint16_t milliseconds, uint8_t toggle);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function configures the watchdog timer value in milliseconds and watchdog behavior option, defined by the &ldquo;toggle&rdquo; parameter. A value of 1 in the &ldquo;toggle&rdquo; parameter will reset the CPU after 5000 milliseconds have passed. A value of 0 will stop the CPU until a power cycle occurs. To use the watchdog, it must be configured first by the &ldquo;P1.configWD()&rdquo; function. To start the watchdog, the &ldquo;P1.startWD()&rdquo; must be called. If the &ldquo;P1.petWD()&rdquo; or a Base Controller function is not called at a faster rate than the time frame specified in the &ldquo;P1.configWD()&rdquo; function, the watchdog will occur. To stop the watchdog timer, use the &ldquo;P1.stopWD()&rdquo; function.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -364,8 +404,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="startWD"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.startWD();</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.startWD();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function starts the watchdog timer. See the purpose of the &ldquo;P1.configWD()&rdquo; function for more details on using the watchdog feature.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -374,8 +416,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="stopWD"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.stopWD();</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.stopWD();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function stops the watchdog timer. See the purpose of the &ldquo;P1.configWD()&rdquo; function for more details on using the watchdog feature.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -384,8 +428,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="petWD"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.petWD();</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.petWD();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function is used to keep the watchdog timer from timing out if P1 I/O functions are not being called often enough. See the purpose of the &ldquo;P1.configWD()&rdquo; function for more details on using the watchdog feature.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -394,8 +440,10 @@
 				 None.</p>
 			<div class="line"></div> 
 
+
+			<a name="getFwVersion"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint32_t P1.getFwVersion();</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint32_t P1.getFwVersion();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function is used to retrieve the firmware version of the P1 Base Controller. The format of the value returned (in bytes) is X.Y.ZZ.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -404,8 +452,10 @@
 				 A 32-bit integer is returned for the firmware version.</p>
 			<div class="line"></div> 
 
+
+			<a name="isBaseActive"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> bool P1.isBaseActive();</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> bool P1.isBaseActive();</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function checks to see if the P1 Base controller is active. To activate the P1 Base Controller, call the &ldquo;P1.init()&rdquo; function.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -414,8 +464,10 @@
 				 A Boolean value of 1 is returned if the P1 Base controller is active.</p>
 			<div class="line"></div> 
 
+
+			<a name="checkConnection"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint8_t P1.checkConnection(uint8_t numberOfModules = 0);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint8_t P1.checkConnection(uint8_t numberOfModules = 0);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 This function checks to see if any of the P1 modules have gone missing. If the &ldquo;numberOfModules&rdquo; variable contains a slot value, the function will return either a 0 (if everything is Ok or the value of the first slot number, from the left, that presented a problem. For example: if there are only 3 modules and a value of 4 was placed into the &ldquo;numberOfModules&rdquo; variable, the result would be &ldquo;4&rdquo;. The same would occur is a value of 5 was placed into the &ldquo;numberOfModules&rdquo; variable since slot 3 is the last good slot. If a value of 0 is passed into the &ldquo;numberOfModules&rdquo; variable, the function will return the number of modules found in the last init() function. In the example above, the results would be 1, 2, 3, 0 if sending a value of 0 in the &ldquo;numberOfModules&rdquo; variable when there are 3 modules.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -426,9 +478,11 @@
 			<p><strong><u>Return values:</u></strong><br> 
 				 A 8-bit value is returned that either indicates a 0 if the slot number passed to the function is good, the slot number where the problem is found if there is a problem or the number of modules found with the last init() function if a value of 0 is passed into the function. See the Purpose explanation above.</p>
 			<div class="line"></div> 
-			
+		
+		
+			<a name="rollCall"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> uint16_t P1.rollCall(const char* moduleNames[], uint8_t numberOfModules);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> uint16_t P1.rollCall(const char* moduleNames[], uint8_t numberOfModules);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Send an array of expected P1 module names to verify connected P1 modules. Module names should be added to the moduleNames array in the same order as the modules (left to right).</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -441,8 +495,10 @@
 				 A 16-bit value that is binary encoded with each bit from LSB to MSB indicating an error (1) or non-error state (0) for the corresponding slot number. A value of 0 indicates no errors.</p>
 			<div class="line"></div> 
 
+			
+			<a name="enableBaseController"></a>
 			<p><strong><u>Function:</u></strong><br> 
-				<div class="code-block"><code class="cpp"> void P1.enableBaseController(bool state);</code></div></p>
+				<pre><div class="code-block"><code class="cpp"> void P1.enableBaseController(bool state);</code></div></pre></p>
 			<p><strong><u>Purpose:</u></strong><br> 
 				 Disables the P1 module base controller during normal operation. NOTE: To re-enable the Base Controller, call the P1.init() function. Calling P1.enableBaseController(true) will NOT re-enable the BaseController.</p>
 			<p><strong><u>Parameters:</u></strong><br> 
@@ -457,30 +513,30 @@
 			<p><strong><u>Channel Labels</u></strong><br> 
 				</p>
 			<p>The functions below behave the same as the ones described above, but allow for a more descriptive label instead of the &ldquo;slot&rdquo; and &ldquo;channel&rdquo; values by 
-			utilizing the &ldquo;channelLabel&rdquo; structure. This allows you to move your IO devices around and only require a change in one place instead of multiple.</p>
+			utilizing the <b>channelLabel</b> structure. This allows you to move your IO devices around and only require a change in one place instead of multiple.</p>
 			<p><strong>Example:</strong></p>
 			<p>Instead of performing a P1.readDiscrete(1, 2); you could do the same function as P1.readDiscrete(highLevelSensor_1); with the following code:</p>
 			<pre><div class="code-block"><code class="cpp">channelLabel highLevelSensor_1 = {1,2};	//Create Label for sensor at slot 1 channel 2
 			bool sensorState = P1.readDiscrete(highLevelSensor_1);	//read the sensor
 			</code></div></pre>
-			
+		</div>	
 			<p>The functions that support this structure are:</p>
 			<ul>
-			   <li><pre><div class="code-block"><code class="cpp">uint32_t readDiscrete(channelLabel label);</code></div></pre></li>
-			   <li><pre><div class="code-block"><code class="cpp">void writeDiscrete(uint32_t data, channelLabel label);</code></div></pre></li>
-			   <li><div class="code-block"><code class="cpp">int readAnalog(channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">float readTemperature(channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">void writeAnalog(uint32_t data, channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">void writePWM(float duty, uint32_t freq, channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">void writePWMDuty(float duty, channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">void writePWMFreq(uint32_t freq, channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">void writePWMDir(bool data, channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">uint8_t checkUnderRange(channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">uint8_t checkOverRange(channelLabel label);</code></div></li>
-			   <li><div class="code-block"><code class="cpp">uint8_t checkBurnout(channelLabel label);</code></div></li>
+			   <li><pre><div class="code-block"><code class="cpp">uint32_t P1.readDiscrete(channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">void P1.writeDiscrete(uint32_t data, channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">int P1.readAnalog(channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">float P1.readTemperature(channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">void P1.writeAnalog(uint32_t data, channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">void P1.writePWM(float duty, uint32_t freq, channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">void P1.writePWMDuty(float duty, channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">void P1.writePWMFreq(uint32_t freq, channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">void P1.writePWMDir(bool data, channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">uint8_t P1.checkUnderRange(channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">uint8_t P1.checkOverRange(channelLabel label);</code></div></pre></li>
+			   <li><pre><div class="code-block"><code class="cpp">uint8_t P1.checkBurnout(channelLabel label);</code></div></pre></li>
 			</ul>
 			<br>
-		</div>
+		
     </div>
 </body>
 
