@@ -55,6 +55,13 @@ function returnChannelEnable() {
     }
 }
 
+function addArrow(button) {
+    let span = document.createElement("SPAN");
+    span.innerText = "▼";
+    span.className = "dropdown";
+    button.appendChild(span);
+}
+
 function generateConfigTool(properties, container) {
     let configProperties = document.createElement("DIV");
     configProperties.className = "config-properties";
@@ -119,6 +126,7 @@ function generateConfigTool(properties, container) {
                     this.parentNode.classList.remove("show");
                     this.parentNode.classList.add("hide");
                     this.parentNode.previousElementSibling.innerText = this.innerText;
+                    addArrow(this.parentNode.previousElementSibling);
                     e.stopPropagation();
                 });
                 options.appendChild(option);
@@ -128,11 +136,13 @@ function generateConfigTool(properties, container) {
             button.addEventListener("click", function (e) {
                 let optionDiv = this.parentNode.querySelector("div.options");
                 optionDiv.style.left = this.getBoundingClientRect().left + "px";
-                optionDiv.style.width = (this.getBoundingClientRect().width - 1) + "px";
+                optionDiv.style.width = (this.getBoundingClientRect().width - 2) + "px";
                 if (optionDiv.classList.contains("show")) {
+                    this.querySelector("span").innerText = "▼";
                     optionDiv.classList.remove("show");
                     optionDiv.classList.add("hide");
                 } else {
+                    this.querySelector("span").innerText = "▲";
                     let shown = document.querySelectorAll(".config-properties .show");
                     for (let i = 0; i < shown.length; i++) {
                         shown[i].classList.remove("show");
@@ -190,6 +200,7 @@ function generateConfigTool(properties, container) {
                         this.parentNode.classList.remove("show");
                         this.parentNode.classList.add("hide");
                         this.parentNode.previousElementSibling.innerText = this.innerText;
+                        addArrow(this.parentNode.previousElementSibling);
                         e.stopPropagation();
                     });
                     options.appendChild(option);
@@ -200,11 +211,13 @@ function generateConfigTool(properties, container) {
                 button.addEventListener("click", function (e) {
                     let optionDiv = this.parentNode.querySelectorAll("div.options")[j];
                     optionDiv.style.left = this.getBoundingClientRect().left + "px";
-                    optionDiv.style.width = (this.getBoundingClientRect().width - 1) + "px";
+                    optionDiv.style.width = (this.getBoundingClientRect().width - 2) + "px";
                     if (optionDiv.classList.contains("show")) {
+                        button.querySelector("span").innerText = "▼";
                         optionDiv.classList.remove("show");
                         optionDiv.classList.add("hide");
                     } else {
+                        this.querySelector("span").innerText = "▲";
                         let shown = document.querySelectorAll(".config-properties .show");
                         for (let i = 0; i < shown.length; i++) {
                             shown[i].classList.remove("show");
@@ -219,7 +232,7 @@ function generateConfigTool(properties, container) {
             channelEditor.appendChild(channelProperty);
             for(let j = 0; j < currentModule.channels; j++) {
                 let buttons = channelProperty.querySelectorAll("button");
-                buttons[j].style.width = (buttons[j].nextElementSibling.getBoundingClientRect().width + 3) + "px";
+                buttons[j].style.width = (buttons[j].nextElementSibling.getBoundingClientRect().width + 20) + "px";
                 buttons[j].nextElementSibling.classList.add("hide");
                 buttons[j].nextElementSibling.style.visibility = "visible";
             }
@@ -298,6 +311,17 @@ function generateConfigTool(properties, container) {
     });
     container.appendChild(preview);
     updatePreview();
+    let buttons = document.querySelectorAll(".config-properties button");
+    for(let i = 0; i < buttons.length; i++) {
+        if(buttons[i].parentNode.className === "channel-property") {
+            setTimeout(function () {
+                addArrow(buttons[i]);
+            }, 50);
+        }
+        else {
+            addArrow(buttons[i]);
+        }
+    }
 }
 
 function generateConfigArray() {
@@ -402,6 +426,16 @@ let currentModule = {};
 
 window.addEventListener("DOMContentLoaded", function() {
 
+    for(let i = 0; i < sidebarLinks.length; i++) {
+        let link = document.createElement("A");
+        link.innerText = sidebarLinks[i].name;
+        link.href = sidebarLinks[i].url;
+        document.querySelector("div.sidebar-header").appendChild(link);
+    }
+    let linkLine = document.createElement("DIV");
+    linkLine.className = "line";
+    document.querySelector("div.sidebar-header").appendChild(linkLine);
+
     function generateCategory(category) {
         let li = document.createElement("LI");
         li.className = "sidebar-category";
@@ -443,10 +477,6 @@ window.addEventListener("DOMContentLoaded", function() {
             list.appendChild(link);
             moduleList.appendChild(list);
         }
-		//let span = document.createElement("SPAN");
-		//span.style.height = "21px";
-		//span.style.width = "13px";
-		//li.prepend(span);
         li.appendChild(moduleList);
         document.querySelector(".sidebar-content").appendChild(li);
         let line = document.createElement("DIV");
@@ -497,6 +527,7 @@ window.addEventListener("DOMContentLoaded", function() {
             for (let i = 0; i < shown.length; i++) {
                 shown[i].classList.remove("show");
                 shown[i].classList.add("hide");
+                shown[i].previousElementSibling.querySelector("span").innerText = "▼";
             }
         });
 
