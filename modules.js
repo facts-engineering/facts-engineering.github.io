@@ -6,6 +6,27 @@ function Category(name, moduleList) {
     }
 }
 
+function SidebarLink(name, url) {
+    this.name = name;
+    this.url = url;
+}
+
+// To add configuration data to a module's page, you simply define its config property with an array
+// of Property objects. 
+
+// Config declarations begin below the modules array.
+
+// The links array contains a "Link" object with a title and URL for every
+// link that will be generated on the top segment of the sidebar.
+// Unlike other auto-generated links, local paths are not adjusted
+// based on the page. Ensure you use absolute paths to avoid causing
+// issues.
+
+let sidebarLinks = [
+    new SidebarLink("Home", "/index.html"),
+    new SidebarLink("Configuration Tool", "/config.html")
+];
+
 // The modules array is filled with a category object for each category on the sidebar
 // Each category object requires a name, and an array of module objects.
 // Each module object consists of a module name and a imageWidth property
@@ -13,10 +34,6 @@ function Category(name, moduleList) {
 // and its image all match. Images should be named "MODULENAME_STRAIGHTON.png"
 // Example: P1-08NA_STRAIGHTON.png
 
-// To add configuration data to a module, you simply define its config property with an array
-// of Property objects. 
-
-// Config declarations begin below the modules array.
 let modules = [
     new Category("CPUs and Shields", [{
         name: "P1AM-100",

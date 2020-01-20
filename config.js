@@ -13,11 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function (e) {
         let optionDiv = this.parentNode.querySelector("div.options");
         optionDiv.style.left = this.getBoundingClientRect().left + "px";
-        optionDiv.style.width = this.getBoundingClientRect().width + "px";
+        optionDiv.style.width = (this.getBoundingClientRect().width - 2) + "px";
         if (optionDiv.classList.contains("show")) {
+            this.querySelector("span").innerText = "▼";
             optionDiv.classList.remove("show");
             optionDiv.classList.add("hide");
         } else {
+            this.querySelector("span").innerText = "▲";
             let shown = document.querySelectorAll(".config-properties .show");
             for (let i = 0; i < shown.length; i++) {
                 shown[i].classList.remove("show");
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.parentNode.classList.remove("show");
             this.parentNode.classList.add("hide");
             this.parentNode.previousElementSibling.innerText = this.innerText;
+            addArrow(this.parentNode.previousElementSibling);
             for (let i = 0; i < moduleList.length; i++) {
                 if (this.innerText === moduleList[i].name) {
                     let configNode = document.querySelector("#configTool");
@@ -62,15 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let listLoc = document.querySelector("#moduleList");
     listLoc.appendChild(button);
     button.parentNode.insertBefore(options, button.nextSibling);
-    button.style.width = (options.getBoundingClientRect().width + 3) + "px";
+    button.style.width = (options.getBoundingClientRect().width + 20) + "px";
     options.classList.add("hide");
     options.style.visibility = "visible";
+    addArrow(button);
 
     document.addEventListener("click", function () {
         let shown = document.querySelectorAll(".show");
         for (let i = 0; i < shown.length; i++) {
             shown[i].classList.remove("show");
             shown[i].classList.add("hide");
+            shown[i].previousElementSibling.querySelector("span").innerText = "▼";
         }
     });
     let configTool = document.querySelector("#configTool");
