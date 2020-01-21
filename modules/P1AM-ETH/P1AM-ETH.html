@@ -40,18 +40,19 @@
             <h3>Code Examples</h3>
             <div class="line"></div>
 			<p><i> <a href=https://www.Arduino.cc/en/Tutorial/WebServer>The webserver example</a> redefines the function of pins A3 and A4 which are used by the Base Controller. To use the webserver example provided by Arduino with the P1AM-100 you must first add the following if statement after the start of the for loop that increments through analog channels. </i></p>
-			<pre><code class="cpp">for (int analogChannel = 0; analogChannel < 6; analogChannel++) {
-	if(analogChannel != 3 || analogChannel != 4) {	//add this line to skip over A3 and A4 when calling analogRead on Arduino pin analog inputs
-		int sensorReading = analogRead(analogChannel);
-		client.print("analog input ");
-		client.print(analogChannel);
-		client.print(" is ");
-		client.print(sensorReading);
-		client.println("&lt;br /&gt;");       
-	}
-}
-			</code></pre>
-
+			<div class="code-block">
+				<pre><code class="cpp">for (int analogChannel = 0; analogChannel < 6; analogChannel++) {
+				&nbsp;&nbsp;&nbsp;&nbsp;	if(analogChannel != 3 || analogChannel != 4) {	//add this line to skip over A3 and A4 when calling analogRead on Arduino pin analog inputs
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	int sensorReading = analogRead(analogChannel);
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	client.print("analog input ");
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		client.print(analogChannel);
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		client.print(" is ");
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		client.print(sensorReading);
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	client.println("&lt;br /&gt;");       
+				&nbsp;&nbsp;&nbsp;&nbsp;	}
+				}
+				</code></pre>
+			</div>
 			<p><b>ViewMarq</b></p>
 			The ViewMarq library allows easy connectivity between the P1AM-100, P1AM-ETH, and a ViewMarq LED message sign. 
 			Find the code and examples in the Arduino Library Manager or 
