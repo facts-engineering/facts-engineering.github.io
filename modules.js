@@ -24,7 +24,10 @@ function SidebarLink(name, url) {
 
 let sidebarLinks = [
     new SidebarLink("Home", "/index.html"),
-    new SidebarLink("Configuration Tool", "/config.html")
+	new SidebarLink("FAQs", "/faqs.html"),
+	new SidebarLink("API Reference", "/api_reference.html"),
+    new SidebarLink("Module Configuration Tool", "/config.html")
+	
 ];
 
 // The modules array is filled with a category object for each category on the sidebar

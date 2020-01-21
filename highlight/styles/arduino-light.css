@@ -2,6 +2,8 @@
 
 Arduino® Light Theme - Stefania Mellai <s.mellai@arduino.cc>
 
+Adam: slightly darken comments
+
 */
 
 .hljs {
@@ -59,7 +61,8 @@ Arduino® Light Theme - Stefania Mellai <s.mellai@arduino.cc>
 }
 
 .hljs-comment {
-  color: rgba(149,165,166,.8);
+  /* color: rgba(149,165,166,.8); */
+  color: rgba(72,84,85,.7);	
 }
 
 .hljs-meta-keyword {

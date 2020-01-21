@@ -35,20 +35,26 @@
 		<p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the
 			<a href="https://www.arduino.cc/en/main/software">Arduino website</a>.
 			After you have installed the Arduino IDE you will need to follow one of the library install
-			methods and the boards manager install instructions to get started with the P1AM-100
+			methods and the boards manager install instructions to get started with the P1AM-100.
+		</p>
+		
+		<p>
+			This installation process with require an internet connection throughout. If you need
+			an alternative install method for PCs not connected to the internet or with other restrictions,
+			please follow the directions at <a href="https://facts-engineering.github.io/faqs.html#offline">this link.</a>
 		</p>
 		<div class="line"></div>
 		<h3 id="p1am-100-library-install">P1AM-100 Library Install</h3>
 		<p><strong>Install From Library Manager</strong> </p>
 		<div class="installList">
 			<ul>
-			<li>In the Arduino IDE go to <div class="textBlock">Sketch &gt; Include Library &gt; Manage Libraries</div></li>
-			<li>Type <strong>P1AM</strong> into the search box</li>
-			<li>Click the install button in the P1AM library box
-			</li>
+				<li>In the Arduino IDE go to <div class="textBlock">Sketch &gt; Include Library &gt; Manage Libraries</div></li>
+				<li>Type <strong>P1AM</strong> into the search box</li>
+				<li>Click the install button in the P1AM library box
+				</li>
 			</ul>
 		</div>
-		<p><strong><em>***OR***</em></strong></p>
+		<p><strong><em>*** OR ***</em></strong></p>
 
 		<p><strong>Install From Zip</strong></p>
 		<div class="installList">
@@ -68,13 +74,23 @@
 				<li>Open the Boards Manager from <div class="textBlock">Tools &gt; Board &gt; Boards Manager</div></li>
 				<li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform</li>
 				<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100</div></li>
-				<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port your P1AM-100 is plugged into</li>
+				<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port for your P1AM-100</li>
 				</ul>
 			Boards manager link:<br>
 			<div id="boardLink" class="textBlock">https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json</div>
+			
 			<h3 id="driver-installation">Driver Installation</h3>
-			<p>For Windows 7 and 8 it is required that you install a device driver for the P1AM-100.
-			<a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download the driver installer here.</a>
+			<p>For Windows 7 and 8 it is required that you install the device driver for the P1AM-100. For Windows 10 it is recommended that it is installed.
+			<div class="installList">
+				<ul>
+					<li><a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download the driver installer here.</a></li>
+					<li>Extract the .zip file to your PC</li>
+					<li>Unplug any P1AM-100 systems from your PC</li>
+					<li>Run <b>P1AM-100_install.bat</b> and follow the prompts to install the driver</li>
+				</ul>
+			</div>
+			
+			
 			</p>
 			<br>
 			<div class="line"></div>
