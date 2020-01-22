@@ -24,6 +24,11 @@ div.sidebar {
     overflow-y: scroll;
     top: 0;
     bottom: 0;
+	
+}
+
+div.sidebar::-webkit-scrollbar{
+	width: 0px;
 }
 
 a {
@@ -130,6 +135,18 @@ li.sidebar-category.open p:before {
 	pointer-events: all;
 }
 
+ul.sidebar-content {
+	position: relative;
+}
+
+div#copyright {	
+	color:#CCC;
+	position: absolute; 
+	padding-left: 15px;
+	padding-top: 15px;
+	margin-bottom: 10px;
+}
+
 .category-content li {
     padding-left: 20px;
     padding-top: 8px;
@@ -157,7 +174,7 @@ div.header {
     margin-left: 300px;
 }
 
-div.content {
+div.content { 
     margin-left: 320px;
     width: calc(100% - 330px - (300px + 80px));
 }

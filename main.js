@@ -487,6 +487,12 @@ window.addEventListener("DOMContentLoaded", function() {
     for (let i = 0; i < modules.length; i++) {
         generateCategory(modules[i]);
     }
+	
+	let copyRight = document.createElement("DIV");
+	copyRight.id = "copyright";
+	copyRight.innerText = "\u00A9 2020 FACTS Engineering";
+	document.querySelector("ul.sidebar-content").appendChild(copyRight);
+	
 
     let categories = document.querySelectorAll(".sidebar-category p");
     for (let i = 0; i < categories.length; i++) {
@@ -519,6 +525,7 @@ window.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+	
 
     if (document.title.includes("|")) {
 
