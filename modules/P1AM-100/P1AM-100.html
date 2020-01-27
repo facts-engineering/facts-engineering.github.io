@@ -139,18 +139,18 @@
 		<h4>microSD Card</h4>
 		 <p> 
 			The microSD card slot can be used to read and write files. This can be useful for logging errors and storing any readings. 
-			The CS pin is 28. Use the examples in the Arduino IDE to learn how to use this feature.
+			The CS pin is 28 or SDCARD_SS_PIN. Use the examples in the Arduino IDE to learn how to use this feature.
 		</p>
 		
 		
 		<h4>PWR LED</h4>
 		 <p> 
-			When this LED is on it indicates the SAMD21G18 is powered on via USB, external 24V, VIN pin on the header, or a P1000 Series power supply.
+			When this LED is on it indicates the SAMD21G18 is powered on via: USB, external 24V, VIN pin on the header, or a P1000 Series power supply.
 		</p>
 		<h4>Base LED</h4>
 		 <p> 
-			When this LED is on it indicates the Base Controller is powered and has been intialised by calling P1.init(). Note: External 24V 
-			or a P1000 Series power supply must be used for the Base Controller to be powered.
+			When this LED is on it indicates the Base Controller is powered and has been intialised by calling P1.init(). <br>
+			<i>Note: External 24V or a P1000 Series power supply must be used for the Base Controller and modules to be powered.</i>
 		</p>
 		<h4>Yellow LED</h4>
 		 <p> 
@@ -164,6 +164,12 @@
 	delay(1000);                       // Wait 1 second	</code></pre>
 	
 			</div>
+		</p>
+		<h4>RTC</h4>
+		 <p> 
+			The P1AM-100 contatins an internal RTC (real-time clock) powered by a 32.768 kHz Crystal. An RTC is a clock that keeps track of the current time and can be used to program actions at a certain time.
+			To use the RTC feature download the <b>RTCZero</b> library from the Arduino Library Manager and check out their examples.
+			For more in depth information, see their <a href="https://www.arduino.cc/en/Reference/RTC">API reference.</a>
 		</p>
 		<h4>Reset Button</h4>
 		 <p> 
