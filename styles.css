@@ -221,9 +221,19 @@ div.content > div:first-child {
     padding-left: 8px;
 }
 
-.compatible a b:hover {
+.content .compatible a:hover {
 	color: #888;
 	
+}
+
+.content .compatible a {
+	color: #333;
+	font-weight: bold;
+}
+
+.compatible li{
+	margin-top: 16px;
+	margin-bottom: 16px;
 }
 
 .installList li:before {
