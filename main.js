@@ -10,8 +10,7 @@ function findOptionByName(name) {
                     return currentModule.config[i].options[j];
                 }
             }
-        }
-        else if(currentModule.config[i].type === channelProperty) {
+        } else if (currentModule.config[i].type === channelProperty) {
             for (let j = 0; j < currentModule.config[i].options.values.length; j++) {
                 let current = currentModule.config[i].options.values[j].name;
                 if (current.includes("!!!")) {
@@ -33,7 +32,7 @@ function findPropByOption(option) {
                     return currentModule.config[i];
                 }
             }
-        } else if(currentModule.config[i].type === channelProperty) {
+        } else if (currentModule.config[i].type === channelProperty) {
             for (let j = 0; j < currentModule.config[i].options.values.length; j++) {
                 if (currentModule.config[i].options.values[j] === option) {
                     return currentModule.config[i];
@@ -156,7 +155,7 @@ function generateConfigTool(properties, container) {
             editor.prepend(button);
             editor.prepend(title);
             document.querySelector(".config-properties .global-editor").appendChild(editor);
-            button.style.width = (options.getBoundingClientRect().width + 3) + "px";
+            button.style.width = (options.getBoundingClientRect().width + 20) + "px";
             options.classList.add("hide");
             options.style.visibility = "visible";
             // channel property editor generator
@@ -191,8 +190,8 @@ function generateConfigTool(properties, container) {
                         let selected = findOptionByName(this.innerText);
                         let property = findPropByOption(selected);
                         let options = this.parentNode.parentNode.querySelectorAll("div.options");
-                        for(let i = 0; i < options.length; i++) {
-                            if(options[i] === this.parentNode) {
+                        for (let i = 0; i < options.length; i++) {
+                            if (options[i] === this.parentNode) {
                                 property.values[i] = (parseInt(property.options.channels[i], 16) + parseInt(selected.value, 16)).toString(16);
                             }
                         }
@@ -230,7 +229,7 @@ function generateConfigTool(properties, container) {
                 });
             }
             channelEditor.appendChild(channelProperty);
-            for(let j = 0; j < currentModule.channels; j++) {
+            for (let j = 0; j < currentModule.channels; j++) {
                 let buttons = channelProperty.querySelectorAll("button");
                 buttons[j].style.width = (buttons[j].nextElementSibling.getBoundingClientRect().width + 20) + "px";
                 buttons[j].nextElementSibling.classList.add("hide");
@@ -255,13 +254,13 @@ function generateConfigTool(properties, container) {
                     if (this.classList.contains("checked")) {
                         let checkboxes = document.querySelectorAll(".checkbox.checked");
                         if (!checkboxes[checkboxes.length - 1].isSameNode(this) || checkboxes.length === 1) {
-                            alert("Channels must be enabled consecutively and start from 1.");
+                            displayPrompt("Channels must be enabled consecutively and start from 1.");
                             return;
                         }
                     } else {
                         let checkboxes = document.querySelectorAll("div.checkbox:not(.checked)");
                         if (!checkboxes[0].isSameNode(this)) {
-                            alert("Channels must be enabled consecutively and start from 1.");
+                            displayPrompt("Channels must be enabled consecutively and start from 1.");
                             return;
                         }
                     }
@@ -312,13 +311,12 @@ function generateConfigTool(properties, container) {
     container.appendChild(preview);
     updatePreview();
     let buttons = document.querySelectorAll(".config-properties button");
-    for(let i = 0; i < buttons.length; i++) {
-        if(buttons[i].parentNode.className === "channel-property") {
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].parentNode.className === "channel-property") {
             setTimeout(function () {
                 addArrow(buttons[i]);
             }, 50);
-        }
-        else {
+        } else {
             addArrow(buttons[i]);
         }
     }
@@ -338,35 +336,36 @@ function generateConfigArray() {
     }
 
     for (let i = 0; i < currentModule.config.length; i++) {
-        if(currentModule.config[i].type === reservedField) {
-            for(let j = currentModule.config[i].options; j < currentModule.config[i].options + currentModule.config[i].bytes; j++) {
+        if (currentModule.config[i].type === reservedField) {
+            for (let j = currentModule.config[i].options; j < currentModule.config[i].options + currentModule.config[i].bytes; j++) {
                 reserved.push(j);
             }
         }
     }
     for (let i = 0; i < currentModule.config.length; i++) {
-        if(currentModule.config[i].type === channelProperty) {
+        if (currentModule.config[i].type === channelProperty) {
             fieldBytes = currentModule.config[i].bytes;
-            for(let j = 0; j < currentModule.channels; j++) {
+            for (let j = 0; j < currentModule.channels; j++) {
                 let data = currentModule.config[i].values[j].slice(0, fieldBytes);
                 if (data.length === 1) {
                     data = "0" + data;
                 }
                 currentByte++;
-                while(reserved.includes(currentByte)) {
+                while (reserved.includes(currentByte)) {
                     addReserved();
                 }
-                if(i === 0) { 
-                    if(j !== 0) { configArray += ", "; } 
-                }
-                else {
+                if (i === 0) {
+                    if (j !== 0) {
+                        configArray += ", ";
+                    }
+                } else {
                     configArray += ", ";
                 }
                 configArray += "0x" + data;
 
-                if(fieldBytes !== 1) {
+                if (fieldBytes !== 1) {
                     currentByte++;
-                    while(reserved.includes(currentByte)) {
+                    while (reserved.includes(currentByte)) {
                         addReserved();
                     }
                     data = currentModule.config[i].values[j].slice(fieldBytes, fieldBytes + fieldBytes)
@@ -377,24 +376,24 @@ function generateConfigArray() {
                     configArray += "0x" + data;
                 }
             }
-        }
-        else if(currentModule.config[i].type === reservedField) {}
-        else {
+        } else if (currentModule.config[i].type === reservedField) {} else {
             fieldBytes = currentModule.config[i].bytes;
             let data = currentModule.config[i].value.slice(0, fieldBytes);
             if (data.length === 1) {
                 data = "0" + data;
             }
             currentByte++;
-            while(reserved.includes(currentByte)) {
+            while (reserved.includes(currentByte)) {
                 addReserved();
             }
-            if(i !== 0) { configArray += ", "; }
+            if (i !== 0) {
+                configArray += ", ";
+            }
             configArray += "0x" + data;
 
-            if(fieldBytes !== 1) {
+            if (fieldBytes !== 1) {
                 currentByte++;
-                while(reserved.includes(currentByte)) {
+                while (reserved.includes(currentByte)) {
                     addReserved();
                 }
                 data = currentModule.config[i].value.slice(fieldBytes, fieldBytes + fieldBytes)
@@ -406,9 +405,11 @@ function generateConfigArray() {
             }
         }
     }
-    if(reserved.length) {
-        for(let i = 0; i < reserved.length; i++) {
-            if(configArray.length !== 0) { configArray += ", "; }
+    if (reserved.length) {
+        for (let i = 0; i < reserved.length; i++) {
+            if (configArray.length !== 0) {
+                configArray += ", ";
+            }
             configArray += "0x00";
         }
     }
@@ -422,11 +423,52 @@ function updatePreview() {
     hljs.highlightBlock(codeBlock);
 }
 
+function displayPrompt(text, callback = null) {
+    let container = document.createElement("DIV");
+    container.className = "modal-container";
+    container.id = "prompt";
+    let modal = document.createElement("DIV");
+    modal.className = "modal";
+    container.appendChild(modal);
+    if(typeof text === "string") {
+        let strings = text.split("\n");
+        for (let i = 0; i < strings.length; i++) {
+            let promptText = document.createElement("P");
+            promptText.innerText = strings[i];
+            modal.appendChild(promptText);
+        }
+    }
+    else if(text.nodeType !== undefined) {
+        modal.appendChild(text);
+    }
+    else if(Array.prototype.isPrototypeOf(text)) {
+        for(let i = 0; i < text.length; i++) {
+            if(text[i].nodeType === undefined) {
+                return;
+            }
+        }
+        for(let i = 0; i < text.length; i++) {
+            modal.appendChild(text[i]);
+        }
+    }
+    let confirm = document.createElement("BUTTON");
+    confirm.innerText = "Ok";
+    confirm.addEventListener("click", function () {
+        let modalContainer = this.parentNode.parentNode;
+        modalContainer.parentNode.removeChild(modalContainer);
+        if (callback !== null) {
+            callback();
+        }
+    });
+    modal.appendChild(confirm);
+    document.querySelector("body").appendChild(container);
+}
+
 let currentModule = {};
 
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function () {
 
-    for(let i = 0; i < sidebarLinks.length; i++) {
+    for (let i = 0; i < sidebarLinks.length; i++) {
         let link = document.createElement("A");
         link.innerText = sidebarLinks[i].name;
         link.href = sidebarLinks[i].url;
@@ -455,10 +497,10 @@ window.addEventListener("DOMContentLoaded", function() {
         }
         if (included) {
             moduleList.style.display = "block";
-			li.classList.add("open");
+            li.classList.add("open");
         } else {
             moduleList.style.display = "none";
-			li.classList.add("closed");
+            li.classList.add("closed");
         }
 
         for (let i = 0; i < category.modules.length; i++) {
@@ -487,45 +529,62 @@ window.addEventListener("DOMContentLoaded", function() {
     for (let i = 0; i < modules.length; i++) {
         generateCategory(modules[i]);
     }
-	
-	let copyRight = document.createElement("DIV");
-	copyRight.id = "copyright";
-	copyRight.innerText = "\u00A9 2020 FACTS Engineering";
-	document.querySelector("ul.sidebar-content").appendChild(copyRight);
-	
+
+    let privacyButton = document.createElement("DIV");
+    privacyButton.id = "privacyButton";
+    privacyButton.innerText = "Privacy Policy";
+    privacyButton.addEventListener("click", function () {
+        let text = new Array();
+        let first = document.createElement("P");
+        first.innerText = "This page uses Google Analytics to monitor website traffic. We do not collect any personal user data, including ad personalization. ";
+        text.push(first);
+        let second = document.createElement("P");
+        second.innerText = "To view Google Analytics' privacy policy, visit ";
+        let link = document.createElement("A");
+        link.href = "https://www.google.com/policies/privacy/partners/";
+        link.innerText = "this website."
+        second.appendChild(link);
+        text.push(second);
+        displayPrompt(text);
+    });
+    document.querySelector("ul.sidebar-content").appendChild(privacyButton);
+
+    let copyRight = document.createElement("DIV");
+    copyRight.id = "copyright";
+    copyRight.innerText = "\u00A9 2020 FACTS Engineering";
+    document.querySelector("ul.sidebar-content").appendChild(copyRight);
 
     let categories = document.querySelectorAll(".sidebar-category p");
     for (let i = 0; i < categories.length; i++) {
         categories[i].addEventListener("click", function () {
             if (this.nextElementSibling.style.display === "none") {
-				this.parentNode.classList.remove("closing");
-				this.parentNode.classList.remove("closed");
-				this.parentNode.classList.add("opening");
-				this.parentNode.classList.add("open");
+                this.parentNode.classList.remove("closing");
+                this.parentNode.classList.remove("closed");
+                this.parentNode.classList.add("opening");
+                this.parentNode.classList.add("open");
                 this.nextElementSibling.style.display = "block";
             } else if (this.nextElementSibling.style.display === "block") {
                 this.parentNode.classList.remove("opening");
-				this.parentNode.classList.remove("open");
-				this.parentNode.classList.add("closing");
-				this.parentNode.classList.add("closed");
-				this.nextElementSibling.style.display = "none";
+                this.parentNode.classList.remove("open");
+                this.parentNode.classList.add("closing");
+                this.parentNode.classList.add("closed");
+                this.nextElementSibling.style.display = "none";
             }
         });
     }
-	
+
     let links = document.querySelectorAll(".category-content li");
     for (let i = 0; i < links.length; i++) {
         links[i].addEventListener("mousedown", function (e) {
-            if(e.button === 0) {
+            if (e.button === 0) {
                 this.firstChild.click();
-            }
-            else if(e.button === 1) {
+            } else if (e.button === 1) {
                 window.open(this.firstChild.href);
                 window.focus();
             }
         });
     }
-	
+
 
     if (document.title.includes("|")) {
 
