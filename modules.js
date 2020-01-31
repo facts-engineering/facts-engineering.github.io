@@ -23,7 +23,7 @@ function SidebarLink(name, url) {
 // issues.
 
 let sidebarLinks = [
-    new SidebarLink("Home", "/index.html"),
+    new SidebarLink("Home", "/"),
 	new SidebarLink("FAQs", "/faqs.html"),
 	new SidebarLink("API Reference", "/api_reference.html"),
     new SidebarLink("Module Configuration Tool", "/config.html")
