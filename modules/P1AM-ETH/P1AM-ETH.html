@@ -2,46 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>P1AM-ETH | P1AM Documentation</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../styles.css">
-    <link rel="stylesheet" type="text/css" href="../../highlight/styles/arduino-light.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157182554-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    <script src="../../modules.js"></script>
-    <script src="../../main.js"></script>
-    <script src="../../highlight/highlight.pack.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-157182554-1');
+  </script>
+  <meta charset="utf-8">
+  <title>P1AM-ETH | P1AM Documentation</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../styles.css">
+  <link rel="stylesheet" type="text/css" href="../../highlight/styles/arduino-light.css">
+
+  <script src="../../modules.js"></script>
+  <script src="../../main.js"></script>
+  <script src="../../highlight/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
-        </div>
-        <ul class="sidebar-content"></ul>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
     </div>
-    <div class="header">
-        <h1>P1AM-ETH</h1>
-        <h2></h2>
-        <div class="line"></div>
-    </div>
-    <div class="content">
-        <div class="description">
-            <p>The P1AM-ETH is an industrially rated MKR format shield based on the WIZnet W5500 chip that adds ethernet connectivity to the P1AM-100. </p>
+    <ul class="sidebar-content"></ul>
+  </div>
+  <div class="header">
+    <h1>P1AM-ETH</h1>
+    <h2></h2>
+    <div class="line"></div>
+  </div>
+  <div class="content">
+    <div class="description">
+      <p>The P1AM-ETH is an industrially rated MKR format shield based on the WIZnet W5500 chip that adds ethernet
+        connectivity to the P1AM-100. </p>
 
-        </div>
-	<p>
-		The P1AM-ETH uses SPI to communicate with the P1AM-100 or other MKR format CPU.  The P1AM-ETH uses the Arduino Ethernet library which comes standard with the Arduino IDE.
-	</p>
-		<div class="hscConfig">
-            <h3>Code Examples</h3>
-            <div class="line"></div>
-			<p><i> <a href=https://www.Arduino.cc/en/Tutorial/WebServer>The webserver example</a> redefines the function of pins A3 and A4 which are used by the Base Controller. To use the webserver example provided by Arduino with the P1AM-100 you must first add the following if statement after the start of the for loop that increments through analog channels. </i></p>
-			<div class="code-block">
-				<pre><code class="cpp">for (int analogChannel = 0; analogChannel < 6; analogChannel++) {
+    </div>
+    <p>
+      The P1AM-ETH uses SPI to communicate with the P1AM-100 or other MKR format CPU. The P1AM-ETH uses the Arduino
+      Ethernet library which comes standard with the Arduino IDE.
+    </p>
+    <div class="hscConfig">
+      <h3>Code Examples</h3>
+      <div class="line"></div>
+      <p><i> <a href=https://www.Arduino.cc/en/Tutorial/WebServer>The webserver example</a> redefines the function of
+            pins A3 and A4 which are used by the Base Controller. To use the webserver example provided by Arduino with
+            the P1AM-100 you must first add the following if statement after the start of the for loop that increments
+            through analog channels. </i> </p> <div class="code-block">
+            <pre><code class="cpp">for (int analogChannel = 0; analogChannel < 6; analogChannel++) {
 				&nbsp;&nbsp;&nbsp;&nbsp;	if(analogChannel != 3 || analogChannel != 4) {	//add this line to skip over A3 and A4 when calling analogRead on Arduino pin analog inputs
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	int sensorReading = analogRead(analogChannel);
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	client.print("analog input ");
@@ -52,137 +67,140 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;	}
 				}
 				</code></pre>
-			</div>
-			<p><b>ViewMarq</b></p>
-			The ViewMarq library allows easy connectivity between the P1AM-100, P1AM-ETH, and a ViewMarq LED message sign. 
-			Find the code and examples in the Arduino Library Manager or 
-			<a href="https://github.com/facts-engineering/ViewMarq">clone it from GitHub</a><br><br>
-			ViewMarq LED message signs can be purchased <a href="https://www.automationdirect.com/adc/shopping/catalog/hmi_(human_machine_interface)/viewmarq_led_message_displays/viewmarq_led_message_displays">here from AutomationDirect.com</a><br>
-			
-			<a href="https://www.automationdirect.com/adc/shopping/catalog/hmi_(human_machine_interface)/viewmarq_led_message_displays/viewmarq_led_message_displays">
-			<img src="viewMarq.jpg"></a>
-			
-			<!-- <br> -->
-			<!-- <p><b> Modbus TCP example </b></p> -->
-			<!-- <p>The code below will set up the P1AM-100 as a modbus TCP server. This example creates a single coil that determines the state of the built in LED based on the signal sent from a Modbus client.  -->
-			<!-- The <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>Arduino Modbus</a> and <a href=https://www.Arduino.cc/en/Reference/ArduinoRS485> ArduinoRS485 </a> libraries are required for this example. They can be downloaded from the library manager in the Arduino IDE.  -->
-			<!-- <br>This example can be used to communicate with various devices that can act as a Modbus Client such as a Productivity 2000 CPU or a C-More panel. The Modbus client will then be used to determine the state of the LED.</p> -->
-			<!-- This example is based off of the Arduino webserver example and the WiFiModbusServerLED from the ArduinoModbus library.  -->
-			<!-- <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>More information on the Arduino Modbus library can be found here.</a> -->
-			<!-- <pre><code class="cpp">#include &lt;P1AM.h&gt; -->
-<!-- #include &lt;Ethernet.h&gt; -->
-<!-- #include &lt;ArduinoRS485.h&gt; -->
-<!-- #include &lt;ArduinoModbus.h&gt; -->
+    </div>
+    <p><b>ViewMarq</b></p>
+    The ViewMarq library allows easy connectivity between the P1AM-100, P1AM-ETH, and a ViewMarq LED message sign.
+    Find the code and examples in the Arduino Library Manager or
+    <a href="https://github.com/facts-engineering/ViewMarq">clone it from GitHub</a><br><br>
+    ViewMarq LED message signs can be purchased <a
+      href="https://www.automationdirect.com/adc/shopping/catalog/hmi_(human_machine_interface)/viewmarq_led_message_displays/viewmarq_led_message_displays">here
+      from AutomationDirect.com</a><br>
 
-<!-- byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };    		//this sets the MAC address of the P1AM-100 -->
-<!-- IPAddress ip(192, 168, 1, 177);           			//this sets the IP address of the P1AM-100 -->
+    <a
+      href="https://www.automationdirect.com/adc/shopping/catalog/hmi_(human_machine_interface)/viewmarq_led_message_displays/viewmarq_led_message_displays">
+      <img src="viewMarq.jpg"></a>
 
-<!-- EthernetServer EthServer(502);        				//port 502 -->
-<!-- ModbusTCPServer modbusTCPServer; -->
+    <!-- <br> -->
+    <!-- <p><b> Modbus TCP example </b></p> -->
+    <!-- <p>The code below will set up the P1AM-100 as a modbus TCP server. This example creates a single coil that determines the state of the built in LED based on the signal sent from a Modbus client.  -->
+    <!-- The <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>Arduino Modbus</a> and <a href=https://www.Arduino.cc/en/Reference/ArduinoRS485> ArduinoRS485 </a> libraries are required for this example. They can be downloaded from the library manager in the Arduino IDE.  -->
+    <!-- <br>This example can be used to communicate with various devices that can act as a Modbus Client such as a Productivity 2000 CPU or a C-More panel. The Modbus client will then be used to determine the state of the LED.</p> -->
+    <!-- This example is based off of the Arduino webserver example and the WiFiModbusServerLED from the ArduinoModbus library.  -->
+    <!-- <a href=https://www.Arduino.cc/en/ArduinoModbus/ArduinoModbus>More information on the Arduino Modbus library can be found here.</a> -->
+    <!-- <pre><code class="cpp">#include &lt;P1AM.h&gt; -->
+    <!-- #include &lt;Ethernet.h&gt; -->
+    <!-- #include &lt;ArduinoRS485.h&gt; -->
+    <!-- #include &lt;ArduinoModbus.h&gt; -->
 
-<!-- const int modbusAddress = 1;       				//defines modbus address to be used by the coil -->
+    <!-- byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };    		//this sets the MAC address of the P1AM-100 -->
+    <!-- IPAddress ip(192, 168, 1, 177);           			//this sets the IP address of the P1AM-100 -->
 
-<!-- void setup() { -->
-  <!-- Ethernet.init(5);           					//configures the chip select pin (5 is the chip select pin of the P1AM) -->
-  
-  <!-- while (!P1.init()){  -->
+    <!-- EthernetServer EthServer(502);        				//port 502 -->
+    <!-- ModbusTCPServer modbusTCPServer; -->
+
+    <!-- const int modbusAddress = 1;       				//defines modbus address to be used by the coil -->
+
+    <!-- void setup() { -->
+    <!-- Ethernet.init(5);           					//configures the chip select pin (5 is the chip select pin of the P1AM) -->
+
+    <!-- while (!P1.init()){  -->
     <!-- ;                						//wait for modules to sign on    -->
-  <!-- } -->
-  
-  <!-- Serial.begin(115200);          				//baud rate of 115200 -->
-  <!-- while(!Serial){ -->
+    <!-- } -->
+
+    <!-- Serial.begin(115200);          				//baud rate of 115200 -->
+    <!-- while(!Serial){ -->
     <!-- ;               						//wait for serial port to connect -->
-  <!-- } -->
+    <!-- } -->
 
-  <!-- Ethernet.begin(mac, ip);      				//initilizes the network settings of the ethernet shield -->
+    <!-- Ethernet.begin(mac, ip);      				//initilizes the network settings of the ethernet shield -->
 
-  <!-- if (Ethernet.hardwareStatus() == EthernetNoHardware) {  	//check that Ethernet hardware is present -->
+    <!-- if (Ethernet.hardwareStatus() == EthernetNoHardware) {  	//check that Ethernet hardware is present -->
     <!-- Serial.println("Ethernet shield was not found."); -->
     <!-- while (true) { -->
-      <!-- delay(1);             					//do nothing, cannot run without Ethernet hardware -->
+    <!-- delay(1);             					//do nothing, cannot run without Ethernet hardware -->
     <!-- } -->
-  <!-- } -->
-  <!-- if (Ethernet.linkStatus() == LinkOFF) { -->
+    <!-- } -->
+    <!-- if (Ethernet.linkStatus() == LinkOFF) { -->
     <!-- Serial.println("Ethernet cable is not connected."); -->
-  <!-- } -->
-  
-  <!-- EthServer.begin();            				//start the ethernet server -->
-  <!-- modbusTCPServer.begin();         				//start the Modbus TCP server -->
+    <!-- } -->
 
-  <!-- pinMode(LED_BUILTIN,OUTPUT);          			//sets the LED_BUILTIN pin as an output -->
+    <!-- EthServer.begin();            				//start the ethernet server -->
+    <!-- modbusTCPServer.begin();         				//start the Modbus TCP server -->
 
-  <!-- modbusTCPServer.configureCoils(modbusAddress, 1);     	//configure a single coil at address 0x15 -->
-<!-- } -->
+    <!-- pinMode(LED_BUILTIN,OUTPUT);          			//sets the LED_BUILTIN pin as an output -->
 
-<!-- void loop() { -->
-  <!-- EthernetClient client = EthServer.available();      		//listen for incoming clients -->
-  
-  <!-- if (client) {             					//a new client connected -->
+    <!-- modbusTCPServer.configureCoils(modbusAddress, 1);     	//configure a single coil at address 0x15 -->
+    <!-- } -->
+
+    <!-- void loop() { -->
+    <!-- EthernetClient client = EthServer.available();      		//listen for incoming clients -->
+
+    <!-- if (client) {             					//a new client connected -->
     <!-- Serial.println("new client"); -->
     <!-- modbusTCPServer.accept(client);         			//let the Modbus TCP accept the connection  -->
 
     <!-- while (client.connected()) { -->
-      <!-- modbusTCPServer.poll();           			//poll for Modbus TCP requests, while client connected -->
-      <!-- updateLED();            					//calls the function to update the LED -->
+    <!-- modbusTCPServer.poll();           			//poll for Modbus TCP requests, while client connected -->
+    <!-- updateLED();            					//calls the function to update the LED -->
     <!-- } -->
-  <!-- } -->
-<!-- } -->
+    <!-- } -->
+    <!-- } -->
 
-<!-- void updateLED() { -->
-  <!-- int coilValue = modbusTCPServer.coilRead(modbusAddress);    	//read the current value of the coil -->
+    <!-- void updateLED() { -->
+    <!-- int coilValue = modbusTCPServer.coilRead(modbusAddress);    	//read the current value of the coil -->
 
-  <!-- if (coilValue) {              				//coil value set -->
+    <!-- if (coilValue) {              				//coil value set -->
     <!-- digitalWrite(LED_BUILTIN, HIGH);        			//turn LED on -->
-  <!-- } else {                					//coil value cleared -->
+    <!-- } else {                					//coil value cleared -->
     <!-- digitalWrite(LED_BUILTIN, LOW);       			//turn LED off -->
-  <!-- } -->
+    <!-- } -->
 
-  <!-- Serial.println(coilValue);        				//print the value of the coil to the serial monitor -->
-<!-- } -->
-			<!-- </code></pre> -->
+    <!-- Serial.println(coilValue);        				//print the value of the coil to the serial monitor -->
+    <!-- } -->
+    <!-- </code></pre> -->
 
-     
-     
-        <div class="image-box">
-            <img src="P1AM-ETH_STRAIGHTON.png">
-            <div class="line"></div>
-			<p>
-			<b>Ethernet Chip:</b> WIZnet W5500 <br>
-			<b>Recommended Library:</b> Arduino Ethernet <br>
-            <b>Power Budget:</b> 150mA / 5V <br>
-            </p>
-			
-			<p><b>Additional Resources: </b><br>
-			<a href="https://cdn.automationdirect.com/static/specs/p1ameth.pdf">Data Sheet<br></a>
-            <a
-                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/controllers_-a-_shields/p1am-eth">
-               P1AM-ETH on AutomationDirect.com</a><br>
-			<a href="https://github.com/facts-engineering/P1AM-Design-Files">
-			 P1AM-ETH Design Files </a>
-			<table>
-			  <tr>
-				<th>Pin</th>
-				<th>Function</th>
-			  </tr>
-			  <tr>
-				<td>8</td>
-				<td>MOSI</td>
-			  </tr>
-			  <tr>
-				<td>9</td>
-				<td>CLK</td>
-			  </tr>
-			  <tr>
-				<td>10</td>
-				<td>MISO</td>
-			  </tr>
-			  <tr>
-				<td>5</td>
-				<td>CS</td>
-			  </tr>
-			</table>
-		 </div>
+
+
+    <div class="image-box">
+      <img src="P1AM-ETH_STRAIGHTON.png">
+      <div class="line"></div>
+      <p>
+        <b>Ethernet Chip:</b> WIZnet W5500 <br>
+        <b>Recommended Library:</b> Arduino Ethernet <br>
+        <b>Power Budget:</b> 150mA / 5V <br>
+      </p>
+
+      <p><b>Additional Resources: </b><br>
+        <a href="https://cdn.automationdirect.com/static/specs/p1ameth.pdf">Data Sheet<br></a>
+        <a
+          href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/controllers_-a-_shields/p1am-eth">
+          P1AM-ETH on AutomationDirect.com</a><br>
+        <a href="https://github.com/facts-engineering/P1AM-Design-Files">
+          P1AM-ETH Design Files </a>
+        <table>
+          <tr>
+            <th>Pin</th>
+            <th>Function</th>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>MOSI</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>CLK</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>MISO</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>CS</td>
+          </tr>
+        </table>
     </div>
+  </div>
 </body>
 
 </html>
