@@ -477,10 +477,10 @@ P104AD.push(new Property(channelProperty, "Range", {
         value: "4"
     }],
     channels: [
+        "2000",
         "2100",
         "2200",
-        "2300",
-        "2400"
+        "2300"
     ]
 }, 2));
 
