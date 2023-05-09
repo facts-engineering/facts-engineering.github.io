@@ -13,7 +13,7 @@
 		gtag('config', 'UA-157182554-1');
 	</script>
     <meta charset="utf-8">
-    <title>P1-08ADL-2 | P1AM Documentation</title>
+    <title>P1-04AD-2 | P1AM Documentation</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../styles.css">
     <link rel="stylesheet" type="text/css" href="../../highlight/styles/arduino-light.css">
@@ -35,16 +35,16 @@
         <ul class="sidebar-content"></ul>
     </div>
     <div class="header">
-        <h1>P1-08ADL-2</h1>
+        <h1>P1-04AD-2</h1>
         <h2>Voltage Input</h2>
         <div class="line"></div>
     </div>
     <div class="content">
         <div class="description">
-            <p>This module can read the voltage of eight different input signals.</p>
+            <p>This module can read the voltage of four different input signals.</p>
             <div class="code-block">
                 <pre><code class="cpp">int inputCounts = P1.readAnalog(1, 2); //set the value of slot 1 channel 2 returned by the readAnalog function to the variable inputCounts
-				float inputVolts = 10 * ((float)inputCounts / 8191); //converts the value of inputCounts to float with the units V</code></pre>
+				float inputVolts = 10 * ((float)inputCounts / 65535); //converts the value of inputCounts to float with the units V</code></pre>
             </div>
 
         </div>
@@ -80,7 +80,7 @@
             </ul>
         </div>
         <div class="status">
-            <h3>Module Data</h3>
+            <h3>Module Configuration and Status Tables</h3>
             <div class="line"></div>
 			<p>We recommend using the status functions and configuration tool. These tables are provided as additional reference.</p>
             <p><b>Module Status Data</b></p>
@@ -371,18 +371,18 @@
             </table>
         </div>
         <div class="image-box">
-            <img src="P1-08ADL-2_STRAIGHTON.png">
+            <img src="P1-04AD-2_STRAIGHTON.png">
             <div class="line"></div>
-            <p><b>Channels: </b>8<br>
+            <p><b>Channels: </b>4<br>
 			<b>Range: </b>0-10V<br>
-                <b>Resolution: </b>13 bit (0-8191)<br>
+                <b>Resolution: </b>16 bit (0-65535)<br>
                 <b>Example: </b><a
                     href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogInput/AnalogInput.ino">AnalogInput</a>
             </p>
 			<p><b>Additional Resources: </b><br>
-            <a href="https://cdn.automationdirect.com/static/specs/P1-08ADL-2.pdf">Data Sheet<br></a>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-04AD-2.pdf">Data Sheet<br></a>
             <a
-                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/industrial_i-z-o_(p1k)/P1-08ADL-2">P1-08ADL-2
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/industrial_i-z-o_(p1k)/p1-04AD-2">P1-04AD-2
                 on AutomationDirect.com</a></p>
         </div>
     </div>

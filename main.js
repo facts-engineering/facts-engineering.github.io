@@ -551,7 +551,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
     let copyRight = document.createElement("DIV");
     copyRight.id = "copyright";
-    copyRight.innerText = "\u00A9 2020 FACTS Engineering";
+    year = new Date().getFullYear();
+    copyRight.innerText = "\u00A9 " + year + " FACTS Engineering";
+
     document.querySelector("ul.sidebar-content").appendChild(copyRight);
 
     let categories = document.querySelectorAll(".sidebar-category p");

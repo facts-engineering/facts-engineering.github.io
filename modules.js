@@ -50,6 +50,9 @@ let modules = [
 	}, {
         name: "P1AM-PROTO",
         imageWidth: "160px"
+    }, {
+        name: "P1AM-SERIAL",
+        imageWidth: "160px"
     }]),
     new Category("Discrete Input Modules", [{
         name: "P1-08NA",
@@ -106,11 +109,17 @@ let modules = [
 		name: "P1-04AD",
         imageWidth: "130px"
     }, {
+        name: "P1-04AD-1",
+        imageWidth: "180px"
+    }, {
         name: "P1-04ADL-1",
         imageWidth: "180px"
     }, {
         name: "P1-08ADL-1",
         imageWidth: "150px"
+    }, {
+        name: "P1-04AD-2",
+        imageWidth: "180px"
     }, {
         name: "P1-04ADL-2",
         imageWidth: "180px"
@@ -513,6 +522,16 @@ P104PWM.push(new Property(channelProperty, "Range", {
 getPageByName("P1-04PWM").config = P104PWM;
 getPageByName("P1-04PWM").channels = 4;
 
+let P104AD1 = new Array();
+
+P104AD1.push(new Property(channelEnable, "Enabled", {
+    start: "4000",
+    delimeter: 1
+}, 2));
+
+getPageByName("P1-04AD-1").config = P104AD1;
+getPageByName("P1-04AD-1").channels = 4;
+
 let P104ADL1 = new Array();
 
 P104ADL1.push(new Property(channelEnable, "Enabled", {
@@ -522,6 +541,17 @@ P104ADL1.push(new Property(channelEnable, "Enabled", {
 
 getPageByName("P1-04ADL-1").config = P104ADL1;
 getPageByName("P1-04ADL-1").channels = 4;
+
+let P104AD2 = new Array();
+
+P104AD2.push(new Property(channelEnable, "Enabled", {
+    start: "4000",
+    delimeter: 1
+}, 2));
+
+getPageByName("P1-04AD-2").config = P104AD2;
+getPageByName("P1-04AD-2").channels = 4;
+
 
 let P104ADL2 = new Array();
 

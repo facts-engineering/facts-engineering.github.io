@@ -45,7 +45,7 @@
             <p>This module can read the voltage of four different input signals.</p>
             <div class="code-block">
                 <pre><code class="cpp">int inputCounts = P1.readAnalog(1, 2); //set the value of slot 1 channel 2 returned by the readAnalog function to the variable inputCounts
-				float inputAmps = 10 * ((float)inputCounts / 8191); //converts the value of inputCounts to float with the units V</code></pre>
+				float inputVolts = 10 * ((float)inputCounts / 8191); //converts the value of inputCounts to float with the units V</code></pre>
             </div>
 			<h4>Output Functions</h4>
             <p> This function sends the voltage to be output by the channel as an integer value in counts.</p>
