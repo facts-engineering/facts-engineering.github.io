@@ -1,104 +1,367 @@
 {
-	"packages": [{
-		"name": "P1AM-100",
-		"maintainer": "Facts Engineering",
-		"websiteURL": "https://github.com/facts-engineering/P1AMCore",
-		"email": "",
-		"help": {
-			"online": ""
-		},
-		"platforms": [{
-			"name": "P1AM-100",
-			"architecture": "samd",
-			"version": "1.6.20",
-			"category": "Contributed",
-			"url": "https://github.com/facts-engineering/P1AMCore/archive/1.6.20.tar.gz",
-			"archiveFileName": "P1AMCore-1.6.20.tar.gz",
-			"checksum": "SHA-256:CD5D278137A7C63EB173D7701CD29C1CEDB91E95A25C5E7D980DF895E69D6AEB",
-			"size": "4133391",
-			"boards": [{
-				"name": "P1AM-100"
-			}],
-			"toolsDependencies": [{
-					"packager": "arduino",
-					"name": "arm-none-eabi-gcc",
-					"version": "4.8.3-2014q1"
-				},
-				{
-					"packager": "arduino",
-					"name": "bossac",
-					"version": "1.7.0"
-				},
-				{
-					"packager": "arduino",
-					"name": "openocd",
-					"version": "0.9.0-arduino6-static"
-				},
-				{
-					"packager": "arduino",
-					"name": "CMSIS",
-					"version": "4.5.0"
-				},
-				{
-					"packager": "arduino",
-					"name": "CMSIS-Atmel",
-					"version": "1.1.0"
-				},
-				{
-					"packager": "arduino",
-					"name": "arduinoOTA",
-					"version": "1.2.0"
-				}
-			]
-		},
-        {
-			"name": "P1AM-100",
-			"architecture": "samd",
-			"version": "1.6.21",
-			"category": "Contributed",
-			"url": "https://github.com/facts-engineering/P1AMCore/archive/1.6.21.tar.gz",
-			"archiveFileName": "P1AMCore-1.6.21.tar.gz",
-			"checksum": "SHA-256:B569195032C4EDC12C179949C02F8110100558D65779076A5E8F72002BAECC18",
-			"size": "4131736",
-			"boards": [{
-				"name": "P1AM-100"
-			}],
-			"toolsDependencies": [{
-					"packager": "arduino",
-					"name": "arm-none-eabi-gcc",
-					"version": "4.8.3-2014q1"
-				},
-				{
-					"packager": "arduino",
-					"name": "bossac",
-					"version": "1.7.0"
-				},
-				{
-					"packager": "arduino",
-					"name": "openocd",
-					"version": "0.9.0-arduino6-static"
-				},
-				{
-					"packager": "arduino",
-					"name": "CMSIS",
-					"version": "4.5.0"
-				},
-				{
-					"packager": "arduino",
-					"name": "CMSIS-Atmel",
-					"version": "1.1.0"
-				},
-				{
-					"packager": "arduino",
-					"name": "arduinoOTA",
-					"version": "1.2.0"
-				}
-			]
+  "packages": [
+    {
+      "name": "FACTS",
+	  "maintainer": "Facts Engineering",
+	  "websiteURL": "https://github.com/facts-engineering/P1AM200Core",
+      "email": "",
+      "help": {
+        "online": ""
+      },
+      "platforms":[
+		{
+		  "name": "P1AM-200",
+		  "architecture": "samd",
+		  "version": "1.7.13",
+		  "category": "Contributed",
+		  "url": "https://github.com/facts-engineering/ArduinoCore-samd/releases/download/1.7.13/p1am_200_core-1.7.13.tar.gz",
+		  "archiveFileName": "p1am_200_core-1.7.13.tar.gz",
+		  "checksum": "SHA-256:a790f6028911d2a7cf9261087c1ab375b8a1f30fe61f476079bba32030bc8938",
+		  "size": "5228715",
+		  "boards": [
+			{
+			  "name": "P1AM-200"
+			}
+		  ],
+		  "toolsDependencies": [
+			{
+			  "packager": "FACTS",
+			  "name": "arm-none-eabi-gcc",
+			  "version": "9-2019q4"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "bossac",
+			  "version": "1.7.0-arduino3"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "bossac",
+			  "version": "1.8.0-48-gb176eee"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "openocd",
+			  "version": "0.10.0-arduino7"
+			},
+			{
+			  "packager": "FACTS",
+			  "name": "CMSIS",
+			  "version": "5.4.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "CMSIS-Atmel",
+			  "version": "1.2.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "arduinoOTA",
+			  "version": "1.2.1"
+			}
+		  ]
 		}
-        ],
-		"tools": [
-
-		]
-	}]
-
+	  ],
+	  "tools": [
+        {
+          "name": "CMSIS",
+          "version": "5.4.0",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            },
+            {
+              "host": "aarch64-linux-gnu",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            },
+            {
+              "host": "all",
+              "url": "https://github.com/ARM-software/CMSIS_5/archive/5.4.0.tar.gz",
+              "archiveFileName": "5.4.0.tar.gz",
+              "checksum": "SHA-256:93d09907ceb23a520ef65e6b5014d2e866efa6b7f5fe5d8828b29bbc54dec697",
+              "size": "153772853"
+            }
+          ]
+        },
+        {
+          "name": "CMSIS-Atmel",
+          "version": "1.2.1",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            },
+            {
+              "host": "aarch64-linux-gnu",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            },
+            {
+              "host": "all",
+              "url": "https://github.com/adafruit/ArduinoModule-CMSIS-Atmel/releases/download/v1.2.1/CMSIS-Atmel-1.2.1.tar.bz2",
+              "archiveFileName": "CMSIS-Atmel-1.2.1.tar.bz2",
+              "checksum": "SHA-256:2f2928bcf56569913be8deb9c1712e529b75b3efc27eed81d9dfb5cb5f53de28",
+              "size": "2510904"
+            }
+          ]
+        },
+        {
+          "name": "arm-none-eabi-gcc",
+          "version": "9-2019q4",
+          "systems": [
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "http://downloads.arduino.cc/tools/gcc-arm-none-eabi-7-2019-q4-major-linuxarm.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-7-2019-q4-major-linuxarm.tar.bz2",
+              "checksum": "SHA-256:34180943d95f759c66444a40b032f7dd9159a562670fc334f049567de140c51b",
+              "size": "96613739"
+            },
+            {
+              "host": "aarch64-linux-gnu",
+              "url": "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-aarch64-linux.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-9-2019-q4-major-aarch64-linux.tar.bz2",
+              "checksum": "MD5:0dfa059aae18fcf7d842e30c525076a4",
+              "size": "128670769"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/adafruit/arduino-board-index/releases/download/build-tools/gcc-arm-none-eabi-9-2019-q4-major-win32.zip",
+              "archiveFileName": "gcc-arm-none-eabi-9-2019-q4-major-win32.zip",
+              "checksum": "MD5:9d60cbb0e358ab6a9d3c9e5dc3624dd2",
+              "size": "153520070"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-mac.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-9-2019-q4-major-mac.tar.bz2",
+              "checksum": "MD5:241b64f0578db2cf146034fc5bcee3d4",
+              "size": "116770520"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2",
+              "checksum": "MD5:fe0029de4f4ec43cf7008944e34ff8cc",
+              "size": "116802378"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "http://downloads.arduino.cc/tools/gcc-arm-none-eabi-7-2018-q2-update-linux32.tar.bz2",
+              "archiveFileName": "gcc-arm-none-eabi-7-2018-q2-update-linux32.tar.bz2",
+              "checksum": "SHA-256:090a0bc2b1956bc49392dff924a6c30fa57c88130097b1972204d67a45ce3cf3",
+              "size": "97427309"
+            }
+          ]
+        },
+        {
+          "name": "gcc-arm-none-eabi",
+          "version": "5_2-2015q4",
+          "systems": [
+            {
+              "host": "i386-apple-darwin11",
+              "checksum": "MD5:603bcce8e59683ac27054b3197a53254",
+              "size": "96372129",
+              "archiveFileName": "gcc-arm-none-eabi-5_2-2015q4-20151219-mac.tar.bz2",
+              "url": "https://github.com/adafruit/Adafruit_nRF52_Arduino/releases/download/gcc-5_2-2015q4/gcc-arm-none-eabi-5_2-2015q4-20151219-mac.tar.bz2"
+            },
+            {
+              "host": "i686-linux-gnu",
+              "checksum": "MD5:f88caac80b4444a17344f57ccb760b90",
+              "size": "92811866",
+              "archiveFileName": "gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2",
+              "url": "https://github.com/adafruit/Adafruit_nRF52_Arduino/releases/download/gcc-5_2-2015q4/gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "checksum": "MD5:f88caac80b4444a17344f57ccb760b90",
+              "size": "92811866",
+              "archiveFileName": "gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2",
+              "url": "https://github.com/adafruit/Adafruit_nRF52_Arduino/releases/download/gcc-5_2-2015q4/gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2"
+            },
+            {
+              "host": "i686-mingw32",
+              "checksum": "MD5:32d950225b6c7c886f6225c1fc578934",
+              "size": "102981732",
+              "archiveFileName": "gcc-arm-none-eabi-5_2-2015q4-20151219-win32.tar.bz2",
+              "url": "https://github.com/adafruit/Adafruit_nRF52_Arduino/releases/download/gcc-5_2-2015q4/gcc-arm-none-eabi-5_2-2015q4-20151219-win32.tar.bz2"
+            }
+          ]
+        }
+      ]
+	},
+	{
+	  "name": "P1AM-100",
+	  "maintainer": "Facts Engineering",
+	  "websiteURL": "https://github.com/facts-engineering/P1AMCore",
+      "email": "",
+      "help": {
+        "online": ""
+      },
+      "platforms":[
+		{	
+		  "name": "P1AM-100",
+		  "architecture": "samd",
+		  "version": "1.6.20",
+		  "category": "Contributed",
+		  "url": "https://github.com/facts-engineering/P1AMCore/archive/1.6.20.tar.gz",
+		  "archiveFileName": "P1AMCore-1.6.20.tar.gz",
+		  "checksum": "SHA-256:CD5D278137A7C63EB173D7701CD29C1CEDB91E95A25C5E7D980DF895E69D6AEB",
+		  "size": "4133391",
+		  "boards": [
+			{
+			  "name": "P1AM-100"
+			}
+		  ],
+		  "toolsDependencies": [
+			{
+			  "packager": "arduino",
+			  "name": "arm-none-eabi-gcc",
+			  "version": "4.8.3-2014q1"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "bossac",
+			  "version": "1.7.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "openocd",
+			  "version": "0.9.0-arduino6-static"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "CMSIS",
+			  "version": "4.5.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "CMSIS-Atmel",
+			  "version": "1.1.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "arduinoOTA",
+			  "version": "1.2.0"
+			}
+		  ]
+		},
+		{
+		  "name": "P1AM-100",
+		  "architecture": "samd",
+		  "version": "1.6.21",
+		  "category": "Contributed",
+		  "url": "https://github.com/facts-engineering/P1AMCore/archive/1.6.21.tar.gz",
+		  "archiveFileName": "P1AMCore-1.6.21.tar.gz",
+		  "checksum": "SHA-256:B569195032C4EDC12C179949C02F8110100558D65779076A5E8F72002BAECC18",
+		  "size": "4131736",
+		  "boards": [
+			{
+			  "name": "P1AM-100"
+			}
+		  ],
+		  "toolsDependencies": [
+			{
+			  "packager": "arduino",
+			  "name": "arm-none-eabi-gcc",
+			  "version": "4.8.3-2014q1"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "bossac",
+			  "version": "1.7.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "openocd",
+			  "version": "0.9.0-arduino6-static"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "CMSIS",
+			  "version": "4.5.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "CMSIS-Atmel",
+			  "version": "1.1.0"
+			},
+			{
+			  "packager": "arduino",
+			  "name": "arduinoOTA",
+			  "version": "1.2.0"
+			}
+		  ]
+		}
+	  ],
+	  "tools": []
+	}
+  ]
 }
