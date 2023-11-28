@@ -1,9 +1,12 @@
 function Category(name, moduleList) {
     this.name = name;
-    this.modules = new Array();
-    for (let i = 0; i < moduleList.length; i++) {
-        this.modules.push(moduleList[i]);
-    }
+    this.modules = moduleList;
+}
+
+function NavCategory(name, base, items) {
+    this.name = name;
+    this.base = base;
+    this.modules = items;
 }
 
 function SidebarLink(name, url) {
@@ -23,11 +26,11 @@ function SidebarLink(name, url) {
 // issues.
 
 let sidebarLinks = [
-    new SidebarLink("Home", "/"),
-	new SidebarLink("FAQs", "/faqs.html"),
-	new SidebarLink("API Reference", "/api_reference.html"),
+    new SidebarLink("Getting Started", "/"),
+    new SidebarLink("FAQs", "/faqs.html"),
+    new SidebarLink("API Reference", "/api_reference.html"),
     new SidebarLink("Module Configuration Tool", "/config.html")
-	
+
 ];
 
 // The modules array is filled with a category object for each category on the sidebar
@@ -38,16 +41,29 @@ let sidebarLinks = [
 // Example: P1-08NA_STRAIGHTON.png
 
 let modules = [
+    // new NavCategory("FAQ", "/faqs.html", [{
+    //     name: "CPUs",
+    //     link: "#cpus"
+    // }, {
+    //     name: "Arduino",
+    //     link: "#arduino"
+    // }, {
+    //     name: "CircuitPython",
+    //     link: "#circuitPy"
+    // }]),
     new Category("CPUs and Shields", [{
         name: "P1AM-100",
         imageWidth: "150px"
 	}, {
+        name: "P1AM-200",
+        imageWidth: "150px"
+	}, {
         name: "P1AM-ETH",
         imageWidth: "180px"
-	}, {
+    }, {
         name: "P1AM-GPIO",
         imageWidth: "180px"
-	}, {
+    }, {
         name: "P1AM-PROTO",
         imageWidth: "160px"
     }, {
@@ -61,14 +77,17 @@ let modules = [
         name: "P1-08ND3",
         imageWidth: "180px"
     }, {
-		name: "P1-16ND3",
+        name: "P1-16ND3",
         imageWidth: "300px"
     }, {
         name: "P1-08NE3",
         imageWidth: "300px"
-	}, {
+    }, {
         name: "P1-16NE3",
         imageWidth: "300px"
+    }, {
+        name: "P1-08ND-TTL",
+        imageWidth: "130px"
     }, {
         name: "P1-08SIM",
         imageWidth: "180px"
@@ -80,7 +99,7 @@ let modules = [
         name: "P1-08TD1",
         imageWidth: "180px"
     }, {
-		name: "P1-15TD1",
+        name: "P1-15TD1",
         imageWidth: "300px"
     }, {
         name: "P1-08TD2",
@@ -88,6 +107,9 @@ let modules = [
     }, {
         name: "P1-15TD2",
         imageWidth: "300px"
+    }, {
+        name: "P1-08TD-TTL",
+        imageWidth: "130px"
     }, {
 		name: "P1-08TRS",
         imageWidth: "200px"
@@ -106,11 +128,11 @@ let modules = [
         imageWidth: "150px"
     }]),
     new Category("Analog Input Modules", [{
-		name: "P1-04AD",
+        name: "P1-04AD",
         imageWidth: "130px"
     }, {
         name: "P1-04AD-1",
-        imageWidth: "180px"
+        imageWidth: "130px"
     }, {
         name: "P1-04ADL-1",
         imageWidth: "180px"
@@ -119,11 +141,11 @@ let modules = [
         imageWidth: "150px"
     }, {
         name: "P1-04AD-2",
-        imageWidth: "180px"
+        imageWidth: "130px"
     }, {
         name: "P1-04ADL-2",
         imageWidth: "180px"
-	}, {
+    }, {
         name: "P1-08ADL-2",
         imageWidth: "150px"
     }, {
@@ -141,7 +163,7 @@ let modules = [
         name: "P1-04DAL-1",
         imageWidth: "180px"
     }, {
-		name: "P1-08DAL-1",
+        name: "P1-08DAL-1",
         imageWidth: "140px"
     }, {
         name: "P1-04DAL-2",
@@ -160,9 +182,9 @@ let modules = [
     new Category("Specialty Modules", [{
         name: "P1-04PWM",
         imageWidth: "300px"
-	}, {
+    }, {
         name: "P1-02HSC",
-        imageWidth: "150px"	
+        imageWidth: "150px"
     }])
 ];
 
@@ -204,13 +226,13 @@ function Property(type, name, options, bytes) {
 // The options array/option is the most important part of the tool.
 // It is different for each Property type.
 
-    /***** channelEnable *****/
+/***** channelEnable *****/
 // For channelEnable Properties the "options" parameter is an object with two properties.
 // "start" and "delimeter". "start" is the beginning value of the 
 // property. "delimeter" is the increment for every extra channel
 // enabled past the start.
 
-    /***** globalProperty *****/
+/***** globalProperty *****/
 // For globalProperty Properties, the "options" parameter is an array filled with
 // objects similar to the modules array. 
 // Each object in this array has a "name" property, which is the name
@@ -220,7 +242,7 @@ function Property(type, name, options, bytes) {
 // To specify a property as the default state, add "!!!" to the beginning of
 // its name.
 
-    /***** channelProperty *****/
+/***** channelProperty *****/
 // For channelProperty Properties, the "options" parameter is an object
 // with two properties. The "values" property is an array filled with
 // objects. This is the same as the globalProperty array where each
@@ -235,7 +257,7 @@ function Property(type, name, options, bytes) {
 // In the above example, this means you would put 2100 on channel 1 and 2200
 // on channel 2.
 
-    /***** reservedField *****/
+/***** reservedField *****/
 // For reservedField Properties, the "options" parameter is just the byte in
 // the config array where the field starts. 
 

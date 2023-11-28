@@ -13,7 +13,7 @@
 		gtag('config', 'UA-157182554-1');
 	</script>
     <meta charset="utf-8">
-    <title>P1-08NE3 | P1AM Documentation</title>
+    <title>P1-08TD-TTL | P1AM Documentation</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../styles.css">
     <link rel="stylesheet" type="text/css" href="../../highlight/styles/arduino-light.css">
@@ -33,40 +33,40 @@
         <ul class="sidebar-content"></ul>
     </div>
     <div class="header">
-        <h1>P1-08NE3</h1>
-        <h2>Discrete AC/DC Input</h2>
+        <h1>P1-08TD-TTL</h1>
+        <h2>Discrete DC Output</h2>
         <div class="line"></div>
     </div>
     <div class="content">
         <div class="description">
-			<p class="start">This function returns the state of a single channel.</p>
+			<p class="start">This function writes the state of a single channel.</p>
             <div class="change-container">
                 <button class="change-cpp active">Arduino</button>
                 <button class="change-py">Python</button>
             </div>
             <div class="code-block">
-                <pre><code class="cpp">bool point = P1.readDiscrete(1,2); // Read state of slot 1 channel 2</code></pre>
-                <pre style="display: none;"><code class="py">point = base[1][2].value # Read state of slot 1 channel 2</code></pre>
+                <pre><code class="cpp">P1.writeDiscrete(HIGH,1,2); // Turn on slot 1 channel 2</code></pre>
+                <pre style="display: none;"><code class="py">base[1][2].value = 1 # Turn on slot 1 channel 2</code></pre>
             </div>
-            <p class="start">This function returns the state of all 8 channels. It would return 0x7F if channels 1-7 are on.</p>
+            <p class="start">This function writes the state of all 8 channels. It turns channels 1-7 on and turns channel 8 off.</p>
             <div class="change-container">
                 <button class="change-cpp active">Arduino</button>
                 <button class="change-py">Python</button>
             </div>
             <div class="code-block">
-                <pre><code class="cpp">uint8_t allPoints = P1.readDiscrete(1); // Read state of all channels for slot 1</code></pre>
-                <pre style="display: none;"><code class="py">allPoints = base[1].di_bitmapped() # Read state of all channels for slot 1</code></pre>
+                <pre><code class="cpp">P1.writeDiscrete(0x7F, 1); // Write state of all channels for slot 1</code></pre>
+                <pre style="display: none;"><code class="py">base[1].do_bitmapped(0x7F) # Write state of all channels for slot 1</code></pre>
             </div>
         </div>
         <div class="compatible">
             <ul class="cpp-content">
-                <h3>Compatible Functions</h3>
-                <div class="line"></div>
-                <ul>
-                    <li><a href="/api_reference.html#readDiscrete">P1.readDiscrete()</a></li>
-                </ul>
+            <h3>Compatible Functions</h3>
+            <div class="line"></div>
+            <ul>
+                <li><a href="/api_reference.html#writeDiscrete">P1.writeDiscrete()</a></li>
             </ul>
-            <ul class="python-content">
+        </ul>
+        <ul class="python-content">
                 <h3>Properties and Methods</h3>
                 <div class="line"></div>
                 <br>
@@ -77,37 +77,38 @@
                                                                 ch = module[2] # Channel 2
                     </code></pre>
                 </div>
+
                 <!-- Channel -->
                 <li><a href="/api_reference.html#value">ch.value</a></li>
                 <!-- Module -->
                 <li><a href="/api_reference.html#values">module.values</a></li>
-                <li><a href="/api_reference.html#diBitmapped">module.di_bitmapped()</a></li>
+                <li><a href="/api_reference.html#doBitmapped">module.do_bitmapped()</a></li>
                 <!-- Base -->
-                <li><a href="/api_reference.html#pyBaseReadDiscrete">base.readDiscrete()</a></li>
+                <li><a href="/api_reference.html#pyBaseWriteDiscrete">base.writeDiscrete()</a></li>
             </ul>
         </div>
         <div class="status">
             <h3>Module Configuration and Status Tables</h3>
             <div class="line"></div>
-			<p>This module does not provide any status data and does not require configuration.</p>
+            <p>This module does not provide any status data and does not require configuration.</p>
         </div>
         <div class="image-box">
-            <img src="P1-08NE3_STRAIGHTON.png">
+            <img src="P1-08TD-TTL_STRAIGHTON.png">
             <div class="line"></div>
-            <p><b>Channels: </b>8<br>
-			<b>Discrete Input Type: </b> Sinking or Sourcing<br>
-                <b>Rated Input Voltage: </b>24 VAC/VDC<br>
-                <b>Examples: </b>
+			<p><b>Channels: </b>8<br>
+            <b>Discrete Output Type: </b>Sourcing<br>
+                <b>Rated Output Voltage: </b>3.3–5 VDC<br>
+                <b>Example: </b>
                 <br>
-                <a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/DiscreteInput/DiscreteInput.ino">Arduino</a>
+                <a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/DiscreteOutput/DiscreteOutput.ino">Arduino</a>
                 <br>
-                <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/discrete_input.py">CircuitPython</a>
+                <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/discrete_ouput.py">CircuitPython</a>
             </p>
 			
 			<p><b>Additional Resources: </b><br>
-            <a href="https://cdn.automationdirect.com/static/specs/P1-08NE3.pdf">Data Sheet<br></a>
+            <a href="https://cdn.automationdirect.com/static/specs/P1-08TD-TTL.pdf">Data Sheet<br></a>
             <a
-                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/industrial_i-z-o_(p1k)/p1-08NE3">P1-08NE3 on AutomationDirect.com</a>
+                href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/industrial_i-z-o_(p1k)/p1-08TD-TTL">P1-08TD-TTL on AutomationDirect.com</a>
 			</p>
 		</div>
     </div>

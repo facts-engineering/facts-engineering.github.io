@@ -30,7 +30,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a id="title" href="/index.html">P1AM</a>
         </div>
         <ul class="sidebar-content"></ul>
     </div>
@@ -43,44 +43,112 @@
         <div class="description">
 			<h4>Input Functions</h4>
             <p>This module can read the voltage of four different input signals.</p>
+            <!-- code block toggle div -->
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
+            </div>
+            <!-- code block container -->
             <div class="code-block">
                 <pre><code class="cpp">int inputCounts = P1.readAnalog(1, 2); //set the value of slot 1 channel 2 returned by the readAnalog function to the variable inputCounts
 				float inputVolts = 10 * ((float)inputCounts / 8191); //converts the value of inputCounts to float with the units V</code></pre>
+
+                <pre style="display: none;"><code class="py">digitalReading = base[1].inputs[2].value   #store the digital value of slot 1 input channel 2
+                    analogReading = base[1].inputs[2].real  #store the analog value of slot 1 input channel 2 with the units V</code></pre>
             </div>
 			<h4>Output Functions</h4>
-            <p> This function sends the voltage to be output by the channel as an integer value in counts.</p>
+            <p>This module can output two different signals with variable voltage.</p>
+            <p class="cpp-content"> This example sends the current to be output by the channel as an integer value in counts.</p>
+            <p class="python-content"> This example sends the current to be output by the channel 1 as an integer value in counts and channel 2 in V using reals.</p>
+            <!-- code block toggle div -->
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
+            </div>
+            <!-- code block container -->
             <div class="code-block">
                 <pre><code class="cpp">int outputCounts = 0;    //variable outputCounts is the output value
-				P1.writeAnalog(outputCounts, 1, 2); // Writes to slot 1 channel 2 of the P1-04DAL-2 </code></pre>
+				P1.writeAnalog(outputCounts, 1, 2); // Writes to slot 1 channel 2 of the P1-04DAL-1</code></pre>
+
+                <pre style="display: none;"><code class="py">base[1].outputs[1].value = 2048   #set slot 1 output channel 1 to output ~5V using counts
+                    base[1].outputs[2].real = 3.3   #set slot 1 output channel 2 to output ~3.3V using reals</code></pre>
             </div>
         </div>
-        <div class="compatible">
+        <div class="compatible cpp-content">
             <h3>Compatible Functions</h3>
             <div class="line"></div>
             <ul>
                 <li>
-                    <a href="/api_reference.html#readAnalog">P1.readAnalog()</a>
+					<a href="/api_reference.html#readAnalog">P1.readAnalog()</a>
                 </li>
 				<li>
-                    <a href="/api_reference.html#writeAnalog">P1.writeAnalog()</a>
+					<a href="/api_reference.html#writeAnalog">P1.writeAnalog()</a>
                 </li>
                 <li>
-                    <a href="/api_reference.html#configureModule">P1.configureModule()</a>
+					<a href="/api_reference.html#configureModule">P1.configureModule()</a>
                 </li>
                 <li>
-                    <a href="/api_reference.html#readModuleConfig">P1.readModuleConfig()</a>
+					<a href="/api_reference.html#readModuleConfig">P1.readModuleConfig()</a>
                 </li>
                 <li>
-                   <a href="/api_reference.html#check24V">P1.check24V()</a>
+					<a href="/api_reference.html#check24V">P1.check24V()</a>
                 </li>
                 <li>
-                    <a href="/api_reference.html#checkUnderRange">P1.checkUnderRange()</a>
+					<a href="/api_reference.html#checkUnderRange">P1.checkUnderRange()</a>
                 </li>
                 <li>
-                    <a href="/api_reference.html#checkOverRange">P1.checkOverRange()</a>
+					<a href="/api_reference.html#checkOverRange">P1.checkOverRange()</a>
                 </li>
                 <li>
-                    <a href="/api_reference.html#readStatus">P1.readStatus()</a>
+					<a href="/api_reference.html#readStatus">P1.readStatus()</a>
+                </li>
+            </ul>
+        </div>
+        <div class="compatible python-content">
+            <h3>Properties and Methods</h3>
+            <div class="line"></div>
+            <br>
+            <div class="code-block">
+                <pre style="display: none;"><code class="py">import P1AM
+                                                            base = P1AM.Base()
+                                                            module = base[1] # Slot 1
+                                                            ch_in = module.inputs[2] # Input Channel 2
+                                                            ch_out = module.outputs[3] # Output Channel 3
+                </code></pre>
+            </div>
+            <ul>
+                <li>
+                    <a href="/api_reference.html#value">ch.value</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#real">ch.real</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#underRange">ch.under_range</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#overRange">ch.over_range</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#input_values">module.input_values</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#inputReals">module.input_reals</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#output_values">module.output_values</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#outputReals">module.output_reals</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#missing24">module.missing24</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#pyBaseReadAnalog">base.readAnalog()</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#pyBaseWriteAnalog">base.writeAnalog()</a>
                 </li>
             </ul>
         </div>
@@ -343,13 +411,22 @@
             <div class="line"></div>
             <p><b>Channels: </b>4<br>
 			<b>Input Range: </b>0-10V<br>
-                <b>Resolution: </b>13 bit (0-8191)<br><br>
+            <b>Resolution: </b>13 bit (0-8191)<br>
+            <b>Examples: </b>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogInput/AnalogInput.ino">Arduino</a>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/analog_input.py">CircuitPython</a>
+                
+            <br><br>
 			<b>Channels: </b>2<br>
 			<b>Output Range: </b>0-10V<br>
 				<b>Resolution: </b>12 bit (0-4095)<br>
-                <b>Example: </b>
-				<a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogInput/AnalogInput.ino">AnalogInput</a><br>
-				<a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogOutput/AnalogOutput.ino">AnalogOutput</a>
+                <b>Examples: </b>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/AnalogOutput/AnalogOutput.ino">Arduino</a>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/analog_output.py">CircuitPython</a>
             </p>
 			<p><b>Additional Resources: </b><br>
             <a href="https://cdn.automationdirect.com/static/specs/P1-4ADL2DAL-2.pdf">Data Sheet<br></a>
