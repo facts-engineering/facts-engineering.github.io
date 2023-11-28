@@ -30,7 +30,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a id="title" href="/index.html">P1AM</a>
         </div>
         <ul class="sidebar-content"></ul>
     </div>
@@ -42,22 +42,31 @@
     <div class="content">
         <div class="description">
             <p> This function returns the temperature reported by the channel as a floating point value.</p>
-            <div class="code-block">
-                <pre><code class="cpp">float temperature = P1.readTemperature(1, 2); // Reads slot 1 channel 2 of the P1-04THM </code></pre>
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
             </div>
-            <p><i>Note: While this module can be used for voltage inputs, you still need to use the "readTemperature"
-                    function as the voltage is reported as a floating point number.</i></p>
+                <div class="code-block">
+                    <pre><code class="cpp">float temperature = P1.readTemperature(1, 2); // Reads slot 1 channel 2 of the P1-04THM</code></pre>
+                    <pre style="display: none;"><code class="py">temperature = base[1][2].value # Read slot 1 channel 2 of the P1-04THM</code></pre>
+                </div>
+            </ul>
+            <ul class="cpp-content">
+                <p><i>Note: While this module can be used for voltage inputs, you still need to use the "readTemperature"
+                        function as the voltage is reported as a floating point number.
+                </i></p>
+            </ul>
         </div>
         <div class="config">
             <h3>Configuration Tool</h3>
             <div class="line"></div>
         </div>
         <div class="compatible">
-            <h3>Compatible Functions</h3>
-            <div class="line"></div>
-            <ul>
+            <ul class="cpp-content">
+                <h3>Compatible Functions</h3>
+                <div class="line"></div>
                 <li>
-					<a href="/api_reference.html#readTemperature">P1.readTemperature()</a>
+                    <a href="/api_reference.html#readTemperature">P1.readTemperature()</a>
                 </li>
                 <li>
                     <a href="/api_reference.html#configureModule">P1.configureModule()</a>
@@ -72,10 +81,53 @@
                     <a href="/api_reference.html#checkOverRange">P1.checkOverRange()</a>
                 </li>
                 <li>
-					<a href="/api_reference.html#checkBurnout">P1.checkBurnout()</a>
+                    <a href="/api_reference.html#checkBurnout">P1.checkBurnout()</a>
                 </li>
                 <li>
                     <a href="/api_reference.html#readStatus">P1.readStatus()</a>
+                </li>
+            </ul>
+
+            <ul class="python-content">
+                <h3>Properties and Methods</h3>
+                <div class="line"></div>
+                <br>
+                <div class="code-block">
+                    <pre style="display: none;"><code class="py">import P1AM
+                                                                base = P1AM.Base()
+                                                                module = base[1] # Slot 1
+                                                                ch = module[2] # Channel 2
+                    </code></pre>
+                </div>
+                <!-- Channel -->
+                <li>
+                    <a href="/api_reference.html#value">ch.value</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#burnout">ch.burnout</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#underRange">ch.under_range</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#overRange">ch.over_range</a>
+                </li>
+                <!-- Module -->
+                <li>
+                    <a href="/api_reference.html#values">module.values</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#input_values">module.input_values</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#not_ready">module.not_ready</a>
+                </li>
+                <li>
+                    <a href="/api_reference.html#configure_module">module.configure_module()</a>
+                </li>
+                <!-- Base -->
+                <li>
+                    <a href="/api_reference.html#pyBaseReadTemperature">base.readTemperature()</a>
                 </li>
             </ul>
         </div>
@@ -589,9 +641,11 @@
                 <b>Voltage Ranges: </b>0-39.0625 mVDC, ±39.0625 mVDC, ±78.125 mVDC, 0-156.25 mVDC, ±156.25 mVDC, 0-1250
                 mVDC.<br>
             <b>Resolution: </b>Temperature: ±0.1 °C or °F Voltage: 16 bit (Formatted as a float)<br>
-                <b>Example: </b><a
-                    href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/ReadTemperature/ReadTemperature.ino">ReadTemperature</a></p>
-               <p><b>Additional Resources: </b><br>
+            <b>Examples: </b>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/ReadTemperature/ReadTemperature.ino">Arduino</a>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/read_temperature.py">CircuitPython</a><p><b>Additional Resources: </b><br>
             <a href="https://cdn.automationdirect.com/static/specs/P1-04THM.pdf">Data Sheet<br></a>
             <a
                 href="https://www.automationdirect.com/adc/shopping/catalog/programmable_controllers/open_source_controllers_(arduino-compatible)/productivityopen_(arduino-compatible)/industrial_i-z-o_(p1k)/p1-04thm">P1-04THM

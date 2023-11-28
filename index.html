@@ -25,7 +25,7 @@
 <body>
 	<div class="sidebar">
 		<div class="sidebar-header">
-			<a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+			<a id="title" href="/index.html">P1AM</a>
 		</div>
 		<ul class="sidebar-content"></ul>
 	</div>
@@ -35,30 +35,123 @@
 	</div>
 
 	<div class="content">
+		<!--Overview ------------------------------------------------------->
 		<h2>
-			Overview and Installation
+			Overview
 		</h2>
-		<p>The ProductivityOpen P1AM-100 is an automation platform compatible with Productivity1000
-			Series I/O modules, P1AM Series shields, and Arduino MKR format shields. It can be
-			programmed using the Arduino IDE. The board uses the SAMD21G18 Microcontroller like the
-			Arduino MKRZERO and other similar boards.
+		<p>The ProductivityOpen P1AM is an automation platform compatible with Productivity1000
+			Series I/O modules, P1AM Series shields, and Arduino MKR format shields.
 		</p>
-
-		<p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the
-			<a href="https://www.arduino.cc/en/main/software">Arduino website</a>.
-			After you have installed the Arduino IDE you will need to follow one of the library install
-			methods and the boards manager install instructions to get started with the P1AM-100.
+		<p><strong>P1AM-100:</strong> This board uses the SAMD21G18 Microcontroller like the
+			Arduino MKRZERO and other similar boards. It can be programmed in C/C++ using the Arduino IDE.
 		</p>
+		<p><strong>P1AM-200:</strong> This board uses the ATSAMD51P20 Microcontroller like the
+			Adafruit Grand Central M4. It can be programmed in CircuitPython using a 
+			<a href="https://learn.adafruit.com/welcome-to-circuitpython/recommended-editors"> compatible text editor like Microsoft VS Code</a> or in C/C++ 
+			using the Arduino IDE. 
+            <li>To change from programming in CircuitPython to Arduino, simply upload any program to the P1AM-200 using the Arduino IDE.</li>
+            <li>To change from programming in Arduino to CircuitPython, double tap the reset button and drag the .uf2 file into the P1AM200BOOT drive. It will reset and boot into CircuitPython.</li>
 
-		<p>
-			This installation process will require an internet connection throughout. If you need
+		</p>
+		<!--P1AM-100 Getting Started ------------------------------------------------------->
+		<div class="line"></div>
+		<h2>
+			Arduino Getting Started
+		</h2>
+		<div class="line"></div>
+		<p><strong>Arduino IDE Setup</strong></p>
+		<div class="installList">
+			<ul>
+				<li>Follow the <a href="#arduino-ide-setup">Arduino IDE Setup</a> process to install the board core and library in the Arduino IDE.</li>
+			</ul>
+		</div>
+		<p><strong>Select the Board and Port</strong></p>
+		<div class="installList">
+			<ul>		
+				<li>Connect the P1AM-CPU to the PC using a microUSB cable.<br>
+				</li>
+				<li>Select the board: <div class="textBlock">Tools &gt; Board &gt; P1AM-100 or P1AM-200</div>.</li>
+				<li>Select the port: <div class="textBlock">Tools &gt; Port &gt; P1AM-100 or P1AM-200</div>.</li>
+			</ul>
+		</div>
+		<p><strong>Select and Upload Blink Program</strong></p>
+		<div class="installList">
+			<ul>
+				<li>Select the Blink program: <div class="textBlock">File &gt; Examples &gt; Basics &gt; Blink</div> This program will blink the yellow LED.</li>
+				<li>Upload the program by clicking on the round icon with a right arrow on the top bar.</li>
+				<li>After the program has been uploaded, the yellow LED will blink on and off every second.</li>
+			</ul>
+		</div>
+		<p><strong>P1AM Library Examples and API</strong></p>
+		<div class="installList">
+			<ul>
+				<li>The P1AM Library examples are located in <div class="textBlock">File &gt; Examples &gt; P1AM</div></li>
+				<li>It is recommended to take a look at the basic examples to become familiar with the 
+					<a href="https://facts-engineering.github.io/api_reference.html">P1AM library API</a> to control module I/O<br>
+					<strong>NOTE: The P1AM library only controls the module I/O(right side).</strong></li>
+			</ul>
+		</div>
+		<!--P1AM-200 Getting Started ------------------------------------------------------->
+		<div class="line"></div>
+		<h2>
+			CircuitPython Getting Started
+		</h2>
+		<div class="line"></div>
+
+		<p>To program in CircuitPython only a text editor is required. It is recommended to use <a href="https://code.visualstudio.com/">Microsoft VS Code</a> for programming in CircuitPython. Other supported IDEs can be found
+			<a href="https://learn.adafruit.com/welcome-to-circuitpython/recommended-editors">here</a>.
+		</p>
+		<p><strong>Updating the Board Libraries</strong></p>
+		<p>The P1AM-200 arrives will all libraries needed to use the board. However, it is recommended to update the libraries to the latest version.
+		</p>
+		<div class="installList">
+			<ul>
+				<li>Connect the P1AM-200 to your PC using a microUSB cable.</li>
+				<li>A new drive should appear on your PC called <span class="textBlock">CIRCUITPY</span></li>
+				<li>To update the libraries grab the latest bundle from <a href="">PLACEHOLDER</a></li>
+                <li>Extract the contents of the bundle to the <span class="textBlock">lib</span> directory on the  <span class="textBlock">CIRCUITPY</span> drive.</li>
+			</ul>
+		</div>
+
+		<p><strong>The CircuitPython Drive</strong></p>
+        <p>CircuitPython boards will enumerate as a USB Mass Storage Device named <span class="textBlock">CIRCUITPY</span>. This drive can be viewed with your operating systems file explorer and files can be opened in any supported text editor.
+            <br>Below are some important files and directories and their purpose.
+        </p>
+		<div class="installList">
+			<ul>
+				<li><strong>code.py:</strong> This is the program that CircuitPython will execute on power-up.</li>
+				<li><strong>lib: </strong> This directory contains libraries that can be imported into the application. Any downloaded library source should be placed in this folder to be used.</li>
+				<li><strong>examples: </strong> This directory contains all example programs for the included libraries.</li>
+			</ul>
+		</div>
+        <p><strong>Serial Console</strong></p>
+		<div class="installList">
+            <p>CircuitPython boards will enumerate as a USB Serial Device. This can be used to interface with running programs or use the device with the REPL command line.
+                <br> Below are some common keyboard commands to interact with the REPL.
+            </p>
+			<ul>
+				<li><span class="textBlock">CTRL + C</span> - Stop the current executing program. Hit any key to enter the REPL.</li>
+                <li><span class="textBlock">CTRL + D</span> - Soft reboot the board and start running code.py.</li>
+			</ul>
+		</div>		
+
+
+		<!--Arduino IDE Setup -------------------------------------------------------------->
+		<div class="line"></div>
+		<a id="arduino-ide-setup"></a>
+		<h2 id="p1am-100-library-install">Arduino IDE Setup</h2>
+		<div class="line"></div>
+		<p><strong>Important Note: </strong>
+			This installation process will require an internet connection. If you need
 			an alternative install method for PCs not connected to the internet or with other restrictions,
 			please follow the directions at <a href="https://facts-engineering.github.io/faqs.html#offline">this
 				link.</a>
 		</p>
-		<div class="line"></div>
-		<h3 id="p1am-100-library-install">P1AM-100 Library Install</h3>
-		<p><strong>Install From Library Manager</strong> </p>
+
+		<p>Install the most recent Arduino IDE version 2.x.x or later.
+			<a href="https://www.arduino.cc/en/main/software">Arduino website</a>.
+		</p>
+		<p><strong>Install From Library Manager</strong></p>
 		<div class="installList">
 			<ul>
 				<li>In the Arduino IDE go to <div class="textBlock">Sketch &gt; Include Library &gt; Manage Libraries
@@ -69,9 +162,7 @@
 				</li>
 			</ul>
 		</div>
-		<p><strong><em>*** OR ***</em></strong></p>
-
-		<p><strong>Install From Zip</strong></p>
+		<p><strong>Manual Library Install</strong></p>
 		<div class="installList">
 			<ul>
 				<li>Click the green button that says <strong>Clone or download</strong>
@@ -94,31 +185,27 @@
 					them with commas.</li>
 				<li>Open the Boards Manager from <div class="textBlock">Tools &gt; Board &gt; Boards Manager</div>
 				</li>
-				<li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform
+				<li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM</strong> platform
 				</li>
-				<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100</div>
+				<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100 or P1AM-200</div>
 				</li>
-				<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port for your P1AM-100</li>
+				<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port for your P1AM-CPU</li>
 			</ul>
 			Boards manager link:<br>
 			<div id="boardLink" class="textBlock">
 				https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json
 			</div>
 
-			<h3 id="driver-installation">Driver Installation</h3>
-			<p>For Windows users it is required that you install the device driver for the P1AM-100. For Windows 10 it
-				is recommended that it is installed.
+			<h3 id="driver-installation">P1AM-100 Driver Installation</h3>
+			<p>If you are having issues with the USB being discovered or not showing up correctly, installing the device driver may fix the issue.
 				<div class="installList">
 					<ul>
-						<li><a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download the
-								driver installer here.</a></li>
-						<li>Extract the .zip file to your PC</li>
-						<li>Unplug any P1AM-100 systems from your PC</li>
-						<li>Run <b>P1AM-100_install.bat</b> and follow the prompts to install the driver</li>
+						<li>Download the driver installer <a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">here</a>.</li>
+						<li>Extract the .zip file to your PC.</li>
+						<li>Unplug any P1AM-100 systems from your PC.</li>
+						<li>Run <b>P1AM-100_install.bat</b> and follow the prompts to install the driver.</li>
 					</ul>
 				</div>
-
-
 			</p>
 			<br>
 			<div class="line"></div>
@@ -130,6 +217,9 @@
 				<li><a href="https://www.automationdirect.com/adc/home/home">AutomationDirect Webstore</a></li>
 				<li><a href="https://www.arduino.cc/en/Guide/HomePage">Arduino Getting Started</a></li>
 				<li><a href="https://forum.arduino.cc/index.php">Arduino Forum</a></li>
+				<li><a href="https://learn.adafruit.com/welcome-to-circuitpython/welcome-to-the-community">Adafruit's CircuitPython Introduction</a></li>
+                <li><a href="http://adafru.it/discord">Adafruit Support Discord</a></li>
+                <li><a href="https://discord.com/invite/jQJFwW7">Arduino Support Discord</a></li>
 			</ul>
 
 		</div>

@@ -30,7 +30,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a id="title" href="/index.html">P1AM</a>
         </div>
         <ul class="sidebar-content"></ul>
     </div>
@@ -42,48 +42,101 @@
     <div class="content">
         <div class="description">
             <p>The P1-02HSC High-Speed Input Module provides
-				two independent single ended 5–24 VDC inputs
+				two independent single ended 5-24 VDC inputs
 				that accept up to 100kHz of pulse/direction and
 				quadrature signals.</p>
-            <div class="code-block">
-                <pre><code class="cpp">int channelOneCounts = HSC.CNT1.readPosition(); // Returns current position of channel 1
-				</code></pre>
+
+            <!-- code block toggle div -->
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
             </div>
-			<p>There are many P1-02HSC examples available. Please open them from the specialty module section of examples in the Arduino IDE
-			or view them online
-				<a href=https://github.com/facts-engineering/P1AM/tree/master/examples/SpecialtyModules/HSC>on GitHub.</a>
-            </p>
+            <!-- code block container -->
+            <div class="code-block">
+                <!-- cpp code block -->
+                <pre><code class="cpp">int channelOneCounts = HSC.CNT1.readPosition(); // Returns current position of channel 1</code></pre>
+                <!-- python code block, ensure 'style="display: none;"' is in the pre tag and 'class="py"' is in the code tag -->
+                <pre style="display: none;"><code class="py">counts = hsc[1].position # Returns current position of slot 1 channel 1</code></pre>
+            </div>
+            <!-- end code block -->
         </div>
 
 		<div class="hscConfig">
             <h3>Configuration</h3>
             <div class="line"></div>
-			<p><i> The P1-02HSC is a highly configurable specialty module. Because of this it is configured through custom functions  
-			unlike other P1000 I/O modules. "HSC.configureChannels();" must be called to write any new configuration settings to the P1-02HSC. </i></p>
-			<div class="code-block">
-				<pre><code class="cpp"> HSC.CNT1.isRotary = false;
-				  HSC.CNT1.enableZReset = false;
-				  HSC.CNT1.inhibitOn = false; //oneZ, threeIn, twoZ, fourIn
-				  HSC.CNT1.mode = stepDirection;  //quad4x, quad1x
-				  HSC.CNT1.polarity = positiveDirection;  //negativeDirection
-				  
-				  HSC.CNT2.isRotary = false;
-				  HSC.CNT2.enableZReset = false;
-				  HSC.CNT2.inhibitOn = false; //oneZ, threeIn, twoZ, fourIn
-				  HSC.CNT2.mode = stepDirection;  //quad4x, quad1x
-				  HSC.CNT2.polarity = positiveDirection;  //negativeDirection
-				  
-				  HSC.configureChannels();  //Load settings into HSC module. Leave argument empty to use default CNT1 and CNT2 
-	  
-				</code></pre>
-			</div>
+			
+            <ul class="cpp-content">
+                <p><i> The P1-02HSC is a highly configurable specialty module. Because of this it is configured through custom functions  
+                    unlike other P1000 I/O modules. "HSC.configureChannels();" must be called to write any new configuration settings to the P1-02HSC. </i></p>
+            </ul>
+            <!-- put class="python-content" in any element you want to hide when "Arduino" is selected -->
+            <ul class="python-content">
+                    <p>
+                    </p>
+                </li>
+
+            </ul>
+
+             <!-- code block toggle div -->
+             <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
+            </div>
+            <!-- code block container -->
+            <div class="code-block">
+                <!-- cpp code block -->
+                <pre><code class="cpp">HSC.CNT1.isRotary = false;
+                    HSC.CNT1.enableZReset = false;
+                    HSC.CNT1.inhibitOn = false; //oneZ, threeIn, twoZ, fourIn
+                    HSC.CNT1.mode = stepDirection;  //quad4x, quad1x
+                    HSC.CNT1.polarity = positiveDirection;  //negativeDirection
+                    
+                    HSC.CNT2.isRotary = false;
+                    HSC.CNT2.enableZReset = false;
+                    HSC.CNT2.inhibitOn = false; //oneZ, threeIn, twoZ, fourIn
+                    HSC.CNT2.mode = stepDirection;  //quad4x, quad1x
+                    HSC.CNT2.polarity = positiveDirection;  //negativeDirection
+                    
+                    HSC.configureChannels();  //Load settings into HSC module. Leave argument empty to use default CNT1 and CNT2 
+                </code></pre>
+                <!-- python code block, ensure 'style="display: none;"' is in the pre tag and 'class="py"' is in the code tag -->
+                <pre style="display: none;"><code class="py">hsc = base[1] # P1-02HSC in slot 1
+                    cnt1 = hsc[1] # Channel 1
+                    cnt1.is_rotary = False
+                    cnt1.enable_z_reset = False
+                    cnt1.inhibit_on_input = None # "1z", "3in", "2z", "4in"
+                    cnt1.counting_mode = "step_direction" # "quadrature_4x", "quadrature_1x"
+                    cnt1.positive_polarity = True # False
+
+                    cnt2 = hsc[2] # Channel 2
+                    cnt2.is_rotary = False
+                    cnt2.enable_z_reset = False
+                    cnt2.inhibit_on_input = None # "1z", "3in", "2z", "4in"
+                    cnt2.counting_mode = "step_direction" # "quadrature_4x", "quadrature_1x"
+                    cnt2.positive_polarity = True # False
+
+                    # Channel settings are automatically applied
+                </code></pre>
+            </div>
+            <!-- end code block -->
         </div>
-     
+
+        <div class="compatible">
             <h3>Compatible Functions</h3>
             <div class="line"></div>
-            <p>Check out how to use the HSC functions through the examples included with the P1AM library. Find them in specialty module section of examples in the Arduino IDE
-			or view them online <a href=https://github.com/facts-engineering/P1AM/tree/master/examples/SpecialtyModules/HSC>on GitHub.</a>
-            </p>
+            <!-- put class="cpp-content" in any element you want to hide when "Python" is selected -->
+            <ul class="cpp-content">
+                <p>Check out how to use the HSC functions through the examples included with the P1AM Arduino and CircuitPython library.</a>
+                </p>
+            </ul>
+            <!-- put class="python-content" in any element you want to hide when "Arduino" is selected -->
+            <ul class="python-content">
+                    <p>Check out how to use the HSC functions through the examples included with the P1AM CircuitPython library. Find them in specialty module section of examples in the Arduino IDE
+                    or view them online <a href=https://github.com/facts-engineering/P1AM-Circuitpython/tree/master/examples/HSC>on GitHub.</a>
+                    </p>
+            </ul>
+        </div>
+                 
 
         <div class="image-box">
             <img src="P1-02HSC_STRAIGHTON.png">
@@ -92,10 +145,13 @@
 			<b>General Purpose inputs: </b>2<br>
 			<b>Output Type: </b>Open Drain Sinking or Sourcing<br>
             <b>Rated Voltage: </b>5-24V<br>
-                <b>Example: </b><a
-                    href=https://github.com/facts-engineering/P1AM/blob/master/examples/SpecialtyModules/HSC/ReadPosition/ReadPosition.ino>ReadPosition</a>
+            <b>Examples: </b>
+            <br>
+            <a href=https://github.com/facts-engineering/P1AM/blob/master/examples/SpecialtyModules/HSC/ReadPosition/ReadPosition.ino>Arduino</a>
+            <br>
+            <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/HSC/hsc_read_position.py">CircuitPython</a>
             </p>
-
+            
 			<p><b>Additional Resources: </b><br>
             <a href="https://cdn.automationdirect.com/static/specs/P1-02HSC.pdf">Data Sheet<br></a>
             <a

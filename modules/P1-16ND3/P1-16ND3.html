@@ -28,7 +28,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a id="title" href="/index.html">P1AM</a>
         </div>
         <ul class="sidebar-content"></ul>
     </div>
@@ -40,19 +40,50 @@
     <div class="content">
         <div class="description">
 			<p class="start">This function returns the state of a single channel.</p>
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
+            </div>
             <div class="code-block">
                 <pre><code class="cpp">bool point = P1.readDiscrete(1,2); // Read state of slot 1 channel 2</code></pre>
+                <pre style="display: none;"><code class="py">point = base[1][2].value # Read state of slot 1 channel 2</code></pre>
             </div>
 			<p class="start">This function returns the state of all 16 channels. It would return 0x7FFF if channels 1-15 are on.</p>
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
+            </div>
             <div class="code-block">
                 <pre><code class="cpp">uint16_t allPoints = P1.readDiscrete(1); // Read state of all channels for slot 1</code></pre>
+                <pre style="display: none;"><code class="py">allPoints = base[1].di_bitmapped() # Read state of all channels for slot 1</code></pre>
             </div>
         </div>
         <div class="compatible">
-            <h3>Compatible Functions</h3>
-            <div class="line"></div>
-            <ul>
-                <li><a href="/api_reference.html#readDiscrete">P1.readDiscrete()</a></li>
+            <ul class="cpp-content">
+                <h3>Compatible Functions</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="/api_reference.html#readDiscrete">P1.readDiscrete()</a></li>
+                </ul>
+            </ul>
+            <ul class="python-content">
+                <h3>Properties and Methods</h3>
+                <div class="line"></div>
+                <br>
+                <div class="code-block">
+                    <pre style="display: none;"><code class="py">import P1AM
+                                                                base = P1AM.Base()
+                                                                module = base[1] # Slot 1
+                                                                ch = module[2] # Channel 2
+                    </code></pre>
+                </div>
+                <!-- Channel -->
+                <li><a href="/api_reference.html#value">ch.value</a></li>
+                <!-- Module -->
+                <li><a href="/api_reference.html#values">module.values</a></li>
+                <li><a href="/api_reference.html#diBitmapped">module.di_bitmapped()</a></li>
+                <!-- Base -->
+                <li><a href="/api_reference.html#pyBaseReadDiscrete">base.readDiscrete()</a></li>
             </ul>
         </div>
         <div class="status">
@@ -66,8 +97,11 @@
             <p><b>Channels: </b>16<br>
 			<b>Discrete Input Type: </b> Sinking or Sourcing<br>
                 <b>Rated Input Voltage: </b>12-24 VDC<br>
-                <b>Example: </b><a
-                    href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/DiscreteInput/DiscreteInput.ino">DiscreteInput</a>
+                <b>Examples: </b>
+                <br>
+                <a href="https://github.com/facts-engineering/P1AM/blob/master/examples/Basic/DiscreteInput/DiscreteInput.ino">Arduino</a>
+                <br>
+                <a href="https://github.com/facts-engineering/P1AM-CircuitPython/tree/master/examples/discrete_input.py">CircuitPython</a>
             </p>
 			
 			<p><b>Additional Resources: </b><br>

@@ -30,7 +30,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
+            <a id="title" href="/index.html">P1AM</a>
         </div>
         <ul class="sidebar-content"></ul>
     </div>
@@ -49,62 +49,80 @@
 			</p>
         </div>
 
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
+            </div>
+                <div class="code-block">
+                    <pre><code class="cpp">PORT1_RS232_BEGIN(115200);
+                        Port1.println("Hello Port 1!");
+                    </code></pre>
+                    <pre style="display: none;"><code class="py">port1 = busio.UART(board.TX1, board.RX1, baudrate=115200)
+                        port1.print(b"Hello Port 1!\n")</code></pre>
+                </div>
+
         
         <div class="compatible">
             <h3>General Usage</h3>
-            <div class="line"></div>
-            <p>
-                <b>The code snippets below require the P1AM_Serial library. Use of the P1AM-Serial library requires version 1.6.21 or greater of the P1AM-100 in the Arduino boards manager.</b><br><br>
-            </p>
-
-             <p>When using the P1AM Serial with a custom protocol, i.e. writing data directly to the port, use the function below
-                that corresponds to the port and mode you are using to configure the port.
-
-                Baudrate and other settings can be configured the same way as the standard Arduino Serial library. For a list of all configuration options
-                <a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/begin/">click here</a>.
-
-             </p>   
-                <ul>
-                <li><b>PORT1_RS485_BEGIN()</b></li>
-                <li><b>PORT1_RS232_BEGIN()</b></li>
-                <li><b>PORT2_RS485_BEGIN()</b></li>
-                <li><b>PORT2_RS232_BEGIN()</b></li>
-                </ul>
-                
-            <p>
-            <p>Once the port is configured, use the <code>Port1</code> and <code>Port2</code> objects to interact with the ports.</p>   
-
-            </p> 
-            <div class="code-block">
-                <pre><code class="cpp">// Configure both ports for RS485 at 9600 baud, 8 data bits, no parity, 1 stop bit
-                    PORT1_RS485_BEGIN(9600, SERIAL_8N1); 
-                    PORT2_RS485_BEGIN(9600);// 8N1 is the default setting
-
-                    // Start RS485 transmission
-                    Port1.beginTransmission();
-                    Port2.beginTransmission();
-
-                    // Use Port1 and Port2 to write to the ports
-                    Port1.write("Hello World 1\r\n");
-                    Port2.write("Hello World 2\r\n");
-                </code></pre>
+            <div class="change-container">
+                <button class="change-cpp active">Arduino</button>
+                <button class="change-py">Python</button>
             </div>
-            <p>
-                Additionally, you can use the standard <code>Serial1</code> and <code>Serial2</code>  objects to interact with the ports, however when doing so
-                you cannot use any RS485 functions such as <code>beginTransmission()</code> or <code>endTransmission()</code>.
-            </p> 
-            <div class="code-block">
-                <pre><code class="cpp">// Configure both ports for RS232 at 115200 baud, 8 data bits, even parity, 1 stop bit
-                    PORT1_RS232_BEGIN(115200, SERIAL_8E1); 
-                    PORT2_RS232_BEGIN(115200, SERIAL_8E1);
+            <div class="line"></div>
+            <ul class="cpp-content">
 
-                    // RS232 does not require beginTransmission()
+                <p>
+                    <b>The code snippets below require the P1AM_Serial library. Use of the P1AM-Serial library requires version 1.6.21 or greater of the P1AM-100 in the Arduino boards manager.</b><br><br>
+                </p>
 
-                    // Use Serial1 and Serial2 to write to the ports
-                    Serial1.write("Hello World 1\r\n"); 
-                    Serial2.write("Hello World 2\r\n");
-                </code></pre>
-          </div>
+                <p>When using the P1AM Serial with a custom protocol, i.e. writing data directly to the port, use the function below
+                    that corresponds to the port and mode you are using to configure the port.
+
+                    Baudrate and other settings can be configured the same way as the standard Arduino Serial library. For a list of all configuration options
+                    <a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/begin/">click here</a>.
+
+                </p>   
+                    <ul>
+                    <li><b>PORT1_RS485_BEGIN()</b></li>
+                    <li><b>PORT1_RS232_BEGIN()</b></li>
+                    <li><b>PORT2_RS485_BEGIN()</b></li>
+                    <li><b>PORT2_RS232_BEGIN()</b></li>
+                    </ul>
+                    
+                <p>
+                <p>Once the port is configured, use the <code>Port1</code> and <code>Port2</code> objects to interact with the ports.</p>   
+
+                </p> 
+                <div class="code-block">
+                    <pre><code class="cpp">// Configure both ports for RS485 at 9600 baud, 8 data bits, no parity, 1 stop bit
+                        PORT1_RS485_BEGIN(9600, SERIAL_8N1); 
+                        PORT2_RS485_BEGIN(9600);// 8N1 is the default setting
+
+                        // Start RS485 transmission
+                        Port1.beginTransmission();
+                        Port2.beginTransmission();
+
+                        // Use Port1 and Port2 to write to the ports
+                        Port1.write("Hello World 1\r\n");
+                        Port2.write("Hello World 2\r\n");
+                    </code></pre>
+                </div>
+                <p>
+                    Additionally, you can use the standard <code>Serial1</code> and <code>Serial2</code>  objects to interact with the ports, however when doing so
+                    you cannot use any RS485 functions such as <code>beginTransmission()</code> or <code>endTransmission()</code>.
+                </p> 
+                <div class="code-block">
+                    <pre><code class="cpp">// Configure both ports for RS232 at 115200 baud, 8 data bits, even parity, 1 stop bit
+                        PORT1_RS232_BEGIN(115200, SERIAL_8E1); 
+                        PORT2_RS232_BEGIN(115200, SERIAL_8E1);
+
+                        // RS232 does not require beginTransmission()
+
+                        // Use Serial1 and Serial2 to write to the ports
+                        Serial1.write("Hello World 1\r\n"); 
+                        Serial2.write("Hello World 2\r\n");
+                    </code></pre>
+                </div>
 
                 <p>When using the P1AM Serial with a library that has its own begin() function, i.e. ArduinoModbus, 
                     manually configure the mode of the ports with <code>serial_port_config()</code> <b>before</b> calling  
@@ -118,14 +136,48 @@
                         ModbusRTUClientClass rtu_client(Port1); // Create modbus client on port 1
         
                         void setup() {
-                      
+                    
                             &emsp;serial_port_config(1, RS232_MODE); // Set port 1 to RS232 prior to starting modbus client
                 
                             &emsp;rtu_client.begin(115200); // Start modbus client on port 1
                         }
                     </code></pre>
                 </div>
-             </p>
+            </ul>
+            <ul class="python-content">
+                <p> The mode of the P1AM-SERIAL can be easily configured using the helpers library for the CPU
+                    UART port setting options can be referenced <a href="https://docs.circuitpython.org/en/latest/shared-bindings/busio/#busio.UART">here</a>.<br>
+                        <i>Note: The Busio.UART <span class="textBlock">rs485_dir</span> and <span class="textBlock">rs485_invert</span> options are not used. 
+                        The rs485_wrapper library will handle all supported RS485 operations.</i>
+                </p>
+                <div class="code-block">
+                    <pre style="display: none;"><code class="py">import board
+                        import busio
+                        import p1am_200_helpers as helper
+
+                        helper.set_serial_mode(1, 232) # Set P1AM-SERIAL port 1 to RS232 mode
+                        port1 = busio.UART(board.TX1, board.RX1, baudrate=115200)
+                        port1.print(b"Hello Port 1!\n")
+
+                        helper.set_serial_mode(2, 232) # Set P1AM-SERIAL port 2 to RS232 mode
+                        port2 = busio.UART(board.TX2, board.RX2, baudrate=115200)
+                        port2.write(b"Hello Port 1!\n")</code></pre>
+                </div>
+                
+                <p>RS485 communications use the rs485_wrapper library to automtically control transmit and receive modes.</p>
+                <div class="code-block">
+                    <pre style="display: none;"><code class="py">import board
+                        import busio
+                        import p1am_200_helpers as helper
+                        from rs485_wrapper import RS485
+                        
+                        port1_de = helper.set_serial_mode(1, 485)
+                        port1 = busio.UART(board.TX1, board.RX1, baudrate=115200)
+                        comm_port = RS485(port1, port1_de, receiver_buffer_size=512)
+                        while True:
+                        &nbsp;&nbsp;&nbsp;&nbsp;comm_port.write(b"Hello Port 1!\n")
+                    </code></pre>
+                </div>
             </ul>
         </div>
          
@@ -134,7 +186,10 @@
             <img src="P1AM-SERIAL_STRAIGHTON.png">
             <div class="line"></div>
             <p>
-              <b>Recommended Library:</b> <a href="https://github.com/facts-engineering/P1AM_Serial">P1AM_Serial</a>  <br>
+              <b>Arduino Library:</b> <a href="https://github.com/facts-engineering/P1AM_Serial">P1AM_Serial</a>  <br>
+              <b>CircuitPython Libraries:</b><br>
+              <a href="https://github.com/facts-engineering/circuitpython-rs485-wrapper">circuitpython-rs485-wrapper</a>  <br>
+              <a href="https://docs.circuitpython.org/en/latest/shared-bindings/busio/#busio.UART">busio.UART</a>  <br>
               <b>Power Budget:</b> 115mA / 3.3V <br>
             </p>
       

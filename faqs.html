@@ -1,161 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157182554-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
+
 		function gtag() {
 			dataLayer.push(arguments);
 		}
 		gtag('js', new Date());
 		gtag('config', 'UA-157182554-1');
 	</script>
-    <meta charset="utf-8">
-    <title>P1AM Documentation</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+	<meta charset="utf-8">
+	<title>P1AM FAQ</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png" />
 
-    <script src="modules.js"></script>
-    <script src="main.js"></script>
+	<script src="modules.js"></script>
+	<script src="main.js"></script>
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <a id="title" href="https://github.com/facts-engineering/P1AM">P1AM</a>
-
-        </div>
-        <ul class="sidebar-content"></ul>
-    </div>
-    <div class="header">
-		<img src="Aqua-productivity-open_logo_large-CTP-01.png" height="175px">
-		<img src="adc_logo_rot.png" width="85x" style="float:right; margin-right:20px; margin-top:20px">
-    </div>
-    <div class="content">
-		<div class="installList">
-		<h1>
-			Frequently Asked Questions
-		</h1>
-		 <div class="line"></div>
-		<br>
-
-		<a name="mkrzero">
-			<h2>What libraries work with the P1AM-100?</h2>
-		</a>
-		<p>
-			The P1AM-100 uses the SAMD21 just like the Arduino MKRZERO or the Arduino Zero. Most libaries made for Arduino
-			boards will work with the P1AM-100, however some may mention they only work with specfic boards. When looking at libraries
-			that mention specific boards, check to make sure that they include the MKRZERO, Zero, or SAMD21. If a library says it is
-			only for  "AVR" or "UNO" then it is possible it may not be compatible.
-		</p>
-
-
-		<br>
-		 <div class="line"></div>
-		<a name="offline">
-			<h2>Offline or Portable Installation</h2>
-		</a>
-		<p>
-			If the PC you would like to use the P1AM-100 with cannot be connected to the internet or has other restrictions
-			that conflict with the standard install, you can run the Arduino IDE offline or on a USB Drive. This will only work
-			with Windows PCs.
-		</p>
-		<p>
-			It is important to note that this method will not prompt you for updates. IDE Performance on USB drives will be slower
-			than when installed on PC.
-		</p>
-
-		<ul>
-			<li><a href="https://github.com/facts-engineering/facts-engineering.github.io/releases">Go to the release page here and download the most recent "portable_install" .zip release</a></li>
-			<li> Move the .zip file to the target PC or to a USB drive</li>
-			<li> Extract the .zip file to your desired location</li>
-			<li> in the extracted folder navigate to <b>drivers\P1AM-drivers</b></li>
-			<li> Run <b>P1AM-100_install.bat</b> and follow the prompts to install the driver</li>
-			<li> Run <b>arduino.exe</b> to open the Arduino IDE </li>
-			<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100</div></li>
-			<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port for your P1AM-100</li>
-
-		 </ul>
-
-
-
-		<!-- <h4 id="p1am-library">P1AM Library</h4> -->
-		<!-- <ul> -->
-		   <!-- <li> -->
-			  <!-- <p><em>Online steps</em></p> -->
-			  <!-- <ul> -->
-				 <!-- <li>Click the green button that says <strong>Clone or download</strong> <a href="https://github.com/facts-engineering/P1AM">here on the P1AM repository page</a></li> -->
-				 <!-- <li>Select <strong>Download ZIP</strong></li> -->
-				 <!-- <li>If you are using a USB drive copy the ZIP file to it now</li> -->
-			  <!-- </ul> -->
-		   <!-- </li> -->
-		   <!-- <li> -->
-			  <!-- <p><em>Offline steps - Internet connection is not needed</em>   </p> -->
-			  <!-- <ul> -->
-				 <!-- <li>In the Arduino IDE go to <div class="textBlock">Sketch > Include > Library > Add .ZIP Library</div></li> -->
-				 <!-- <li>Navigate to the ZIP file that you downloaded in the window that opens</li> -->
-			  <!-- </ul> -->
-		   <!-- </li> -->
-		<!-- </ul> -->
-		<!-- <h3 id="board-manager-install">Board Manager Install</h3> -->
-		<!-- <ul> -->
-		   <!-- <li> -->
-			  <!-- <p><em>Online steps</em></p> -->
-			  <!-- <ul> -->
-				 <!-- <li><a href="https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json">Right click this link and select <strong>Save link as..</strong></a></li> -->
-				 <!-- <li><a href="https://github.com/facts-engineering/P1AMCore/releases">Go to the following link and download the latest release in .tar.gz format</a></li> -->
-				 <!-- <li>If you are using a USB drive copy both of these files to it now</li> -->
-			 <!-- </ul> -->
-		   <!-- </li> -->
-		   <!-- <li> -->
-			  <!-- <p><em>Offline steps - Internet connection is not needed</em></p> -->
-			  <!-- <ul> -->
-				 <!-- <li>Move the JSON and .tar.gz files to a permanent location. </li> -->
-				 <!-- <li>Open the JSON in a text editor such as Notepad</li> -->
-				 <!-- <li>In the <strong>platforms</strong> section, find the entry that has the same version number as the release you downloaded</li> -->
-				 <!-- <li>Edit the following line with the complete path of the .tar.gz file <br> -->
-					<!-- <div class="textBlock"> file://C:/Users/USERNAME/Documents/P1AMCore-1.6.20.tar.gz</div>   -->
-				 <!-- </li> -->
-				 <!-- <li>Save and close the file</li> -->
-				 <!-- <li>Start Arduino and select <div class="textBlock">File > Preferences</div></li> -->
-				 <!-- <li>Enter <b>file://</b> and the link to your saved file. e.g. <div class="textBlock">file://C:/Users/USERNAME/Documents/package_productivity-P1AM-boardmanagermodule_index.json</div></li> -->
-				 <!-- <li>Open the Boards Manager from <div class="textBlock">Tools > Board > Boards Manager</div></li> -->
-				 <!-- <li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform</li> -->
-				 <!-- <li>Select <div class="textBlock">Tools > Board > P1AM-100</div></li> -->
-				 <!-- <li>Go to <div class="textBlock">Tools > Port</div> and select the COM Port your P1AM-100 is plugged into</li> -->
-			  <!-- </ul> -->
-		   <!-- </li> -->
-		<!-- </ul> -->
-		<!-- <h3 id="driver-installation">Driver Installation</h3> -->
-	    <!-- <p>For Windows 7 and 8 it is required that you install a device driver for the P1AM-100. For Windows 10 it is optional but recommended.</p> -->
-		<!-- <ul> -->
-		   <!-- <li> -->
-			  <!-- <p><em>Online steps</em></p> -->
-			  <!-- <ul> -->
-				 <!-- <li><a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download driver installer here.</a></li> -->
-				 <!-- <li>If you are using a USB drive copy the ZIP file to it now</li> -->
-			  <!-- </ul> -->
-		   <!-- </li> -->
-		   <!-- <li> -->
-			  <!-- <p><em>Offline steps - Internet connection is not needed</em></p> -->
-			  <!-- <ul> -->
-				 <!-- <li>Unplug any P1AM-100 systems from your PC</li> -->
-				 <!-- <li>Unzip the folder and run <strong>P1AM-100_install.bat</strong></li> -->
-				 <!-- <li>Navigate through the prompts and install will be complete</li> -->
-			  <!-- </ul> -->
-		   <!-- </li> -->
-		<!-- </ul> -->
-
-		<!-- <p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the -->
-			<!-- <a href="https://www.arduino.cc/en/main/software">Arduino website</a>. -->
-			<!-- After you have installed the Arduino IDE you will need to follow one of the library install -->
-			<!-- methods and the boards manager install instructions to get started with the P1AM-100 -->
-		<!-- </p> -->
+	<div class="sidebar">
+		<div class="sidebar-header">
+			<a id="title" href="/index.html">P1AM</a>
 
 		</div>
-    </div>
+		<ul class="sidebar-content"></ul>
+	</div>
+	<div class="header">
+		<img src="Aqua-productivity-open_logo_large-CTP-01.png" height="175px">
+		<img src="adc_logo_rot.png" width="85x" style="float:right; margin-right:20px; margin-top:20px">
+	</div>
+	<div class="content">
+		<div class="installList">
+			<h1>
+				Frequently Asked Questions
+			</h1>
+			<div class="line"></div>
+			<br>
+			<a name="cpus"></a>
+			<h2>What are the differences between the P1AM-100 and P1AM-200?</h2>
+			<table>
+				<tr>
+					<th>Feature</th>
+					<th>P1AM-100</th>
+					<th>P1AM-200</th>
+				</tr>
+				<tr>
+					<td>Microprocessor</td>
+					<td>SAMD21G18</td>
+					<td>SAMD51P20</td>
+				</tr>
+				<tr>
+					<td>Clock Speed</td>
+					<td>48MHz</td>
+					<td>120MHz</td>
+				</tr>
+				<tr>
+					<td>RAM</td>
+					<td>32KB</td>
+					<td>256KB</td>
+				</tr>
+				<tr>
+					<td>EEPROM</td>
+					<td>None</td>
+					<td>2kbit</td>
+				</tr>
+				<tr>
+					<td>RGB Status LED</td>
+					<td>No</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>Toggle Switch</td>
+					<td>Yes</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>MicroSD Card Slot</td>
+					<td>Yes</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>Arduino-Compatible</td>
+					<td>Yes</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>CircuitPython-Compatible</td>
+					<td>No</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>Number of P1000 I/O Modules</td>
+					<td>15</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>RTC</td>
+					<td>Internal</td>
+					<td>External + Supercap backed</td>
+				</tr>
+				<tr>
+					<td>Ethernet MAC Address</td>
+					<td>None</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td>ATECC608A Crypto Chip</td>
+					<td>None</td>
+					<td>Yes</td>
+				</tr>
+			</table>
+			<br>
+
+			<div class="line"></div>
+			<h2>Can I read the program from a P1AM CPU?</h2>
+			<p>
+				If you are using CircuitPython, you can read the program from the P1AM-200
+				since all files needed for the application are stored on the device.
+				If you are using Arduino, you cannot read the program from the P1AM CPU since the
+				program is compiled to a binary and cannot be reversed into the original source.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>Can I use the P1AM-200 with the Arduino IDE?</h2>
+			<p>
+				Yes, the P1AM-200 is compatible with the Arduino IDE. You can download the Arduino IDE <a
+					href="https://www.arduino.cc/en/software">here</a>.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>Can I program the P1AM-200 with CircuitPython and Arduino at the same time?</h2>
+			<p>
+				No, you can only program the P1AM-200 with one or the other.
+				You can switch between the two at any time, but you cannot program with both at the same time.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>What is the P1AM-200 RGB Status LED used for?</h2>
+			<p>
+				In Arduino and CircuitPython the RGB Status LED is user configurable and can be used for any purpose.
+				In CircuitPython <strong>only</strong>, the LED will additionally indicate certain program conditions
+				described
+				<a
+					href="https://learn.adafruit.com/welcome-to-circuitpython/troubleshooting#circuitpython-7-dot-0-0-and-later-2978455">here</a>
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>How do I configure my modules?</h2>
+			<p>
+				Not every module supports configuration. If your module does, you can find a tool to generate
+				configuration
+				code on the module's own page, or go <a href="https://facts-engineering.github.io/config.html">here</a>
+				for the configuration tool page.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<a name="arduino"></a>
+			<h2>How do I find Arduino libraries?</h2>
+			<p>
+				The P1AM-100 and P1AM-200 are compatible with most libraries that work with the SAMD architecture.
+				You can find libraries in the Arduino Library Manager or by searching the internet. If a library
+				states that it is only for "AVR" or "UNO" then it is possible it may not function with your CPU.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<a name="circuitPy"></a>
+			<h2>What is CircuitPython?</h2>
+			<p>
+				CircuitPython is an open-source implementation of Python maintained by Adafruit. It is a high-level
+				programming
+				language great for beginners and skilled programmers alike. For more information check out Adafruit's
+				<a href="https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython">introduction</a>.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>What is the difference between CircuitPython and Arduino?</h2>
+			<p>
+				CircuitPython is a higher level language than Arduino. CircuitPython is based on Python 3,
+				while Arduino is based on C/C++. CircuitPython programs are typically easier to write than Arduino
+				programs, but they will run slower.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>How do I switch from CircuitPython to Arduino?</h2>
+			<ul>
+				<li>Open any program in the Arduino IDE</li>
+				<li>Select Tools > Board > P1AM-200</li>
+				<li>Go to Tools > Port and select the COM Port for your P1AM-200</li>
+				<li>Upload the program to the P1AM-200. The P1AM-200 will reenumerate on a new COM port and will be
+					running the program you uploaded</li>
+			</ul>
+			<br>
+
+			<div class="line"></div>
+			<h2>How do I switch from Arduino to CircuitPython?</h2>
+			<ul>
+				<li>Quickly double tap the reset button to enter the bootloader</li>
+				<li>The P1AM-200 will show up as a USB drive named P1AM200BOOT</li>
+				<li>Drag and drop the CircuitPython UF2 file onto the P1AM200BOOT drive</li>
+				<li>The P1AM-200 will reboot and show up as a USB drive named CIRCUITPY</li>
+			</ul>
+			<br>
+
+			<div class="line"></div>
+			<h2>Do I lose my files when switching between Arduino and CircuitPython?</h2>
+			<p>
+				No, the files for CircuitPython are stored on an external flash memory device.
+				When you program with Arduino, only the internal flash on the SAMD51 is used.
+				When you switch back to CircuitPython, the files will be there like they were before.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>How many files can I store on the P1AM-200 CircuitPython Drive?</h2>
+			<p>The P1AM-200 has 16MB of flash memory with about 15.4MB available for files.</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>Will my Arduino programs work with CircuitPython?</h2>
+			<p>
+				No, you will need to rewrite your programs in CircuitPython.
+				The P1AM-200 is compatible with both Arduino and CircuitPython, but the two
+				languages are not compatible with each other. A C-Style API is available for
+				CircuitPython to make it easier to port Arduino programs to CircuitPython.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>Will normal Python programs work with CircuitPython?</h2>
+			<p>
+				Many Python programs will work with CircuitPython, but not all. CircuitPython is based on Python 3,
+				so Python 2 programs will not work. Additionally, CircuitPython does not
+				have all of the standard Python libraries, so some programs may not work.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>How do I find CircuitPython libraries?</h2>
+			<p>
+				The P1AM-200 is compatible with most CircuitPython libraries.
+				You can find libraries in the CircuitPython Library Bundle or by searching the internet.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<h2>Will my CircuitPython program run forever?</h2>
+			<p>
+				Unlike Arduino, CircuitPython programs will not run forever by default.
+				If you want your program to run forever, you can add a while True: loop to your program.
+				Additionally, you should add try/except blocks to your program to catch any errors
+				that may occur as uncaught errors will cause your program to stop running.
+			</p>
+			<br>
+
+			<div class="line"></div>
+			<a name="offline"></a>
+			<h2>P1AM-100 Arduino Offline or Portable Installation</h2>
+			<p>
+				If the PC you would like to use Arduino with cannot be connected to the internet or has other
+				restrictions
+				that conflict with the standard install, you can run the Arduino IDE offline or on a USB Drive. This
+				will only work
+				with Windows PCs.
+			</p>
+			<p>
+				It is important to note that this method will not prompt you for updates. IDE Performance on USB drives
+				will be slower
+				than when installed on PC.
+			</p>
+
+			<ul>
+				<li><a href="https://github.com/facts-engineering/facts-engineering.github.io/releases">Go to the
+						release page here and download the most recent "portable_install" .zip release</a></li>
+				<li> Move the .zip file to the target PC or to a USB drive</li>
+				<li> Extract the .zip file to your desired location</li>
+				<li> in the extracted folder navigate to <b>drivers\P1AM-drivers</b></li>
+				<li> Run <b>P1AM-100_install.bat</b> and follow the prompts to install the driver</li>
+				<li> Run <b>arduino.exe</b> to open the Arduino IDE </li>
+				<li>Select <div class="textBlock">Tools &gt; Board &gt; P1AM-100</div>
+				</li>
+				<li>Go to <div class="textBlock">Tools &gt; Port</div> and select the COM Port for your P1AM-100</li>
+
+			</ul>
+			<br>
+
+			<!-- <h4 id="p1am-library">P1AM Library</h4>
+		<ul>
+		   <li>
+			  <p><em>Online steps</em></p>
+			  <ul>
+				 <li>Click the green button that says <strong>Clone or download</strong> <a href="https://github.com/facts-engineering/P1AM">here on the P1AM repository page</a></li>
+				 <li>Select <strong>Download ZIP</strong></li>
+				 <li>If you are using a USB drive copy the ZIP file to it now</li>
+			  </ul>
+		   </li>
+		   <li>
+			  <p><em>Offline steps - Internet connection is not needed</em>   </p>
+			  <ul>
+				 <li>In the Arduino IDE go to <div class="textBlock">Sketch > Include > Library > Add .ZIP Library</div></li>
+				 <li>Navigate to the ZIP file that you downloaded in the window that opens</li>
+			  </ul>
+		   </li>
+		</ul>
+		<h3 id="board-manager-install">Board Manager Install</h3>
+		<ul>
+		   <li>
+			  <p><em>Online steps</em></p>
+			  <ul>
+				 <li><a href="https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json">Right click this link and select <strong>Save link as..</strong></a></li>
+				 <li><a href="https://github.com/facts-engineering/P1AMCore/releases">Go to the following link and download the latest release in .tar.gz format</a></li>
+				 <li>If you are using a USB drive copy both of these files to it now</li>
+			 </ul>
+		   </li>
+		   <li>
+			  <p><em>Offline steps - Internet connection is not needed</em></p>
+			  <ul>
+				 <li>Move the JSON and .tar.gz files to a permanent location. </li>
+				 <li>Open the JSON in a text editor such as Notepad</li>
+				 <li>In the <strong>platforms</strong> section, find the entry that has the same version number as the release you downloaded</li>
+				 <li>Edit the following line with the complete path of the .tar.gz file <br>
+					<div class="textBlock"> file://C:/Users/USERNAME/Documents/P1AMCore-1.6.20.tar.gz</div>  
+				 </li>
+				 <li>Save and close the file</li>
+				 <li>Start Arduino and select <div class="textBlock">File > Preferences</div></li>
+				 <li>Enter <b>file://</b> and the link to your saved file. e.g. <div class="textBlock">file://C:/Users/USERNAME/Documents/package_productivity-P1AM-boardmanagermodule_index.json</div></li>
+				 <li>Open the Boards Manager from <div class="textBlock">Tools > Board > Boards Manager</div></li>
+				 <li>Type <strong>P1AM</strong> into the search box and install the <strong>P1AM-100</strong> platform</li>
+				 <li>Select <div class="textBlock">Tools > Board > P1AM-100</div></li>
+				 <li>Go to <div class="textBlock">Tools > Port</div> and select the COM Port your P1AM-100 is plugged into</li>
+			  </ul>
+		   </li>
+		</ul>
+		<h3 id="driver-installation">Driver Installation</h3>
+	    <p>For Windows 7 and 8 it is required that you install a device driver for the P1AM-100. For Windows 10 it is optional but recommended.</p>
+		<ul>
+		   <li>
+			  <p><em>Online steps</em></p>
+			  <ul>
+				 <li><a href="https://github.com/facts-engineering/P1AMCore/raw/master/drivers.zip">Download driver installer here.</a></li>
+				 <li>If you are using a USB drive copy the ZIP file to it now</li>
+			  </ul>
+		   </li>
+		   <li>
+			  <p><em>Offline steps - Internet connection is not needed</em></p>
+			  <ul>
+				 <li>Unplug any P1AM-100 systems from your PC</li>
+				 <li>Unzip the folder and run <strong>P1AM-100_install.bat</strong></li>
+				 <li>Navigate through the prompts and install will be complete</li>
+			  </ul>
+		   </li>
+		</ul>
+
+		<p>Install the Arduino IDE version 1.8.7 or later. We recommend the current version on the
+			<a href="https://www.arduino.cc/en/main/software">Arduino website</a>.
+			After you have installed the Arduino IDE you will need to follow one of the library install
+			methods and the boards manager install instructions to get started with the P1AM-100
+		</p> -->
+
+		</div>
+	</div>
 </body>
 
 </html>

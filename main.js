@@ -288,17 +288,50 @@ function generateConfigTool(properties, container) {
     }
     let preview = document.createElement("DIV");
     preview.className = "config-preview";
+    let buttonContainer = document.createElement("DIV");
+    buttonContainer.className = "change-container";
+    let cppButton = document.createElement("BUTTON");
+    cppButton.innerText = "Arduino";
+    cppButton.className = "change-cpp";
+    cppButton.classList.add("config");
+    // cppButton.style.marginLeft = "16px";
+    cppButton.style.borderRight = "1px solid #a9a9a9";
+    let pyButton = document.createElement("BUTTON");
+    pyButton.innerText = "Python";
+    pyButton.className = "change-py";
+    pyButton.classList.add("config");
+    buttonContainer.appendChild(cppButton);
+    buttonContainer.appendChild(pyButton);
+    cppButton.addEventListener("click", function() {
+        changeToCpp();
+        updatePreview();   
+    });
+    pyButton.addEventListener("click", function() {
+        changeToPython();
+        updatePreview();   
+    });
     let codeBlock = document.createElement("DIV");
     codeBlock.className = "code-block";
     let pre = document.createElement("PRE");
     let previewCode = document.createElement("CODE");
-    previewCode.className = "cpp";
-    previewCode.innerText = "const char " + currentModule.name.replace(/-/g, "_").toUpperCase() + "_CONFIG[] = { " + generateConfigArray() + " };";
+    if (window.location.href.includes("python")) {
+        previewCode.className = "python";
+        pyButton.classList.add("active");
+        previewCode.innerText = currentModule.name.replace(/-/g, "_") + "_config = ( " + generateConfigArray() + " )";
+
+    } else {
+        previewCode.className = "cpp";
+        cppButton.classList.add("active");
+        previewCode.innerText = "const char " + currentModule.name.replace(/-/g, "_").toUpperCase() + "_CONFIG[] = { " + generateConfigArray() + " };";
+    }
+    previewCode.classList.add("config");
     pre.appendChild(previewCode);
     codeBlock.appendChild(pre);
+    preview.appendChild(buttonContainer);
     preview.appendChild(codeBlock);
     let button = document.createElement("BUTTON");
     button.innerText = "Copy Configuration Array";
+    button.style.borderRadius = "4px";
     preview.appendChild(button);
     button.addEventListener("click", function () {
         let selection = new Range();
@@ -417,9 +450,18 @@ function generateConfigArray() {
 }
 
 function updatePreview() {
-    let moduleName = currentModule.name.replace(/-/g, "_").toUpperCase();
     let codeBlock = document.querySelector(".config-preview code");
-    codeBlock.innerText = "const char " + moduleName + "_CONFIG[] = { " + generateConfigArray() + " };";
+    if(!codeBlock) return;
+    let moduleName = currentModule.name.replace(/-/g, "_").toUpperCase();
+    if (window.location.href.includes("python")) {
+        codeBlock.classList.remove("cpp");
+        codeBlock.classList.add("python");
+        codeBlock.innerText = moduleName.replace(/-/g, "_") + "_config = ( " + generateConfigArray() + " )";
+    } else {
+        codeBlock.classList.remove("python");
+        codeBlock.classList.add("cpp");
+        codeBlock.innerText = "const char " + moduleName + "_CONFIG[] = { " + generateConfigArray() + " };";
+    }
     hljs.highlightBlock(codeBlock);
 }
 
@@ -430,24 +472,22 @@ function displayPrompt(text, callback = null) {
     let modal = document.createElement("DIV");
     modal.className = "modal";
     container.appendChild(modal);
-    if(typeof text === "string") {
+    if (typeof text === "string") {
         let strings = text.split("\n");
         for (let i = 0; i < strings.length; i++) {
             let promptText = document.createElement("P");
             promptText.innerText = strings[i];
             modal.appendChild(promptText);
         }
-    }
-    else if(text.nodeType !== undefined) {
+    } else if (text.nodeType !== undefined) {
         modal.appendChild(text);
-    }
-    else if(Array.prototype.isPrototypeOf(text)) {
-        for(let i = 0; i < text.length; i++) {
-            if(text[i].nodeType === undefined) {
+    } else if (Array.prototype.isPrototypeOf(text)) {
+        for (let i = 0; i < text.length; i++) {
+            if (text[i].nodeType === undefined) {
                 return;
             }
         }
-        for(let i = 0; i < text.length; i++) {
+        for (let i = 0; i < text.length; i++) {
             modal.appendChild(text[i]);
         }
     }
@@ -462,6 +502,77 @@ function displayPrompt(text, callback = null) {
     });
     modal.appendChild(confirm);
     document.querySelector("body").appendChild(container);
+}
+
+function updateHref(element, toPython) {
+    let elementUrl = element.href;
+    let newUrl = elementUrl;
+    if (toPython) {
+        if (!elementUrl.includes("python")) {
+            if (elementUrl.includes('#')) {
+                let index = elementUrl.lastIndexOf('#');
+                newUrl = `${elementUrl.slice(0, index)}?python${elementUrl.substr(index)}`;
+            }
+            else newUrl = elementUrl += "?python";
+            
+            if (element === window.location) {
+                window.history.replaceState(null, "", newUrl)
+            } else {
+                element.href = newUrl;
+            }
+        }
+    } else {
+        if (elementUrl.includes("python")) {
+            let target = elementUrl.slice(elementUrl.indexOf("python") - 1, elementUrl.indexOf("python") + 6);
+            newUrl = elementUrl.replace(target, "");
+            if (element === window.location) {
+                window.history.replaceState(null, "", newUrl)
+            } else {
+                element.href = newUrl;
+            }
+        }
+    }
+}
+
+function updateLinks(toPython) {
+    document.querySelectorAll("a").forEach(element => {
+        let url = window.location.href;
+        let base = url.slice(url.indexOf("//") + 2, url.indexOf("/", url.indexOf("//") + 2));
+        let elementUrl = element.href;
+        if (elementUrl.includes(base)) {
+            updateHref(element, toPython);
+        }
+    });
+    updateHref(window.location, toPython);
+    updatePreview();
+}
+
+function changeToCpp() {
+    // Handle code blocks
+    document.querySelectorAll("code.py:not(.config)").forEach(el => el.parentElement.style.display = "none");
+    document.querySelectorAll("code.cpp:not(.config)").forEach(el => el.parentElement.style.display = "block");
+    document.querySelectorAll(".change-py").forEach(element => element.classList.remove("active"));
+    document.querySelectorAll(".change-cpp").forEach(element => element.classList.add("active"));
+    // Handle other
+    document.querySelectorAll(".python-content").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".cpp-content").forEach(el => el.style.display = "");
+    updateLinks(false);
+}
+
+function changeToPython() {
+    // Handle code blocks
+    document.querySelectorAll("code.cpp:not(.config)").forEach(el => el.parentElement.style.display = "none");
+    document.querySelectorAll("code.py:not(.config)").forEach(el => el.parentElement.style.display = "block");
+    let py = document.querySelectorAll("code.py:not(.config)")[0];
+    if(py) py.parentElement.style.display = "block";
+    let cpp = document.querySelectorAll("code.cpp:not(.config)")[0];
+    if(cpp) cpp.parentElement.style.display = "none";
+    document.querySelectorAll(".change-cpp").forEach(element => element.classList.remove("active"));
+    document.querySelectorAll(".change-py").forEach(element => element.classList.add("active"));
+    // Handle other
+    document.querySelectorAll(".cpp-content").forEach(el => el.style.display = "none");
+    document.querySelectorAll(".python-content").forEach(el => el.style.display = "");
+    updateLinks(true);
 }
 
 let currentModule = {};
@@ -491,8 +602,14 @@ window.addEventListener("DOMContentLoaded", function () {
         let included = false;
         let title = document.title;
         for (let i = 0; i < category.modules.length; i++) {
-            if (title.includes(category.modules[i].name)) {
-                included = true;
+            if(NavCategory.prototype.isPrototypeOf(category)) {
+                if(category.modules.some(page => window.location.href.includes(page.link))) {
+                    included = true;
+                }
+            } else {
+                if (title.includes(category.modules[i].name)) {
+                    included = true;
+                }
             }
         }
         if (included) {
@@ -507,13 +624,18 @@ window.addEventListener("DOMContentLoaded", function () {
             let list = document.createElement("LI");
             let link = document.createElement("A");
             link.innerText = category.modules[i].name;
-            if (!title.includes("|")) {
-                link.href = "modules/" + category.modules[i].name + "/" + category.modules[i].name + ".html";
+            if(NavCategory.prototype.isPrototypeOf(category)) {
+                link.className = "nav";
+                link.href = `${category.base}${category.modules[i].link}`;
             } else {
-                if (title.includes(category.modules[i])) {
-                    link.href = "#";
+                if (!title.includes("|")) {
+                    link.href = "modules/" + category.modules[i].name + "/" + category.modules[i].name + ".html";
                 } else {
-                    link.href = "../" + category.modules[i].name + "/" + category.modules[i].name + ".html";
+                    if (title.includes(category.modules[i])) {
+                        link.href = "#";
+                    } else {
+                        link.href = "../" + category.modules[i].name + "/" + category.modules[i].name + ".html";
+                    }
                 }
             }
             list.appendChild(link);
@@ -527,7 +649,11 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     for (let i = 0; i < modules.length; i++) {
-        generateCategory(modules[i]);
+        // if(Category.prototype.isPrototypeOf(modules[i])) {
+            generateCategory(modules[i]);
+        // } else if(NavCategory.prototype.isPrototypeOf(modules[i])) {
+        //     generateNavCategory(modules[i]);
+        // }
     }
 
     let privacyButton = document.createElement("DIV");
@@ -551,9 +677,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     let copyRight = document.createElement("DIV");
     copyRight.id = "copyright";
-    year = new Date().getFullYear();
-    copyRight.innerText = "\u00A9 " + year + " FACTS Engineering";
-
+    copyRight.innerText = `\u00A9 ${new Date().getFullYear()} FACTS Engineering`;
     document.querySelector("ul.sidebar-content").appendChild(copyRight);
 
     let categories = document.querySelectorAll(".sidebar-category p");
@@ -587,7 +711,6 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
     if (document.title.includes("|")) {
 
         document.addEventListener("click", function () {
@@ -619,6 +742,20 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
+    }
+
+    document.querySelectorAll("button.change-cpp:not(.config)").forEach(element => {
+        element.addEventListener("click", changeToCpp);
+    });
+
+    document.querySelectorAll("button.change-py:not(.config)").forEach(element => {
+        element.addEventListener("click", changeToPython);
+    });
+
+    if (window.location.href.includes("?python") || window.location.href.includes("&python")) {
+        changeToPython();
+    } else {
+        changeToCpp();
     }
 
 });

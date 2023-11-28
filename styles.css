@@ -357,6 +357,9 @@ div.content > div:first-child {
     user-select: all; /* Chrome and Opera */
 }
 
+.change-container+.code-block {
+    border-radius: 0px 4px 4px 4px;
+}
 
 .code-block code {
     background-color: #eee;
@@ -364,7 +367,72 @@ div.content > div:first-child {
 }
 
 .code-block {
-    margin-top: 8px;
+    margin-top: 0px;
+    /* border: 4px solid #e0e0e0; */
+    border-radius: 4px;
+    padding: 6px 0px;
+    background-color: #e0e0e0;
+    width: fit-content;
+}
+
+.code-block * {
+    background-color: unset !important;
+}
+
+.code-block pre {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.change-cpp, 
+.change-py {
+    font-size: 16px;
+    display: block;
+    border: none;
+    background-color: #ccc;
+    padding: 6px 8px;
+    float: left;
+    text-decoration: none;
+    width: auto;
+    margin-top: 6px;
+    margin-left: 0px;
+    transition-duration: 0.2s;
+}
+
+.change-cpp:hover, 
+.change-py:hover {
+    background-color: #e0e0e0;
+}
+
+.change-container button.active {
+    background-color: #e0e0e0;
+}
+
+.change-cpp {
+    /* margin-left: 0px; */
+    border-right: 1px solid #a9a9a9;
+    border-top-left-radius: 6px;
+}
+
+.change-py {
+    clear: right;
+    border-top-right-radius: 6px;
+}
+
+.change-container {
+    display: flex;
+}
+
+.change-container.floating button {
+    padding: 6px 8px;
+}
+
+.change-container.floating .change-py {
+    border-bottom-right-radius: 6px;
+}
+
+.change-container.floating .change-cpp {
+    border-bottom-left-radius: 6px;
 }
 
 .code-block code {
@@ -579,10 +647,6 @@ p#moduleTitle {
 
 .config-preview {
     clear: both;
-}
-
-.config-preview code {
-    margin-top: 30px;
 }
 
 table {
