@@ -342,6 +342,33 @@ function generateConfigTool(properties, container) {
         document.execCommand("copy");
     });
     container.appendChild(preview);
+    // How To section
+    let howToHeader = document.createElement("h3");
+    howToHeader.innerText = "How To Configure";
+    howToHeader.style.marginTop = "20px";
+    let line = document.createElement("div");
+    line.className = "line";
+    let exampleBlock = document.createElement("div");
+    exampleBlock.className = "code-block";
+    exampleBlock.style.borderTopLeftRadius = "4px";
+    exampleBlock.style.marginTop = "12px";
+    let exCppPre = document.createElement("pre");
+    let exCpp = document.createElement("code");
+    exCpp.className = "cpp";
+    exCpp.innerText = `P1.configureModule(${currentModule.name.replace(/-/g, "_")}_config, 1)  //sends the config data to the module in slot 1`;
+    exCppPre.appendChild(exCpp);
+    let exPyPre = document.createElement("pre");
+    exPyPre.style.display = "none";
+    let exPy = document.createElement("code");
+    exPy.className = "py";
+    exPy.innerText = `base[1].configure_module(${currentModule.name.replace(/-/g, "_")}_config)  #sends the config data to the module in slot 1`;
+    exPyPre.appendChild(exPy);
+    exampleBlock.appendChild(exCppPre);
+    exampleBlock.appendChild(exPyPre);
+    container.appendChild(howToHeader);
+    container.appendChild(line);
+    container.appendChild(exampleBlock);
+
     updatePreview();
     let buttons = document.querySelectorAll(".config-properties button");
     for (let i = 0; i < buttons.length; i++) {
