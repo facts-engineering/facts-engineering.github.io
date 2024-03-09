@@ -322,7 +322,7 @@ function generateConfigTool(properties, container) {
     } else {
         previewCode.className = "cpp";
         cppButton.classList.add("active");
-        previewCode.innerText = "const char " + currentModule.name.replace(/-/g, "_").toUpperCase() + "_CONFIG[] = { " + generateConfigArray() + " };";
+        previewCode.innerText = "const char " + currentModule.name.replace(/-/g, "_").toUpperCase() + "_config[] = { " + generateConfigArray() + " };";
     }
     previewCode.classList.add("config");
     pre.appendChild(previewCode);
