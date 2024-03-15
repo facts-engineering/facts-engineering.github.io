@@ -157,6 +157,7 @@ while True:
 
        <div class="code-block">
         <pre><code class="cpp">Adafruit_NeoPixel pixels(1, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800); // Setup RGB LED
+            pixels.begin(); // Initialize NeoPixel object
             pixels.setPixelColor(0, pixels.Color(0, 150, 0)); // Set RGB LED to green (R, G, B)
             pixels.show(); // Update RGB LED
             </code></pre>
