@@ -322,7 +322,7 @@ function generateConfigTool(properties, container) {
     } else {
         previewCode.className = "cpp";
         cppButton.classList.add("active");
-        previewCode.innerText = "const char " + currentModule.name.replace(/-/g, "_").toUpperCase() + "_config[] = { " + generateConfigArray() + " };";
+        previewCode.innerText = "const char " + currentModule.name.replace(/-/g, "_").toUpperCase() + "_CONFIG[] = { " + generateConfigArray() + " };";
     }
     previewCode.classList.add("config");
     pre.appendChild(previewCode);
@@ -355,7 +355,7 @@ function generateConfigTool(properties, container) {
     let exCppPre = document.createElement("pre");
     let exCpp = document.createElement("code");
     exCpp.className = "cpp";
-    exCpp.innerText = `P1.configureModule(${currentModule.name.replace(/-/g, "_")}_config, 1)  //sends the config data to the module in slot 1`;
+    exCpp.innerText = `P1.configureModule(${currentModule.name.replace(/-/g, "_")}_CONFIG, 1);  //sends the config data to the module in slot 1`;
     exCppPre.appendChild(exCpp);
     let exPyPre = document.createElement("pre");
     exPyPre.style.display = "none";
@@ -483,7 +483,7 @@ function updatePreview() {
     if (window.location.href.includes("python")) {
         codeBlock.classList.remove("cpp");
         codeBlock.classList.add("python");
-        codeBlock.innerText = moduleName.replace(/-/g, "_") + "_config = ( " + generateConfigArray() + " )";
+        codeBlock.innerText = moduleName.replace(/-/g, "_") + "_CONFIG = ( " + generateConfigArray() + " )";
     } else {
         codeBlock.classList.remove("python");
         codeBlock.classList.add("cpp");
