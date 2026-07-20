@@ -116,6 +116,9 @@ let modules = [
     }, {
         name: "P1-16TR",
         imageWidth: "200px"
+    }, {
+        name: "P1-04TEPS",
+        imageWidth: "170px"
     }]),
     new Category("Discrete Combo Modules", [{
         name: "P1-15CDD1",
@@ -158,6 +161,9 @@ let modules = [
         name: "P1-04THM",
         imageWidth: "180px"
 
+    }, {
+        name: "P1-04THMS",
+        imageWidth: "170px"
     }]),
     new Category("Analog Output Modules", [{
         name: "P1-04DAL-1",
@@ -483,6 +489,11 @@ P104THM.push(new Property(reservedField, "Reserved", 18, 2));
 
 getPageByName("P1-04THM").config = P104THM;
 getPageByName("P1-04THM").channels = 4;
+
+// P1-04THMS is the isolated variant of the P1-04THM and shares the same
+// channel configuration and register layout.
+getPageByName("P1-04THMS").config = P104THM;
+getPageByName("P1-04THMS").channels = 4;
 
 let P104AD = new Array();
 P104AD.push(new Property(channelEnable, "Enabled", {
