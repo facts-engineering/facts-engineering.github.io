@@ -111,6 +111,9 @@ let modules = [
         name: "P1-08TD-TTL",
         imageWidth: "130px"
     }, {
+        name: "P1-04TRS",
+        imageWidth: "200px"
+    }, {
 		name: "P1-08TRS",
         imageWidth: "200px"
     }, {
